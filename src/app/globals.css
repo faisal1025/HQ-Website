@@ -31,3 +31,14 @@ body {
     text-wrap: balance;
   }
 }
+
+.home-container{
+  background-image: linear-gradient(
+  rgba(0, 0, 0, 0.3),
+  rgba(226, 226, 226, 0.1)), url('../../public//banner_pics/white\ blue\ natural\ landscape\ of\ the\ sea\ and\ mountains\ freedom\ facebook\ cover.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: #c2bbbbcb;
+  min-height: 50vh;
+}
