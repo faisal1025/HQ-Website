@@ -35,10 +35,11 @@ body {
 .home-container{
   background-image: linear-gradient(
   rgba(0, 0, 0, 0.3),
-  rgba(226, 226, 226, 0.1)), url('../../public//banner_pics/white\ blue\ natural\ landscape\ of\ the\ sea\ and\ mountains\ freedom\ facebook\ cover.png');
+  rgba(0, 0, 0, 0.1),
+  rgb(255, 255, 255)), url('../../public//banner_pics/white\ blue\ natural\ landscape\ of\ the\ sea\ and\ mountains\ freedom\ facebook\ cover.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-color: #c2bbbbcb;
-  min-height: 50vh;
+  min-height: 60vh;
 }
