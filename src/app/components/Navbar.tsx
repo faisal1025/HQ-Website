@@ -13,12 +13,12 @@ import Link from 'next/link';
 
 const Navbar = () => {
     return (
-        <header className="bg-slate-95 py-1">
+        <header className="bg-white dark:bg-slate-950 py-1">
         <nav className="flex justify-between items-center px-3  ">
           <div className="flex items-center lg:ml-[10%] cursor-pointer">
             <Image src={Logo} alt="Logo" width={65} />
           </div>
-          <div className="flex flex-wrap items-center justify-end gap-6 max-md:flex mr-4">
+          <div className="flex flex-wrap text-black dark:text-white items-center justify-end gap-6 max-md:flex mr-4">
               <Link
                 href="#"
                 className="flex items-center gap-2"
