@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
     return (
-        <header className="bg-gray-100  py-1">
+        <header className="bg-slate-95 py-1">
         <nav className="flex justify-between items-center px-3  ">
           <div className="flex items-center lg:ml-[10%] cursor-pointer">
             <Image src={Logo} alt="Logo" width={65} />
@@ -21,32 +21,32 @@ const Navbar = () => {
           <div className="flex flex-wrap items-center justify-end gap-6 max-md:flex mr-4">
               <Link
                 href="#"
-                className="flex items-center gap-2 text-black"
+                className="flex items-center gap-2"
               >
-                <i className='text-black' ><FaRegHeart size={20} /></i>
+                <i><FaRegHeart size={20} /></i>
                 <h5 className='lg:mt-0 md:mt-0 max-md:hidden'>Favroites</h5>
               </Link>
             
               <Link
                 href="#"
-                className="flex items-center gap-2 text-black max-md:hidden"
+                className="flex items-center gap-2 max-md:hidden"
               >
-                <i className='text-black' ><BsGlobe2 size={20} /></i>
+                <i><BsGlobe2 size={20} /></i>
                 <h5 className='lg:mt-0 md:mt-0'>EN . $</h5>
               </Link>
             
               <Link
                 href="#"
-                className="flex items-center gap-2 text-black"
+                className="flex items-center gap-2 "
               >
-                <i className='text-black' ><FaRegUserCircle  size={20} /></i>
+                <i><FaRegUserCircle  size={20} /></i>
                 <h5 className='lg:mt-0 md:mt-0 max-md:hidden'>Login</h5>
               </Link>
            
               <div
-                className="flex items-center gap-2 cursor-pointer text-black"
+                className="flex items-center gap-2 cursor-pointer"
               >
-                <i className='text-black' ><FaBars  size={20} /></i>
+                <i><FaBars  size={20} /></i>
                 <h5 className='lg:mt-0 md:mt-0 max-md:hidden'>Menu</h5>
               </div>
           
