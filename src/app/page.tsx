@@ -35,10 +35,10 @@ export default function Home() {
           </div>
         </div>
         <div className="room-container flex w-1/5 max-md:w-1/3 max-sm:w-full h-14 justify-center items-center rounded-lg border-r-slate-400">
-          <i className="bg-white text-black h-full text-center items-center justify-center flex w-12"><FaBed size={20} /></i>
+          <i className="bg-white text-black h-full text-center items-center justify-center flex w-14"><FaBed size={20} /></i>
           <div className="flex flex-col justify-center h-full w-80 max-md:w-full px-3 rounded-md bg-white font-sans font-semibold focus:border-0">
             <label className="text-black text-xs">Guest and Rooms</label>
-            <div className=" text-slate-400 text-base focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1">
+            <div className=" text-slate-400 py-1 px-2 text-base max-w-fit">
               <h3>guest and rooms</h3>
             </div>
           </div>
