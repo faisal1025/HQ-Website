@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
     return (
-        <header className="bg-white dark:bg-slate-950 py-1">
+        <header className="bg-gradient-to-r from-slate-400 to-slate-50  dark:from-slate-600 dark:to-slate-950 py-1">
         <nav className="flex justify-between items-center px-3  ">
           <div className="flex items-center lg:ml-[10%] cursor-pointer">
             <Image src={Logo} alt="Logo" width={65} />

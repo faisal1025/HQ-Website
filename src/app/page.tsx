@@ -43,7 +43,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <button className="rounded-full m-1 bg-black w-1/5  max-md:w-1/3 max-sm:w-full h-12 active:scale-75 transition hover:opacity-50" onClick={(e) => {e.stopPropagation();}}>Search</button>
+        <button className="rounded-full m-1 bg-gradient-to-r from-slate-500 to-slate-950 w-1/5 text-white max-md:w-1/3 max-sm:w-full h-12 active:scale-75 transition hover:opacity-80" onClick={(e) => {e.stopPropagation();}}>Search</button>
       </div>
     </div>
   );
