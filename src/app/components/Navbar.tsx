@@ -4,16 +4,12 @@ import Image from "next/image";
 import {FaRegHeart, FaRegUserCircle, FaBars } from "react-icons/fa"
 import { BsGlobe2 } from "react-icons/bs";
 import Logo from "../../../public/assets/Logo.png"
-import Heart from "../../../public/assets/Heart.png"
-import Bars from "../../../public/assets/bars.png"
-import Login from "../../../public/assets/Login.png"
-import Language from "../../../public/assets/Language.png"
 import Link from 'next/link';
 
 
 const Navbar = () => {
     return (
-        <header className="bg-gradient-to-r from-slate-400 to-slate-50  dark:from-slate-600 dark:to-slate-950 py-1">
+        <header className="bg-gradient-to-r from-indigo-300 to-indigo-50  dark:from-slate-600 dark:to-slate-950 py-1">
         <nav className="flex justify-between items-center px-3  ">
           <div className="flex items-center lg:ml-[10%] cursor-pointer">
             <Image src={Logo} alt="Logo" width={65} />
