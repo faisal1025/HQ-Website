@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['images.unsplash.com', 'www.nmims.edu', 'res.cloudinary.com'],
+        domains: ['images.unsplash.com', 'www.nmims.edu', 'res.cloudinary.com', 'www.canva.com'],
     },
     env: {
         API_BASE_URL_DEV: '',
