@@ -20,7 +20,8 @@
     "react-slider": "^2.0.6",
     "sharp": "^0.33.2",
     "slick-carousel": "^1.8.1",
-    "slick-slider": "^1.8.2"
+    "slick-slider": "^1.8.2",
+    "swiper": "^11.0.6"
   },
   "devDependencies": {
     "@types/node": "^20",
