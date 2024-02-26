@@ -11,9 +11,9 @@ const Navbar = () => {
     return (
         <header className="bg-gradient-to-r from-indigo-300 to-indigo-50  dark:from-slate-600 dark:to-slate-950 py-1">
         <nav className="flex justify-between items-center px-3  ">
-          <div className="flex items-center lg:ml-[10%] cursor-pointer">
+          <Link href={'/'} className="flex items-center lg:ml-[10%] cursor-pointer">
             <Image src={Logo} alt="Logo" width={65} />
-          </div>
+          </Link>
           <div className="flex flex-wrap text-black dark:text-white items-center justify-end gap-6 max-md:flex mr-4">
               <Link
                 href="#"

@@ -4,6 +4,7 @@ import { city } from '../redux/cities/city'
 import { Typography } from 'antd'
 import { MdArrowForwardIos } from "react-icons/md";
 import Image from 'next/image';
+import Link from 'next/link';
 
 const {Title, Text} = Typography;
 
@@ -22,7 +23,7 @@ const CityCardHorizontal = ({item} : cityCardProps) => {
                     <Title level={4} className='!m-1 font-sans font-semibold rounded-full bg-white text-black p-2'>Avg. <span className='text-blue-600 font-bold'>{item.avgPrice}</span></Title>
                 </div>
                 <div className="flex justify-end items-center w-full">
-                    <button className='text-white p-4 rounded-full bg-opacity-50 bg-slate-950 shadow-xl'><MdArrowForwardIos /></button>
+                    <Link href={`/${item.name}`} className='text-white p-4 rounded-full bg-opacity-50 bg-slate-950 shadow-xl'><MdArrowForwardIos /></Link>
                 </div>
             </div>
         </Card>
