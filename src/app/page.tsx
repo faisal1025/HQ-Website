@@ -33,8 +33,8 @@ export default function Home() {
   return (
     <>
       <section className="flex flex-col justify-center items-center home-container">
-        <h1 className="text-center py-2 text-4xl font-bold font-sans text-black max-sm:text-2xl" >We compare hotel prices from 100s of sites</h1>
-        <h2 className="text-center py-2 text-lg font-semibold font-sans max-sm:text-base" >We’ll do the searching. You do the saving.</h2>
+        <h1 className="text-center p-2 tracking-tight text-4xl font-bold font-sans text-black max-sm:text-2xl" >We compare hotel prices from 100s of sites</h1>
+        <h2 className="text-center p-2 text-lg font-semibold font-sans max-sm:text-base" >We’ll do the searching. You do the saving.</h2>
         <div className="flex flex-wrap max-w-7xl m-3 p-2 bg-white rounded-lg justify-center items-center">
           <div className="search-container flex w-1/4 max-md:w-1/3 max-sm:w-full h-14 justify-between items-center rounded-lg border-r-slate-400">
             <i className="bg-white text-black h-full text-center items-center justify-center flex w-12"><FaSearch size={20} /></i>
@@ -98,7 +98,7 @@ export default function Home() {
             <button className="notify-me-button rounded p-4 active:scale-75 transition hover:opacity-80 text-white bg-gradient-to-r from-red-400 to-red-500">Notify me</button>
           </div>
       </section>
-      <section className="bottom-hero flex justify-evenly min-h-96 flex-wrap gap-4 p-5 m-5 items-center bg-transparent rounded-lg">
+      <section className="bottom-hero flex justify-evenly min-h-96 flex-wrap gap-4 p-5 m-5 items-center rounded-lg">
           <div className="w-2/4 max-sm:w-full">
             <Image src={'/assets/world-tour.png'} alt="world-tour-img" width={0} height={0} className="w-full h-auto object-contain" layout="responsive"/>
           </div>
@@ -110,7 +110,7 @@ export default function Home() {
                 {
                   citiesList.cities && citiesList.cities.map((city, ind) => {
                     return (
-                      <li key={city.id} className="title-text text-blue-500 font-mono font-semibold">
+                      <li key={city.id} className="title-text text-blue-500 font-sans font-semibold">
                         {city.name}
                       </li>
                     )
