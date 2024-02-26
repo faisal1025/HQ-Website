@@ -1,9 +1,10 @@
 import React from 'react'
+import HotelCard from '@/app/components/HotelCard';
 
 const HotelDetails = ({params}: {params: {hotel: string}}) => {
     return (
         <>
-            Hotel slug {params.hotel}
+            <HotelCard/>
         </>
     )
 }
