@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
     return (
-        <header className="bg-gradient-to-r from-indigo-300 to-indigo-50  dark:from-slate-600 dark:to-slate-950 py-1">
+        <header className="bg-gradient-to-r sticky top-0 z-20 from-indigo-300 to-indigo-50  dark:from-slate-600 dark:to-slate-950 py-1">
         <nav className="flex justify-between items-center px-3  ">
           <Link href={'/'} className="flex items-center lg:ml-[10%] cursor-pointer">
             <Image src={Logo} alt="Logo" width={65} />
