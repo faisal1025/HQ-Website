@@ -2,12 +2,16 @@ import { configureStore } from '@reduxjs/toolkit'
 import topRatedHotelsReducer from './hotelLists/topRatedHotelsSlice'
 import citiesListReducer from './cities/citiesListSlice'
 import contactUsReducer from './contact-us/contactUsSlice'
+import hotelsWithCityReducer from './hotelLists/hotelsWithCitySlice'
+import globalStateSlice from './globalStateSlice'
 
 export const store = configureStore({
     reducer: {
         topRatedHotels: topRatedHotelsReducer,
         citiesList: citiesListReducer,
-        contactUs: contactUsReducer
+        contactUs: contactUsReducer,
+        hotelWithCity: hotelsWithCityReducer,
+        globalState: globalStateSlice
     }
 })
 

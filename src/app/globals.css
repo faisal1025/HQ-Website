@@ -67,6 +67,14 @@ body {
 /* slick slider gap end */
 
 /* contact section start*/
+.show-sidebar{
+  display: block;
+  transform: translateX(100%);
+}
+.sidebar::-webkit-scrollbar {
+  visibility: hidden !important;
+  display: none !important;
+}
 @media(max-width: 507px){
   .contact-heading{
     font-size: 16px !important;
@@ -118,4 +126,52 @@ body {
     display: none;
   }
 }
+@media (max-width: 895px) {
+  .action-button {
+    font-size: 14px;
+  }
+}
 /* contact section end*/
+
+/* hotel page archive start */
+@media (max-width: 962px) and (min-width: 768px){
+  .sidebar{
+    width: 45%;
+  }
+  .vertical-hotel-card .hotel-thumbnail{
+    width: 100%;
+  }
+}
+@media (max-width: 707px) {
+  .sidebar{
+    width: 45%;
+  }
+  .vertical-hotel-card{
+    justify-content: center;
+    align-items: start;
+  }
+  .vertical-hotel-card .hotel-thumbnail{
+    width: 80%;
+    
+  }
+  .vertical-hotel-card .hotel-container{
+    width: 100%;
+  }
+}
+@media (max-width: 570px) {
+  .sidebar{
+    width: 45%;
+  }
+  .vertical-hotel-card{
+    justify-content: center;
+    align-items: start;
+  }
+  .vertical-hotel-card .hotel-thumbnail{
+    width: 100%;
+    
+  }
+  .vertical-hotel-card .hotel-container{
+    width: 100%;
+  }
+}
+/* hotel page archive end */
