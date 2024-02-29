@@ -290,7 +290,7 @@ const HotelCard = () => {
                     4 *
                   </div>
                 </div>
-                <div className="review_discrip mt-2 text-sm ml-2">The room was neet and clean,the hotel staff was also very cooperative and helpful.though it's is difficult to locate the hotel.</div>
+                <div className="review_discrip mt-2 text-sm ml-2">The room was neet and clean,the hotel staff was also very cooperative and helpful.though it&apos;s is difficult to locate the hotel.</div>
                 <div className="review_img flex mt-5">
                   <Image src={Image1} alt="fs" width={120} height={150} className="ml-2 rounded"/>
                   <Image src={Image1} alt="fs" width={120} height={150} className="ml-2 rounded"/>
@@ -311,7 +311,7 @@ const HotelCard = () => {
                     4 *
                   </div>
                 </div>
-                <div className="review_discrip mt-2 text-sm ml-2">The room was neet and clean,the hotel staff was also very cooperative and helpful.though it's is difficult to locate the hotel.</div>
+                <div className="review_discrip mt-2 text-sm ml-2">The room was neet and clean,the hotel staff was also very cooperative and helpful.though it&apos;s is difficult to locate the hotel.</div>
                 <div className="review_img flex mt-5">
                   <Image src={Image1} alt="fs" width={120} height={150} className="ml-2 rounded"/>
                   <Image src={Image1} alt="fs" width={120} height={150} className="ml-2 rounded"/>
