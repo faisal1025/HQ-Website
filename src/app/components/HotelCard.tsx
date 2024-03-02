@@ -116,7 +116,7 @@ const HotelCard = () => {
         </Swiper>
       </div>
       <div className="after-slider-main-div flex mt-3 max-lg:flex-col max-md:text-md ">
-        <div className="left-div bg-slate-100 flex flex-col w-[80%] max-lg:w-full">
+        <div className="left-div bg-slate-00 flex flex-col w-[80%] max-lg:w-full">
           <div className="heading-div-including-rating-card flex max-md:text-sm">
             <h1 className="text-[30px] ml-[5rem] mr-6 flex flex-wrap tracking-tight font-extrabold max-md:text-[17px]">
               Super OYO Townhouse 99 Rudra Inn Near Chhatarpur Highway Road
@@ -322,10 +322,23 @@ const HotelCard = () => {
           </div>
         </div>
 
-        <div className="right-div payment-sticky-card  flex flex-col w-[40%] h-[35rem] mr-7 max-lg:w-full ">
+        <div className="right-div payment-sticky-card  flex flex-col w-[40%] h-[35rem] mr-7 max-lg:w-[95%] sticky">
           <PaymentCard />
         </div>
       </div>
+
+        <div className="main_map mt-3 bg-slate flex flex-col ml-[7%]  max-md:ml-[23%] ">
+        <h3 className="text-[30px] mt-8 font-bold max-md:text-[25px] ">Locate Us</h3>
+            <div className="w-[60%] h-[14rem] rounded-md overflow-hidden mt-2 max-md:w-[90%]  ">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d90567.5103257972!2d20.365943012636272!3d44.81678309583739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7163a682044d%3A0x2a07a073e49f36ae!2sStridon%20group!5e0!3m2!1sen!2snl!4v1682522248790!5m2!1sen!2snl"
+              loading="lazy"
+              height="100%"
+              width="100%"
+            ></iframe>
+          </div>
+        </div>
+
 
 
         <div className="footer">
