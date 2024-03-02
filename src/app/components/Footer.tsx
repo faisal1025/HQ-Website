@@ -14,7 +14,7 @@ const Footer = () => {
                 <h4 className='text-[2rem] max-md:text-[1.4rem] font-bold'>Quotient</h4>
             </div>
             <div className="two w-[45%] bg-yellow-10 flex flex-col lg:mt-3">
-                    <h3 className='flex justify-center text-[2rem] mt-3 max-md:text-[1.5rem] font-bold'>Locations</h3>
+                    <h3 className='flex justify-center text-[2rem] mt-3 max-md:text-[1.5rem] font-bold'>HQ Hotels</h3>
 
                     <div className="flex mt-4 text-[1.4rem] justify-evenly max-md:text-[0.85rem] max-md:ml-3 max-md:mt-2">
                     <ul className='cursor-pointer'>

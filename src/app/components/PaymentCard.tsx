@@ -30,7 +30,7 @@ const PaymentCard = () => {
   };
 
   return (
-    <div className="max-md:w-[75%] bg-gray-300 max-md:ml-[22%] max-md:text-sm max-md:mt-4 max-md:w-">
+    <div className="max-md:w-[75%] bg-gray-300 max-md:ml-[22%] max-md:text-sm max-md:mt-4 lg:h-full ">
       <div className="title flex items-center text-white bg-red-600 h-[3rem]  font-bold text-sm max-md:text-[0.6rem] ">
         {/* logo */}
         <Image src={Check} width={20} alt="check" className="ml-6 mt-[0.9px] " />
@@ -115,7 +115,7 @@ const PaymentCard = () => {
                 <h4 className="ml-5">Total price</h4>
                 <h4 className="mr-5">$1423</h4>
             </div>
-            <button className="w-full h-9 rounded bg-green-500 hover:bg-green-600 font-semibold mt-6">Continue to Book</button>
+            <button className="w-full h-9 rounded bg-green-500 hover:bg-green-600 font-semibold mt-6 lg:mt-[11.5rem]">Continue to Book</button>
         </div>
       </div>
     </div>
