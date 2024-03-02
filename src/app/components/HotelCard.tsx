@@ -28,6 +28,7 @@ import Login from "../../../public/assets/Login.png";
 
 import { Divider, Typography } from "antd";
 import PaymentCard from "./PaymentCard";
+import Footer from "./Footer";
 
 const { Title, Paragraph, Text, Link } = Typography;
 
@@ -325,6 +326,13 @@ const HotelCard = () => {
           <PaymentCard />
         </div>
       </div>
+
+
+        <div className="footer">
+          <Footer/>
+        </div>
+
+        
     </div>
   );
 };
