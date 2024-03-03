@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { hotels } from '../redux/hotelLists/hotels'
 import Card from '../custom-template/Card'
 import { MdOutlineStarPurple500 } from "react-icons/md";
@@ -8,8 +8,17 @@ import Image from 'next/image'
 import {getOffPercent, getRatingStatus} from '../utils/hotelDetailUtility';
 import Amenities from '../custom-template/Amenities';
 import Link from 'next/link';
+import Modal from '../modal/modal';
+import PaymentCard from './PaymentCard';
 
 const HotelCardVertical = ({item, city}: {item: hotels, city: string}) => {
+    
+    const [showBookNowModal, setShowBookModal] = useState(false);
+    
+    const openPaymentModal = () => {
+        setShowBookModal(true);
+    }
+
     return (
         <Card>
             <div className='vertical-hotel-card flex flex-wrap justify-between p-2 my-3 gap-1 items-center'>
@@ -35,9 +44,16 @@ const HotelCardVertical = ({item, city}: {item: hotels, city: string}) => {
                             <span className='line-through'>&#8377;{item.originalPrice}</span>
                             <span className='text-green-600'>{getOffPercent(item.originalPrice, item.price)} % off</span>
                         </div>
+                        {
+                            showBookNowModal && (
+                                <Modal setModal={setShowBookModal}>
+                                    <PaymentCard item={item}/>
+                                </Modal>
+                            )
+                        }
                         <div className='flex items-end gap-2'>
                             <Link href={`${city}/${item.slug}`} className='text-sm para-text action-button transition active:scale-75 p-2 px-4 border-2 border-solid border-black rounded-full'>View Details</Link>
-                            <button className='text-sm para-text action-button transition active:scale-75 bg-slate-950 border-2 border-solid border-black text-white p-2 px-4 rounded-full'>Book Now</button>
+                            <Link href={`?modal=true`} className='text-sm para-text action-button transition active:scale-75 bg-slate-950 border-2 border-solid border-black text-white p-2 px-4 rounded-full' onClick={openPaymentModal}>Book Now</Link>
                         </div>
                     </div>
                 </div>

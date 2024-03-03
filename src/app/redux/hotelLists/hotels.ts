@@ -22,7 +22,7 @@ export const hotelsData: hotels[] = [
     {
         id: 1,
         thumbnail: "/assets/hotel_tnagar1.avif",
-        photos: ["/assets/hotel_demo4.avif", "/assets/hotel_demo2.avif", "/assets/hotel_demo3.avif"],
+        photos: ["/assets/hotel_tnagar1.avif", "/assets/hotel_demo4.avif", "/assets/hotel_demo2.avif", "/assets/hotel_demo3.avif"],
         name: "Spot On Jayam Residency",
         address: "near arumbakkam metro station",
         city: 'chennai',

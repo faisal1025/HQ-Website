@@ -1,0 +1,34 @@
+"use client"
+import React from 'react'
+import { FaMinus, FaPlus } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../redux/store'
+import { addRooms, decreaseGuest, increaseGuest } from '../redux/globalStateSlice'
+import { MdAdd } from 'react-icons/md'
+ 
+ const RoomComponent = () => {
+    const {rooms} = useSelector((store: RootState) => store.globalState)
+    const dispatch = useDispatch()
+    return (
+    <>
+        {
+        rooms && 
+            rooms.map((room, ind) => {
+                return(
+                    <div key={ind} className='flex items-center justify-center gap-4'>
+                        <button className='p-2 rounded-md' onClick={() => dispatch(increaseGuest(ind))}><FaPlus /></button>
+                        <h3 className='text-semibold'>{room.guest} Guest</h3>
+                        <button className='p-2 rounded-md' onClick={() => dispatch(decreaseGuest(ind))}><FaMinus /></button>
+                    </div>
+                )
+            })  
+        }
+        <div className='flex justify-end p-2  items-center'>
+            <button onClick={() => dispatch(addRooms())} className='flex text-blue-500 justify-end px-2 items-center gap-2'><MdAdd /> ADD ROOM</button>
+        </div>
+    </>
+    )
+ }
+ 
+ export default RoomComponent
+ 

@@ -175,3 +175,108 @@ body {
   }
 }
 /* hotel page archive end */
+/* modal style start */
+dialog {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  cursor: pointer;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.dialog-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  width: 80%;
+  max-width: 45rem;
+  max-height: 100%;
+  background: white;
+  color: black;
+  gap: 10px;
+  opacity: 1;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.dialog-container::-webkit-scrollbar {
+  display: none !important;
+}
+.dialog-container-final {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  /*height: 70%;
+  width: 58%;*/
+  height: 680px;
+  width: 880px;
+  background: #F4FEFF;
+  color: black;
+  gap: 10px;
+  opacity: 1;
+  
+  scroll-behavior: smooth;
+}
+.dialog-container-final::-webkit-scrollbar {
+  display: none !important;
+}
+@media (max-width: 840px) {
+  .dialog-container-final {
+    height: 80%;
+  width: 58%;
+  overflow-x: hidden;
+  }
+}
+
+@media (max-width: 600px) {
+  .dialog-container {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.close-modal-btn {
+  margin-left: auto;
+  color: white;
+  background: #05494f;
+  font: 900;
+  padding: 8px 13px;
+}
+
+@media (max-width: 600px) {
+  
+  .close-modal-btn {
+      margin: 20px 20px auto auto;
+    }
+}
+.close-modal-btn-final {
+  width: 30px;
+  margin-left: auto;
+  color: black;
+  font: 900;
+  padding: 5;
+}
+@media (max-width: 600px) {
+  
+  .close-modal-btn-final {
+      margin: 20px 20px auto auto;
+    }
+}
+.dialog-content {
+  opacity: 1;
+  height: 100%;
+}
+.fixedPosition {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+/* modal style end */

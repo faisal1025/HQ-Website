@@ -4,6 +4,7 @@ import citiesListReducer from './cities/citiesListSlice'
 import contactUsReducer from './contact-us/contactUsSlice'
 import hotelsWithCityReducer from './hotelLists/hotelsWithCitySlice'
 import globalStateSlice from './globalStateSlice'
+import hotelWithSLugReducer from './hotelLists/hotelWithSLugSlice'
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         citiesList: citiesListReducer,
         contactUs: contactUsReducer,
         hotelWithCity: hotelsWithCityReducer,
+        hotelWithSlug: hotelWithSLugReducer,
         globalState: globalStateSlice
     }
 })
