@@ -26,3 +26,15 @@ export function getOffPercent(original: number | string, price: number | string)
     let discount = ((price / original)*100);
     return Math.round(discount)
 }
+
+export function getSavingAmount(original: number | string, price: number | string) : number{
+    if(typeof original === 'string'){
+        original = Number(original)
+    }
+    if(typeof price === 'string'){
+        price = Number(price)
+    }
+
+    let saving = (original-price);
+    return Math.round(saving)
+}

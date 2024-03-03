@@ -323,7 +323,7 @@ const HotelCard = () => {
         </div>
 
         <div className="right-div payment-sticky-card  flex flex-col w-[40%] h-[35rem] mr-7 max-lg:w-[95%] sticky">
-          <PaymentCard />
+          
         </div>
       </div>
 
