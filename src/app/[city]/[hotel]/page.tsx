@@ -76,7 +76,7 @@ const HotelDetails = ({params}: {params: {hotel: string}}) => {
                 </Slider>
             </section>
             <section  className="rounded-lg p-5 m-5 bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950 shadow-xl after-slider-main-div flex gap-2 mt-3 max-lg:flex-col max-md:text-md ">
-                <div className="left-div flex px-8 max-sm:px-2 items-start flex-col w-[80%] max-lg:w-full text-[30px] max-md:text-2xl">
+                <div className="left-div flex px-8 max-md:px-2 items-start flex-col w-[80%] max-lg:w-full text-[30px] max-md:text-2xl">
                     <div className="heading-div-including-rating-card flex gap-4 py-2 items-center">
                         <h1 className="flex flex-wrap capitalize tracking-tight font-extrabold">
                         {hotel.name}
@@ -120,7 +120,7 @@ const HotelDetails = ({params}: {params: {hotel: string}}) => {
                                 Ratings and reviews{" "}
                             </h3>
                             <div className=" MAIN_DIV rate flex gap-2 p-2 max-md:justify-center justify-between items-stretch max-md:flex-wrap py-2 rounded max-md:text-sm shadow-2xl">
-                                <div className="LEFT_PORTION flex justify-center items-center min-w-44 max-md:min-h-52 max-md:min-w-48 bg-slate-200 flex-col rounded max-md:text-sm border-solid border-[1px] border-slate-300">         
+                                <div className="LEFT_PORTION flex justify-center items-center min-w-44 max-md:min-h-52 max-md:min-w-48 bg-slate-200 dark:bg-slate-500 flex-col rounded max-md:text-sm border-solid border-[1px] border-slate-300 dark:border-slate-600">         
                                         <div className="logo text-white p-2 bg-green-700 flex items-center justify-center rounded-sm font-bold text-lg max-md:text-[12px]">
                                             {hotel.rating} <i><MdOutlineStar /></i>
                                         </div>
