@@ -8,17 +8,17 @@ type initialState = {
 const initialState: initialState = {
     hotel: {
         id: 1,
-        thumbnail: "/assets/hotel_tnagar1.avif",
-        photos: ["/assets/hotel_demo4.avif", "/assets/hotel_demo2.avif", "/assets/hotel_demo3.avif"],
-        name: "Spot On Jayam Residency",
+        thumbnail: "/assets/antriksh-hotel-thumbnail.png",
+        photos: ["/assets/antariksh-hotel-room-1.png", "/assets/antariksh-hotel-room-2.png", "/assets/antriksh-hotel-room-3.png", "/assets/antriksh-hotel-exterior-5.png"],
+        name: "Antariksh Hotel at Neem Ka Thana",
         address: "near arumbakkam metro station",
-        city: 'chennai',
-        state: "tamil nadu",
+        city: 'Neem Ka Thana',
+        state: "rajasthan",
         price: 1700,
         originalPrice: 3000,
         rating: 4.9,
-        slug: "spot-on-jayam-residency",
-    }
+        slug: "antariksh-hotel",
+    },
 }
 
 const hotelWithSlug = createSlice({
