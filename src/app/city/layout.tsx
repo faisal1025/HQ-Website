@@ -9,7 +9,7 @@ const CityLayout = ({children}: {children: React.ReactNode}) => {
 
     return ( 
         <div className='flex relative'>
-            <div className={`sidebar min-w-max overflow-y-scroll transition-all z-10 overflow-x-hidden max-md:w-full max-md:absolute top-0 ${(enableMobileFilter) ? `max-md:-translate-x-full` : `max-md:translate-x-0`}`}>
+            <div className={`sidebar min-w-max transition-all z-10 overflow-x-hidden max-md:w-full max-md:absolute top-0 ${(enableMobileFilter) ? `max-md:-translate-x-full` : `max-md:translate-x-0`}`}>
                 <Sidebar />
             </div>
             <div className='hotel-archive w-full'>

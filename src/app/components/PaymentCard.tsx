@@ -31,16 +31,20 @@ const PaymentCard = ({item}: {item: hotels}) => {
   };
 
   return (
-    <section className="p-4 max-md:text-sm">
-      <div className="title flex items-center text-white bg-red-600 h-[3rem]  font-bold text-sm max-md:text-[0.6rem] ">
-        {/* logo */}
-        <Image src={Check} width={20} alt="check" className="ml-6 mt-[0.9px] " />
-        {/* title */}
-        <h3 className="ml-[0.5rem]">LOGIN NOW TO GET LOWER PRICES</h3>
-        {/* login btn */}
-        <button className="w-[15%] h-[2rem] bg-red-500 ml-[11%] rounded max-md:w-[13%]">
-          LOGIN
-        </button>
+    <section className="p-2 max-md:text-sm">
+      <div className="title flex justify-around items-center text-white bg-red-600 h-[3rem] gap-2 font-bold text-sm max-md:text-[0.6rem] ">
+        <div className="flex gap-4 items-center justify-start">
+          {/* logo */}
+          <Image src={Check} width={20} alt="check" />
+          {/* title */}
+          <h3>LOGIN NOW TO GET LOWER PRICES</h3>
+        </div>
+        <div className="flex w-auto items-center justify-center">
+          {/* login btn */}
+          <button className="p-2 h-[2rem] bg-red-500">
+            LOGIN
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-col gap-2 mt-2 font-sans text-sm">
@@ -53,9 +57,9 @@ const PaymentCard = ({item}: {item: hotels}) => {
           <h5>+taxes and fee $191</h5>
         </div>
 
-        <div className="flex gap-2 flex-wrap max-w-full m-3 p-2 bg-white rounded-lg justify-center items-center">
-          <DateRangePicker onOk={onOk} />
-          <GuestSelector />
+        <div className="flex-1 gap-2 max-md:flex-wrap max-w-full m-3 p-2 bg-white rounded-lg justify-center items-center">
+          <DateRangePicker className="w-fit" onOk={onOk} />
+          <GuestSelector className="w-fit" />
         </div>
 
         <div className="my-2">

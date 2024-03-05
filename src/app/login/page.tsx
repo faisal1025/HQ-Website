@@ -5,10 +5,10 @@ import Link from 'next/link'
 
 const Login = () => {
     return (
-        <div className='flex items-center justify-center font-sans font-semibold h-screen'>
+        <div className='flex items-center justify-center font-sans font-semibold h-[70vh]'>
             <Card>
                 <div className='card-header p-4 text-[30px] max-md:text-xl'>
-                    <h1>Happy Quotient Login</h1>
+                    <h1>Login/Signup</h1>
                 </div>
                 <div className='card-content p-4 text-lg'>
                     <input className='mb-1 text-base w-full p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1' type="email" placeholder='Email' />

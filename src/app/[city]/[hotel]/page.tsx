@@ -31,8 +31,25 @@ const HotelDetails = ({params}: {params: {hotel: string}}) => {
         infinite: false,
         speed: 300,
         slidesToShow: 3,
-        slidesToScroll: 1,
+        slidesToScroll: 3,
         mobileFirst: true,
+        responsive: [
+            {
+                breakpoint: 1150,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    
+                }
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     };
 
     return (
@@ -59,7 +76,7 @@ const HotelDetails = ({params}: {params: {hotel: string}}) => {
                 </Slider>
             </section>
             <section  className="rounded-lg p-5 m-5 bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950 shadow-xl after-slider-main-div flex gap-2 mt-3 max-lg:flex-col max-md:text-md ">
-                <div className="left-div flex px-8 items-start flex-col w-[80%] max-lg:w-full text-[30px] max-md:text-2xl">
+                <div className="left-div flex px-8 max-sm:px-2 items-start flex-col w-[80%] max-lg:w-full text-[30px] max-md:text-2xl">
                     <div className="heading-div-including-rating-card flex gap-4 py-2 items-center">
                         <h1 className="flex flex-wrap capitalize tracking-tight font-extrabold">
                         {hotel.name}
@@ -76,16 +93,15 @@ const HotelDetails = ({params}: {params: {hotel: string}}) => {
                     </h5>
                     <div className="ammeneties mt-2 tracking-tight">
                         <h3 className="font-bold">Amenities</h3>
-
-                        <div className="ammenity-1 flex justify-between py-2 max-md:lg max-md:items-center ">
+                        <div className="ammenity-1 flex gap-4 flex-wrap justify-between py-2 max-md:lg max-md:items-center ">
                             <Amenities icon="MdOutlineWifi" text="Free Wifi" />
                             <Amenities icon='MdBathtub' text='Geyser'/>
                             <Amenities icon='MdCelebration' text='Reception' />
                             <Amenities icon='MdAddCard' text='Card' />
                         </div>
-
-                        <div className="flex flex-col py-2">
-                        <h3 className="font-bold">About this </h3>
+                    </div>
+                    <div className="flex flex-col py-2">
+                        <h3 className="font-bold">About this</h3>
                         <p className="text-base max-md:text-sm py-2 flex flex-wrap text-justify">
                             Hotel SPOT ON 61091 Hotel Silver Palace Dx located in Delhi is
                             an affordable option for travelers who are looking for comfort
@@ -98,137 +114,119 @@ const HotelDetails = ({params}: {params: {hotel: string}}) => {
                             can visit Jama Masjid, Agrasen ki baoli and Lodhi Garden which
                             are about 3 km, 3 km and 7 km away from the property.
                         </p>
-                        </div>
-
-                        <div className="testimonials OR Review">
+                    </div>
+                    <div className="py-2 testimonials OR Review">
                             <h3 className="font-bold">
                                 Ratings and reviews{" "}
                             </h3>
-                            <div className=" MAIN_DIV rate w-[90%] flex    mt-5 rounded max-md:text-sm border-solid border-[1px] border-slate-300">
-                                <div className="LEFT_PORTION w-[30%] bg-slate-200 flex-col max-md:text-sm max-md:w-[40%] border-solid border-[1px] border-slate-300">
-                                <div className="logo w-[45%] h-[3rem] text-white bg-green-700 ml-[27%] mt-16 flex items-center justify-center rounded-sm font-bold text-lg max-md:text-[12px] max-md:w-">
-                                    {hotel.rating} <i><MdOutlineStar /></i>
+                            <div className=" MAIN_DIV rate flex gap-2 p-2 max-md:justify-center justify-between items-stretch max-md:flex-wrap py-2 rounded max-md:text-sm shadow-2xl">
+                                <div className="LEFT_PORTION flex justify-center items-center min-w-44 max-md:min-h-52 max-md:min-w-48 bg-slate-200 flex-col rounded max-md:text-sm border-solid border-[1px] border-slate-300">         
+                                        <div className="logo text-white p-2 bg-green-700 flex items-center justify-center rounded-sm font-bold text-lg max-md:text-[12px]">
+                                            {hotel.rating} <i><MdOutlineStar /></i>
+                                        </div>
+                                        <h3 className="text-sm font-bold capitalize mt-1 max-md:text-[10px]">
+                                            {getRatingStatus(hotel.rating)}
+                                        </h3>
+                                        <h4 className="text-[12px] max-md:text-[9px]">
+                                            1435 ratings
+                                        </h4>
                                 </div>
-                                <h3 className="ml-[27%] text-sm font-bold mt-1 max-md:text-[10px]">
-                                    EXCELLENT
-                                </h3>
-                                <h4 className="ml-[27%] text-[12px] max-md:text-[9px]">
-                                    1435 ratings
-                                </h4>
-                                </div>
+                                <div className="RIGHT_PORTION px-3 flex flex-col w-3/4 max-md:w-full ">
 
-                                <div className=" RIGHT_PORTION flex flex-col ml-2 w-[70%] ">
-                                <div className="flex mt-1 ">
-                                    <div className="mb-1 text-base flex  dark:text-white ml-4 text-[13px] max-md:">
-                                    5
+                                    <div className="w-full py-2">
+                                        <div className="flex justify-between mt-1 ">
+                                            <div className="mb-1 text-base flex items-center gap-1 dark:text-white ml-4 text-[13px] max-md:">
+                                                {hotel.rating} <i><MdOutlineStar /></i>
+                                            </div>
+                                            <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
+                                                90%
+                                            </h4>
+                                        </div>
+                                        <div className="w-full max-md:w-full my-1 bg-gray-200 rounded-full h-1 dark:bg-gray-900">
+                                            <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[90%]"></div>
+                                        </div>
                                     </div>
-                                    <h4 className="text-xl ml-2">*</h4>
-                                    <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
-                                    90%
-                                    </h4>
-                                </div>
-                                <div className="w-[24rem] max-md:w-full bg-gray-200 rounded-full h-1 mb-4 dark:bg-gray-900 ml-4">
-                                    <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[90%]"></div>
-                                </div>
 
-                                <div className="flex ">
-                                    <div className="mb-1 text-base  dark:text-white ml-4 text-[13px]">
-                                    4
+                                    <div className="w-full py-2">
+                                        <div className="flex justify-between mt-1 ">
+                                            <div className="mb-1 text-base flex items-center gap-1 dark:text-white ml-4 text-[13px] max-md:">
+                                                {hotel.rating} <i><MdOutlineStar /></i>
+                                            </div>
+                                            <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
+                                                90%
+                                            </h4>
+                                        </div>
+                                        <div className="w-full max-md:w-full my-1 bg-gray-200 rounded-full h-1 dark:bg-gray-900">
+                                            <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[90%]"></div>
+                                        </div>
                                     </div>
-                                    <h4 className="text-xl ml-2">*</h4>
-                                    <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
-                                    90%
-                                    </h4>
-                                </div>
-                                <div className="w-[24rem] max-md:w-full bg-gray-200 rounded-full h-1 mb-4 dark:bg-gray-900 ml-4">
-                                    <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[90%]"></div>
-                                </div>
 
-                                <div className="flex ">
-                                    <div className="mb-1 text-base  dark:text-white ml-4 text-[13px]">
-                                    3
+                                    <div className="w-full py-2">
+                                        <div className="flex justify-between mt-1 ">
+                                            <div className="mb-1 text-base flex items-center gap-1 dark:text-white ml-4 text-[13px] max-md:">
+                                                {hotel.rating} <i><MdOutlineStar /></i>
+                                            </div>
+                                            <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
+                                                90%
+                                            </h4>
+                                        </div>
+                                        <div className="w-full max-md:w-full my-1 bg-gray-200 rounded-full h-1 dark:bg-gray-900">
+                                            <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[90%]"></div>
+                                        </div>
                                     </div>
-                                    <h4 className="text-xl ml-2">*</h4>
-                                    <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
-                                    90%
-                                    </h4>
-                                </div>
-                                <div className="w-[24rem] max-md:w-full bg-gray-200 rounded-full h-1 mb-4 dark:bg-gray-900 ml-4">
-                                    <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[90%]"></div>
-                                </div>
 
-                                <div className="flex ">
-                                    <div className="mb-1 text-base  dark:text-white ml-4 text-[13px]">
-                                    2
+                                    <div className="w-full py-2">
+                                        <div className="flex justify-between mt-1 ">
+                                            <div className="mb-1 text-base flex items-center gap-1 dark:text-white ml-4 text-[13px] max-md:">
+                                                {hotel.rating} <i><MdOutlineStar /></i>
+                                            </div>
+                                            <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
+                                                80%
+                                            </h4>
+                                        </div>
+                                        <div className="w-full max-md:w-full my-1 bg-gray-200 rounded-full h-1 dark:bg-gray-900">
+                                            <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[80%]"></div>
+                                        </div>
                                     </div>
-                                    <h4 className="text-xl ml-2">*</h4>
-                                    <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
-                                    90%
-                                    </h4>
-                                </div>
-                                <div className="w-[24rem] max-md:w-full bg-gray-200 rounded-full h-1 mb-4 dark:bg-gray-900 ml-4">
-                                    <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[90%]"></div>
-                                </div>
 
-                                <div className="flex ">
-                                    <div className="mb-1 text-base  dark:text-white ml-4 text-[13px]">
-                                    1
+                                    <div className="w-full py-2">
+                                        <div className="flex justify-between mt-1 ">
+                                            <div className="mb-1 text-base flex items-center gap-1 dark:text-white ml-4 text-[13px] max-md:">
+                                                {hotel.rating} <i><MdOutlineStar /></i>
+                                            </div>
+                                            <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
+                                                70%
+                                            </h4>
+                                        </div>
+                                        <div className="w-full max-md:w-full my-1 bg-gray-200 rounded-full h-1 dark:bg-gray-900">
+                                            <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[70%]"></div>
+                                        </div>
                                     </div>
-                                    <h4 className="text-xl ml-2">*</h4>
-                                    <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
-                                    90%
-                                    </h4>
-                                </div>
-                                <div className="w-[24rem] max-md:w-full bg-gray-200 rounded-full h-1 mb-4 dark:bg-gray-900 ml-4">
-                                    <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[90%]"></div>
-                                </div>
                                 </div>
                             </div>
 
                             <div className="CUS_REVIEW_MAIN_1 mt-9 bg-slate-00">
-                                <div className="cus_review flex justify-between ">
-                                <div className="flex mt-2 text-lg justify-center items-center contents-center">
-                                    {/* <Image src={Login} width={20}  alt="check" className=" ml-2 h-5" /> */}
-                                    <h4 className="ml-2">Modassir azam</h4>
-                                    <h6 className="ml-2 font-bold">.</h6>
-                                    <h4 className="ml-2">12-02-2024</h4>
+                                <div className="cus_review flex gap-4 items-center justify-between ">
+                                    <div className="flex max-sm:flex-wrap gap-1 mt-2 text-lg justify-start items-center">
+                                        {/* <Image src={Login} width={20}  alt="check" className=" ml-2 h-5" /> */}
+                                        <h4>Modassir azam</h4>
+                                        <h6 className="max-sm:hidden font-bold">.</h6>
+                                        <h4 className="text-sm">12-02-2024</h4>
+                                    </div>
+                                    <div className="logo h-6 px-1 text-white bg-green-700 flex items-center justify-center rounded-sm font-bold text-sm max-md:text-[12px]">
+                                        {hotel.rating} <i><MdOutlineStar /></i>
+                                    </div>
                                 </div>
-                                <div className="logo h-6 px-1 text-white bg-green-700 flex items-center justify-center rounded-sm font-bold text-sm max-md:text-[12px] max-md:w-">
-                                    {hotel.rating} <i><MdOutlineStar /></i>
-                                </div>
-                                </div>
-                                <div className="review_discrip mt-2 text-sm ml-2">The room was neet and clean,the hotel staff was also very cooperative and helpful.though it&apos;s is difficult to locate the hotel.</div>
-                                <div className="review_img flex mt-5">
-                                <Image src={Image1} alt="fs" width={120} height={150} className="ml-2 rounded"/>
-                                <Image src={Image1} alt="fs" width={120} height={150} className="ml-2 rounded"/>
-                                </div>
-                            </div>
-
-                            <hr className="w-full  mt-9"/>
-
-                            <div className="CUS_REVIEW_MAIN_2 mt-2 ">
-                                <div className="cus_review flex items-center justify-between ">
-                                <div className="flex mt-2 text-lg justify-center contents-center">
-                                    {/* <Image src={Login} width={20}  alt="check" className=" ml-2 h-5" /> */}
-                                    <h4 className="ml-2">Modassir azam</h4>
-                                    <h6 className="ml-2 font-bold">.</h6>
-                                    <h4 className="ml-2">12-02-2024</h4>
-                                </div>
-                                <div className="logo h-6 px-1 text-white bg-green-700 flex items-center justify-center rounded-sm font-bold text-sm max-md:text-[12px] max-md:w-">
-                                    {hotel.rating} <i><MdOutlineStar /></i>
-                                </div>
-                                </div>
-                                <div className="review_discrip mt-2 text-sm ml-2">The room was neet and clean,the hotel staff was also very cooperative and helpful.though it&apos;s is difficult to locate the hotel.</div>
-                                <div className="review_img flex mt-5">
-                                <Image src={Image1} alt="fs" width={120} height={150} className="ml-2 rounded"/>
-                                <Image src={Image1} alt="fs" width={120} height={150} className="ml-2 rounded"/>
+                                <div className="review_discrip mt-2 text-sm">The room was neet and clean,the hotel staff was also very cooperative and helpful.though it&apos;s is difficult to locate the hotel.</div>
+                                <div className="review_img flex gap-1 items-center mt-5">
+                                    <Image src={Image1} alt="fs" width={120} height={150} className="rounded"/>
+                                    <Image src={Image1} alt="fs" width={120} height={150} className="rounded"/>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
 
-                <div className="rounded-lg p-2 border-2 border-solid right-div payment-sticky-card flex flex-col w-[40%] h-[35rem] max-lg:w-full ">
+                <div className="rounded-lg border-[0.5px] border-solid border-black dark:border-white right-div payment-sticky-card flex flex-col w-[40%] h-fit max-lg:w-full ">
                     <PaymentCard item={hotel}/>
                 </div>
             </section>
