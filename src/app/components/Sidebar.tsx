@@ -19,7 +19,6 @@ const Sidebar = () => {
                 !enableMobileFilter && (
                     <div className='flex justify-end items-center'>
                         <IoMdClose size={25} onClick={() => {
-                            console.log("aaya cross");
                             document.body.style.overflowY = enableMobileFilter ? "hidden" : "scroll";
                             dispatch(toggleMobileFilter(!enableMobileFilter))
                         }} />
@@ -65,7 +64,7 @@ const Sidebar = () => {
                 <h2 className='text-3xl font-sans font-semibold'>Sort by</h2>
             </div>
             <div className='py-2 w-full'>
-                <select className='p-3 font-sans w-auto' value={sortby} onChange={(e)=>setsortby(e.target.value)}>
+                <select className='p-3 font-sans w-auto dark:bg-slate-600' value={sortby} onChange={(e)=>setsortby(e.target.value)}>
                     <option value="guest_rating">Guest Rating</option>
                     <option value="price_low_to_high">Price Low to High</option>
                     <option value="price_high_to_low">Price High to Low</option>
