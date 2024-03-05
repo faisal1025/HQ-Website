@@ -20,7 +20,7 @@ const HotelCardHorizontal = ({item}: {item: hotels}) => {
                     <Title level={4} className='title-text dark:!text-white '>{item.name}</Title>
                     <div className='flex items-center gap-4 detail-block'>
                         <Text className='dark:!text-white para-text'>{item.rating}-Excellent <span className='set-rating'>(568 ratings)</span></Text>
-                        <Amenities icon='MdLocationPin' text='Banglore'/>
+                        <Amenities icon='MdLocationPin' text={item.state}/>
                     </div>
                     <div className='flex items-center gap-4 detail-block'>
                         <Amenities icon='MdOutlineWifi' text='Free Wifi'/>
