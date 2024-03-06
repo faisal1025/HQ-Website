@@ -14,7 +14,7 @@ const Sidebar = () => {
     const dispatch = useDispatch();
     
     return (
-        <div className='p-4 bg-gradient-to-b from-indigo-300 to-indigo-50 dark:from-slate-600 dark:to-slate-950'>
+        <div className='min-h-screen p-4 bg-gradient-to-b from-indigo-300 to-indigo-50 dark:from-slate-600 dark:to-slate-950'>
             {
                 !enableMobileFilter && (
                     <div className='flex justify-end items-center'>
