@@ -45,7 +45,7 @@ const Footer = () => {
             <div className='flex gap-2 max-sm:w-2/5 max-md:w-1/3 w-1/5'>
               <div className='flex w-full flex-col justify-center  items-center'>
                   <Image src={Logo} alt='logo' width={100} height={100} className='max-md:w-16 '/>
-                  <h4 className='font-medium text-lg max-sm:text-base text-center'>Where comfort meets convenience, book with ease.</h4>
+                  <h4 className='text-slate-600 font-protest text-lg max-sm:text-base text-center'>Where comfort meets convenience, book with ease.</h4>
               </div>
             </div>
         </div>

@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "ProtestRiot";
+  src: url('../../public//fonts/ProtestRiot-Regular.ttf');
+}
+
+@font-face {
+  font-family: "PoppinsBlackItalic";
+  src: url('../../public//fonts/Poppins-BlackItalic.ttf');
+}
+
+
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
