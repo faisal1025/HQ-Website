@@ -22,7 +22,7 @@ const Footer = () => {
                             <li  className='hover:underline'>Hotel in Delhi</li>
                             <li  className='hover:underline'>Hotel in Jaipur</li>
                         </ul>
-                        <ul className='flex flex-col max-w-fit gap-4 cursor-pointer'>
+                        <ul className='second-hotel-footer-col flex flex-col max-w-fit gap-4 cursor-pointer'>
                             <li className='hover:underline'>Hotel in Delhi</li>
                             <li  className='hover:underline'>Hotel in Jaipur</li>
                             <li  className='hover:underline'>Hotel in Delhi</li>
@@ -45,7 +45,7 @@ const Footer = () => {
             <div className='flex gap-2 max-sm:w-2/5 max-md:w-1/3 w-1/5'>
               <div className='flex w-full flex-col justify-center  items-center'>
                   <Image src={Logo} alt='logo' width={100} height={100} className='max-md:w-16 '/>
-                  <h4 className='text-slate-600 font-protest text-lg max-sm:text-base text-center'>Where comfort meets convenience, book with ease.</h4>
+                  <h4 className='text-slate-500 dark:text-slate-400 font-protest text-lg max-sm:text-base text-center'>Where comfort meets convenience, book with ease.</h4>
               </div>
             </div>
         </div>

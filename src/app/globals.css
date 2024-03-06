@@ -291,3 +291,10 @@ dialog {
   overflow: hidden;
 }
 /* modal style end */
+/* footer style start */
+@media(max-width: 325px){
+  .second-hotel-footer-col{
+    display: none;
+  }
+}
+/* footer style end */
