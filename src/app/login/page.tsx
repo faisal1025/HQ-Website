@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const Login = () => {
     return (
-        <div className='flex items-center justify-center font-sans font-semibold h-[80vh]'>
+        <div className='flex items-center m-4 justify-center font-sans font-semibold h-[80vh]'>
             <Card>
                 <div className='card-header p-4 text-[30px] max-md:text-xl'>
                     <h1>Login/Signup</h1>
