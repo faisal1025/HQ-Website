@@ -1,3 +1,4 @@
+"use client"
 import React, { Dispatch } from 'react'
 import { FaSearch } from 'react-icons/fa'
 

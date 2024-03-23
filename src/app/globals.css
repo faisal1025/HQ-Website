@@ -298,3 +298,38 @@ dialog {
   }
 }
 /* footer style end */
+
+/* pagination style start */
+.control-box {
+  border: 0.5px solid #ffffff;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-number {
+  background: linear-gradient(0deg, #fff2de, #fff2de),
+    linear-gradient(0deg, #ffffff, #ffffff);
+}
+
+.control-first-last {
+  background: #ffb039;
+}
+
+.control-next-pre {
+  background: #ffcc81;
+}
+
+.action-container {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+}
+
+.active{
+  color: dodgerblue;
+}
+/* pagination style end */
