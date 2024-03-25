@@ -147,7 +147,7 @@ body {
 /* hotel page archive start */
 @media (max-width: 962px) and (min-width: 768px){
   .sidebar{
-    width: 45%;
+    width: 100%;
   }
   .vertical-hotel-card .hotel-thumbnail{
     width: 100%;
@@ -155,7 +155,7 @@ body {
 }
 @media (max-width: 707px) {
   .sidebar{
-    width: 45%;
+    width: 100%;
   }
   .vertical-hotel-card{
     justify-content: center;
@@ -171,7 +171,7 @@ body {
 }
 @media (max-width: 570px) {
   .sidebar{
-    width: 45%;
+    width: 100%;
   }
   .vertical-hotel-card{
     justify-content: center;

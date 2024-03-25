@@ -2,8 +2,10 @@ import axios from "axios";
 import { errorToJSON } from "next/dist/server/render";
 import { amenities, city, hotels } from "../Schema";
 
+export const baseUrl = process.env.NODE_ENV === 'production' ? process.env.API_BASE_URL_PROD : process.env.API_BASE_URL_DEV
+
 export const getAllStates = async () => {
-    const url = `${process.env.API_BASE_URL_DEV}/states?populate=*`
+    const url = `${baseUrl}/states?populate=*`
     const response = (await axios.get(url)).data;
     const cities:city[] = response.data.map((city:any) => {
         return {...city.attributes, id: city.id, thumbnail: city.attributes.thumbnail.data.attributes.url}
@@ -17,7 +19,7 @@ export const getAllStates = async () => {
 }
 
 export const getStateById = async (slug: string, page: number) => {
-    const url = `${process.env.API_BASE_URL_DEV}/states/${slug}?page=${page}`
+    const url = `${baseUrl}/states/${slug}?page=${page}`
     const response = await (await fetch(url, {cache: 'no-cache'})).json()
 
     const city: city = { ...response.data.attributes,

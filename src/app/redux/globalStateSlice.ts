@@ -1,16 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RangePickerProps } from "antd/es/date-picker";
+import { stat } from "fs";
 
 interface rooms {
     guest: number
 }
 
 type initialState = {
-    enableMobileFilter: boolean;
+    searchText: string,
+    enableMobileFilter: boolean,
+    dateVal: RangePickerProps['value'],
     rooms: rooms[],
     totalGuest: number
 } 
 
 const initialState: initialState = {
+    searchText: "",
+    dateVal: null,
     enableMobileFilter: true,
     rooms: [
         {
@@ -46,7 +52,13 @@ const globalSateSlice = createSlice({
         addRooms: (state) => {
             state.rooms = [...state.rooms, {guest: 1}]
             state.totalGuest += 1;
-        }
+        },
+        setSearchText: (state, action) => {
+            state.searchText = action.payload
+        },
+        setDateVal: (state, action) => {
+            state.dateVal = action.payload
+        },
     },
     extraReducers: (builder) => {
 
@@ -54,4 +66,4 @@ const globalSateSlice = createSlice({
 })
 
 export default globalSateSlice.reducer;
-export const {toggleMobileFilter, increaseGuest, decreaseGuest, addRooms} = globalSateSlice.actions;
+export const {toggleMobileFilter, increaseGuest, decreaseGuest, addRooms, setDateVal, setSearchText} = globalSateSlice.actions;

@@ -1,8 +1,9 @@
 import axios from "axios"
-import { amenities, hotels } from "../Schema";
+import { amenities, hotels, pagination } from "../Schema";
+import { baseUrl } from "./cityApi";
 
 export const getAllHotels = async () => {
-    const url = `${process.env.API_BASE_URL_DEV}/hotels?populate=*`
+    const url = `${baseUrl}/hotels?populate=*`
     const response = (await axios.get(url)).data;
     const hotels: hotels[] = response.data.map((hotel: any) => {
         return {...hotel.attributes, id: hotel.id, 
@@ -26,8 +27,8 @@ export const getAllHotels = async () => {
 } 
 
 export const getHotelById = async (slug: string) => {
-    const url = `${process.env.API_BASE_URL_DEV}/hotels/${slug}`;
-
+    const url = `${baseUrl}/hotels/${slug}`;
+  
     const response = await (await fetch(url, {cache: 'default'})).json();
     
     const hotel: hotels = {
@@ -50,6 +51,31 @@ export const getHotelById = async (slug: string) => {
     return {
         props: {
             hotel
+        }
+    }
+}
+
+export const getSearchHotels = async (params: string) => {
+    
+    const url = `${baseUrl}/search?${params}`;
+    const response = await (await fetch(url, {cache: "no-cache"})).json();
+
+    const hotels: hotels[] = response.data.attributes.results.map((hotel: any): hotels => {
+        return {
+            ...hotel,
+            thumbnail: hotel.thumbnail.url,
+        }
+    })
+    // try {
+        
+    // } catch (error) {
+        
+    // }
+
+    return {
+        props: {
+            hotels: hotels,
+            pagination: response.data.attributes.pagination
         }
     }
 }

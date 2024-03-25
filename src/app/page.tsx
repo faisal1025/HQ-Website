@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react"
+import React, { Suspense } from "react"
 import { FaArrowRight } from "react-icons/fa";
 import HotelList from "./components/HotelList";
 import Link from "next/link";
@@ -20,7 +20,9 @@ export default async function Home() {
       <section className="flex flex-col justify-center items-center home-container">
         <h1 className="text-center p-2 tracking-tight text-4xl font-bold font-sans text-black max-sm:text-2xl" >We compare hotel prices from 100s of sites</h1>
         <h2 className="text-center p-2 text-lg font-semibold font-sans max-sm:text-base" >We’ll do the searching. You do the saving.</h2>
-        <SearchComponent />
+        <Suspense>
+          <SearchComponent />
+        </Suspense>
       </section>
 
       <section className="rounded-lg p-5 m-5 bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950 shadow-xl">
