@@ -6,10 +6,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NextButton from './NextButton';
 import PrevButton from './PrevButton';
-import { city } from '../redux/cities/city';
 import CityCardHorizontal from './CityCardHorizontal';
+import { city } from '../Schema';
 
 const CitiesList = ({list}:{list: city[]}) => {
+    const length = list.length;
+
     const settings = {
         arrows: false,
         dots: false,

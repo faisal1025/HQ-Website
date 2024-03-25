@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState } from 'react'
-import { hotels } from '../redux/hotelLists/hotels'
 import Card from '../custom-template/Card'
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import Image from 'next/image'
@@ -10,6 +9,7 @@ import Amenities from '../custom-template/Amenities';
 import Link from 'next/link';
 import Modal from '../modal/modal';
 import PaymentCard from './PaymentCard';
+import { amenities, hotels } from '../Schema';
 
 const HotelCardVertical = ({item, city}: {item: hotels, city: string}) => {
     
@@ -33,10 +33,18 @@ const HotelCardVertical = ({item, city}: {item: hotels, city: string}) => {
                         <div>( {item.reviews?.length} Ratings ) . {getRatingStatus(item.rating)}</div>
                     </div>
                     <div className='flex items-center gap-2 text-xs font-sans capitalize font-semibold'>
-                        <Amenities icon='MdCelebration' text='Reception' />
-                        <Amenities icon='MdOutlineWifi' text='Free Wifi'/>
-                        <Amenities icon='MdBathtub' text='Geyser'/>
-                        <Amenities icon='MdAdd' text='More'/>
+                        {
+                            item.amenities && 
+                                (
+                                    item.amenities.slice(0, 3).map((amenity: amenities) => {
+                                        return <Amenities key={amenity.id} icon={amenity.icon} text={amenity.text}/>
+                                    })
+                                )
+                        }
+                        {
+                            item.amenities &&
+                                item?.amenities?.length > 3 && <Amenities icon='MdAdd' text='More'/>
+                        }
                     </div>
                     <div className='flex flex-wrap justify-between items-end gap-2 text-xs py-4 font-sans capitalize font-semibold'>
                         <div className='flex gap-2 items-end'>

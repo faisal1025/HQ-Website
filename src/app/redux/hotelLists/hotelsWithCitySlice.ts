@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialState, hotelsData } from "./hotels";
+import { initialState } from "./hotels";
 
 const initialState: initialState = {
-    hotels: hotelsData,
-    totalNoHotels: hotelsData.length
+    hotels: [],
+    totalNoHotels: 0
 }
 
 const hotelWithCitySlice = createSlice({

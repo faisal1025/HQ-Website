@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { AiOutlineRight } from "react-icons/ai";
 

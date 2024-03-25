@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit/react";
-import { hotels, initialState, hotelsData } from "./hotels";
+import { initialState } from "./hotels";
 
 const initialState: initialState = {
-    hotels: hotelsData,
-    totalNoHotels: hotelsData.length
+    hotels: [],
+    totalNoHotels: 0
 }
 
 

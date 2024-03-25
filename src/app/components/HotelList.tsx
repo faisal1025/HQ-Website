@@ -1,13 +1,13 @@
 "use client"
 
 import React from 'react'
-import { hotels } from '../redux/hotelLists/hotels'
 import HotelCardHorizontal from './HotelCardHorizontal'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NextButton from './NextButton';
 import PrevButton from './PrevButton';
+import { hotels } from '../Schema';
 
 const HotelList = ({list}:{list: hotels[]}) => {
     const settings = {

@@ -1,3 +1,5 @@
+'use client'
+
 import { Typography } from 'antd'
 import React from 'react'
 import * as ReactIcons from 'react-icons/md'

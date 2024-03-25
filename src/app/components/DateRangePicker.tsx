@@ -1,3 +1,5 @@
+"use client"
+
 import { DatePicker } from 'antd';
 import { RangePickerProps } from 'antd/es/date-picker';
 import React from 'react'
