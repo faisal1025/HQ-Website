@@ -147,7 +147,7 @@ body {
 /* hotel page archive start */
 @media (max-width: 962px) and (min-width: 768px){
   .sidebar{
-    width: 45%;
+    width: 100%;
   }
   .vertical-hotel-card .hotel-thumbnail{
     width: 100%;
@@ -155,7 +155,7 @@ body {
 }
 @media (max-width: 707px) {
   .sidebar{
-    width: 45%;
+    width: 100%;
   }
   .vertical-hotel-card{
     justify-content: center;
@@ -171,7 +171,7 @@ body {
 }
 @media (max-width: 570px) {
   .sidebar{
-    width: 45%;
+    width: 100%;
   }
   .vertical-hotel-card{
     justify-content: center;
@@ -298,3 +298,38 @@ dialog {
   }
 }
 /* footer style end */
+
+/* pagination style start */
+.control-box {
+  border: 0.5px solid #ffffff;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-number {
+  background: linear-gradient(0deg, #fff2de, #fff2de),
+    linear-gradient(0deg, #ffffff, #ffffff);
+}
+
+.control-first-last {
+  background: #ffb039;
+}
+
+.control-next-pre {
+  background: #ffcc81;
+}
+
+.action-container {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+}
+
+.active{
+  color: dodgerblue;
+}
+/* pagination style end */

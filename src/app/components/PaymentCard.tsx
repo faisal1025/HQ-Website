@@ -1,30 +1,18 @@
+"use client"
+
 import Image from "next/image";
 import Check from "../../../public/assets/Login.png";
-import React, { useState } from "react";
-
-import { useSelector, useDispatch } from "react-redux";
-// import { RootState } from "./redux/store";
-import { FaSearch, FaRegCalendar, FaBed, FaArrowRight } from "react-icons/fa";
-import { DatePicker, Typography } from "antd";
 import type { Dayjs } from "dayjs";
 import { RangePickerProps } from "antd/es/date-picker";
-// import HotelList from "./components/HotelList";
 import Link from "next/link";
-import { hotels } from "../redux/hotelLists/hotels";
 import GuestSelector from "./GuestSelector";
 import DateRangePicker from "./DateRangePicker";
 import { getOffPercent, getSavingAmount } from "../utils/hotelDetailUtility";
-// import CitiesList from "./components/CitiesList";
-// import { handleOnChange } from "./redux/contact-us/contactUsSlice";
-
-const { RangePicker } = DatePicker;
-const { Title, Text } = Typography;
+import { hotels } from "../Schema";
 
 type RangeValue = [Dayjs | null, Dayjs | null] | null;
 
 const PaymentCard = ({item}: {item: hotels}) => {
-  // const {topRatedHotels, citiesList, contactUs} = useSelector((store: RootState) => store)
-  // const dispatch = useDispatch();
 
   const onOk = (value: RangePickerProps["value"]) => {
     console.log("onOk: ", value);
@@ -54,7 +42,7 @@ const PaymentCard = ({item}: {item: hotels}) => {
           <h3 className="text-[0.6rem] text-yellow-500">{getOffPercent(item.originalPrice, item.price)}% off</h3>
         </div>
         <div className="px-2 mx-3 text-[0.8rem]">
-          <h5>+taxes and fee $191</h5>
+          <h5>+taxes and fee &#8377;{item.taxAndFee}</h5>
         </div>
 
         <div className="flex-1 gap-2 max-md:flex-wrap max-w-full m-3 p-2 bg-white rounded-lg justify-center items-center">
@@ -69,7 +57,7 @@ const PaymentCard = ({item}: {item: hotels}) => {
             </div>
             <div className="flex justify-between font-bold p-2">
                 <h4 className="">Total price</h4>
-                <h4 className="">&#8377;1423</h4>
+                <h4 className="">&#8377;{item.payableAmount}</h4>
             </div>
             <button className="w-full h-9 rounded bg-green-500 hover:bg-green-600 font-semibold my-2">Continue to Book</button>
         </div>

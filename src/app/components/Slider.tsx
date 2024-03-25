@@ -1,3 +1,4 @@
+"use client"
 import { Slider, Switch } from 'antd';
 import React from 'react'
 

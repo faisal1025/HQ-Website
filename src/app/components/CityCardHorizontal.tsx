@@ -1,19 +1,19 @@
+"use client"
+
 import React from 'react'
 import Card from '../custom-template/Card'
-import { city } from '../redux/cities/city'
 import { Typography } from 'antd'
 import { MdArrowForwardIos } from "react-icons/md";
 import Image from 'next/image';
 import Link from 'next/link';
+import { city } from '../Schema';
 
 const {Title, Text} = Typography;
 
 type cityCardProps = {item: city}
 
 const CityCardHorizontal = ({item} : cityCardProps) => {
-    let bgStyle = {
-        backgroundImage: item.thumbnail
-    }
+   
     return (
         <Card>
             <div className="flex flex-col h-full gap-16 p-4 justify-between rounded-lg" style={{backgroundImage: `url(${item.thumbnail})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center center'}}>
@@ -23,7 +23,7 @@ const CityCardHorizontal = ({item} : cityCardProps) => {
                     <Title level={4} className='!m-1 font-sans font-semibold rounded-full bg-white text-black p-2'>Avg. <span className='text-blue-600 font-bold'>{item.avgPrice}</span></Title>
                 </div>
                 <div className="flex justify-end items-center w-full">
-                    <Link href={`/${item.name}`} className='text-white p-4 rounded-full bg-opacity-50 bg-slate-950 shadow-xl'><MdArrowForwardIos /></Link>
+                    <Link href={`/${item.slug}`} className='text-white p-4 rounded-full bg-opacity-50 bg-slate-950 shadow-xl'><MdArrowForwardIos /></Link>
                 </div>
             </div>
         </Card>

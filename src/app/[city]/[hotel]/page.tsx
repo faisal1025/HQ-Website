@@ -1,80 +1,24 @@
-"use client";
-import SwiperCore from "swiper";
+
 import Image from "next/image";
-
-// import { useState } from 'react';
-import { Navigation, Pagination } from "swiper/modules";
 import Image1 from '../../../../public/assets/img1.jpg'
-
-import { Divider, Typography } from "antd";
 import PaymentCard from "@/app/components/PaymentCard";
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/redux/store";
 import Amenities from "@/app/custom-template/Amenities";
-import Slider from "react-slick";
 import { getRatingStatus } from "@/app/utils/hotelDetailUtility";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { MdOutlineStar } from "react-icons/md";
+import CrouselComponent from "@/app/components/HotelDetailPageComponents/CrouselComponent";
+import { getHotelById } from "@/app/services/hotelApi";
+import { amenities } from "@/app/Schema";
 
-const { Title, Paragraph, Text, Link } = Typography;
 
-
-const HotelDetails = ({params}: {params: {hotel: string}}) => {
+const HotelDetails = async ({params}: {params: {hotel: string}}) => {
     
-    const {hotel} = useSelector((store:RootState) => store.hotelWithSlug)
-
-    const settings = {
-        arrows: true,
-        dots: false,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        mobileFirst: true,
-        responsive: [
-            {
-                breakpoint: 1150,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    
-                }
-            },
-            {
-                breakpoint: 640,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
+    const {props} = await getHotelById(params.hotel)
+    const {hotel} = props
 
     return (
         <section className="overflow-x-hidden">
-            <section>
-                <Slider {...settings}>
-                    {
-                        hotel.photos &&
-                    hotel.photos.map((photo, ind) => {
-                        return(
-                            <div key={ind} className="flex">
-                                <Image
-                                    src={photo}
-                                    alt="logo"
-                                    width={100}
-                                    height={100}
-                                    layout="responsive"
-                                    className="w-full object-cover max-md:h-40"
-                                />
-                            </div>
-                        )
-                    })
-                    } 
-                </Slider>
-            </section>
+            <CrouselComponent list={hotel.photos}/>
+
             <section  className="rounded-lg p-5 m-5 bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950 shadow-xl after-slider-main-div flex gap-2 mt-3 max-lg:flex-col max-md:text-md ">
                 <div className="left-div flex px-8 max-md:px-2 items-start flex-col w-[80%] max-lg:w-full text-[30px] max-md:text-2xl">
                     <div className="heading-div-including-rating-card flex gap-4 py-2 items-center">
@@ -94,25 +38,19 @@ const HotelDetails = ({params}: {params: {hotel: string}}) => {
                     <div className="ammeneties mt-2 tracking-tight">
                         <h3 className="font-bold">Amenities</h3>
                         <div className="ammenity-1 flex gap-4 flex-wrap justify-between py-2 max-md:lg max-md:items-center ">
-                            <Amenities icon="MdOutlineWifi" text="Free Wifi" />
-                            <Amenities icon='MdBathtub' text='Geyser'/>
-                            <Amenities icon='MdCelebration' text='Reception' />
-                            <Amenities icon='MdAddCard' text='Card' />
+                            {
+                                hotel.amenities && (
+                                    hotel.amenities.map((amenity: amenities) => {
+                                        return <Amenities key={amenity.id} icon={amenity.icon} text={amenity.text} />
+                                    })
+                                )
+                            }
                         </div>
                     </div>
                     <div className="flex flex-col py-2">
                         <h3 className="font-bold">About this</h3>
                         <p className="text-base max-md:text-sm py-2 flex flex-wrap text-justify">
-                            Hotel SPOT ON 61091 Hotel Silver Palace Dx located in Delhi is
-                            an affordable option for travelers who are looking for comfort
-                            and convenience. The 5 km distance from India Gate and 4 km
-                            distance from Red Fort is within easy reach for tourists. Power
-                            backup, housekeeping, and reception are the amenities offered.
-                            Special Features The hotel room is a clean and modern space
-                            equipped with a fire-extinguisher, AC, and TV. There is a modern
-                            wardrobe for clothing storage. Location & Transportation Guests
-                            can visit Jama Masjid, Agrasen ki baoli and Lodhi Garden which
-                            are about 3 km, 3 km and 7 km away from the property.
+                            {hotel.description}
                         </p>
                     </div>
                     <div className="py-2 testimonials OR Review">
@@ -128,7 +66,7 @@ const HotelDetails = ({params}: {params: {hotel: string}}) => {
                                             {getRatingStatus(hotel.rating)}
                                         </h3>
                                         <h4 className="text-[12px] max-md:text-[9px]">
-                                            1435 ratings
+                                            {hotel.reviews?.length} ratings
                                         </h4>
                                 </div>
                                 <div className="RIGHT_PORTION px-3 flex flex-col w-3/4 max-md:w-full ">
