@@ -5,7 +5,7 @@ export interface city{
     thumbnail?: string,
     name: string,
     totalNoHotels: number,
-    avgPrice: string,
+    avgPrice: number,
     slug:string,
     hotels?: hotels[],
     updatedAt:string,

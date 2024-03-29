@@ -29,7 +29,7 @@ export const getAllHotels = async () => {
 export const getHotelById = async (slug: string) => {
     const url = `${baseUrl}/hotels/${slug}`;
   
-    const response = await (await fetch(url, {cache: 'default'})).json();
+    const response = await (await fetch(url, {cache: 'no-cache'})).json();
     
     const hotel: hotels = {
         ...response.data.attributes, 

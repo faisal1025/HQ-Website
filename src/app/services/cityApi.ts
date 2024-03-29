@@ -1,5 +1,4 @@
 import axios from "axios";
-import { errorToJSON } from "next/dist/server/render";
 import { amenities, city, hotels } from "../Schema";
 
 export const baseUrl = process.env.NODE_ENV === 'production' ? process.env.API_BASE_URL_PROD : process.env.API_BASE_URL_DEV
@@ -7,8 +6,21 @@ export const baseUrl = process.env.NODE_ENV === 'production' ? process.env.API_B
 export const getAllStates = async () => {
     const url = `${baseUrl}/states?populate=*`
     const response = (await axios.get(url)).data;
-    const cities:city[] = response.data.map((city:any) => {
-        return {...city.attributes, id: city.id, thumbnail: city.attributes.thumbnail.data.attributes.url}
+   
+    const cities:city[] = response.data.map((city:any): city => {
+        const totalNoHotels = city.attributes.hotels.data.length
+        const totalPrice = city.attributes.hotels.data.reduce((pre: number, nxt: any) => {
+          return pre += nxt.attributes.price;
+        }, 0);
+        
+        const avgPrice = totalNoHotels ? Math.floor(totalPrice / totalNoHotels) : 0;
+
+        return {...city.attributes, 
+          id: city.id, 
+          thumbnail: city.attributes.thumbnail.data.attributes.url,
+          totalNoHotels,
+          avgPrice
+        }
     })
     
     return {
@@ -18,8 +30,8 @@ export const getAllStates = async () => {
     }
 }
 
-export const getStateById = async (slug: string, page: number) => {
-    const url = `${baseUrl}/states/${slug}?page=${page}`
+export const getStateById = async (slug: string, query: string) => {
+    const url = `${baseUrl}/states/${slug}?${query}`
     const response = await (await fetch(url, {cache: 'no-cache'})).json()
 
     const city: city = { ...response.data.attributes,
