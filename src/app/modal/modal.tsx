@@ -2,11 +2,17 @@
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from "../redux/store";
+
 type modalProps = {
   children: React.ReactNode;
   setModal: any;
 };
 export default function Modal({ children, setModal }: modalProps) {
+
+  const dispatch = useDispatch<AppDispatch>()
+
   const searchParams = useSearchParams();
   const modal = searchParams.get("modal");
   const pathname = usePathname();
@@ -27,13 +33,13 @@ export default function Modal({ children, setModal }: modalProps) {
           onClick={(e) => {
             e.stopPropagation();
             router.push(`${pathname}`);
-            setModal(false);
+            dispatch(setModal(false));
             const elem = document.body;
             elem.classList.remove("fixedPosition");
           }}
         >
           <div
-            className="dialog-container top-4 bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950"
+            className="dialog-container bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950"
             onClick={(e) => {
               e.stopPropagation();
             }}
@@ -42,7 +48,7 @@ export default function Modal({ children, setModal }: modalProps) {
               type="button"
               className="close-modal-btn"
               onClick={() => {
-                setModal(false);
+                dispatch(setModal(false));
                 router.push(`${pathname}`);
                 const elem = document.body;
                 elem.classList.remove("fixedPosition");

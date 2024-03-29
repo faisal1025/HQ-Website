@@ -17,7 +17,7 @@ const initialState: initialState = {
             id: 1,
             name: 'Rajasthan',
             totalNoHotels: 1,
-            avgPrice: '4,200',
+            avgPrice: 4200,
             slug: 'rajasthan',
             createdAt: '2024-03-20T10:20:32.564Z',
             updatedAt: '2024-03-20T10:20:38.622Z',

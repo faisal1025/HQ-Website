@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import HotelCardHorizontal from './HotelCardHorizontal'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -10,6 +10,29 @@ import PrevButton from './PrevButton';
 import { hotels } from '../Schema';
 
 const HotelList = ({list}:{list: hotels[]}) => {
+    const length = list.length;
+
+    const [screenSize, setScreenSize] = useState({
+      largeScreen: false,
+      mediumScreen:  false,
+      smallScreen: false
+    });
+
+    useEffect(() => {
+      function handleResize() {
+          setScreenSize({
+            largeScreen: (window && window.innerWidth <= 1550 && window.innerWidth > 1150),
+            mediumScreen: (window && window.innerWidth <= 1150 && window.innerWidth > 600),
+            smallScreen: (window && window.innerWidth <= 600)
+          })
+      }
+
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, [])
     const settings = {
         arrows: true,
         dots: false,
@@ -37,24 +60,131 @@ const HotelList = ({list}:{list: hotels[]}) => {
             }
           },
           {
-            breakpoint: 540,
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1.5,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 420,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1
             }
-          }
+          },
         ]
     };
     return (
-        <Slider {...settings}>
+        // <Slider {...settings}>
+        //     {list && (
+        //         list.map((hotel) => {
+        //             return (
+        //                 <HotelCardHorizontal key={hotel.id} item={hotel} />
+        //             )
+        //         })
+        //     )}
+        // </Slider>
+      <>
+      {
+        (screenSize.largeScreen) ?
+          length >= 3 ?
+          <Slider {...settings}>
+              {list && (
+                  list.map((hotel) => {
+                      return (
+      
+                          <HotelCardHorizontal key={hotel.id} item={hotel} />
+            
+                      )
+                  })
+              )}
+          </Slider> : 
+          <div className='flex gap-4 flex-row justify-start items-center w-full'>
+          {list && (
+            list.map((hotel) => {
+                return (
+                  <div key={hotel.id} className='w-max'>
+                    <HotelCardHorizontal key={hotel.id} item={hotel} />
+                  </div>
+                )
+            })
+          )}
+          </div>
+        : (screenSize.mediumScreen) ?
+            length >= 2 ?
+            <Slider {...settings}>
+              {list && (
+                  list.map((hotel) => {
+                      return (
+      
+                          <HotelCardHorizontal key={hotel.id} item={hotel} />
+            
+                      )
+                  })
+              )}
+            </Slider> :
+            <div className='flex gap-4 flex-row justify-start items-center w-full'>
             {list && (
-                list.map((hotel) => {
-                    return (
-                        <HotelCardHorizontal key={hotel.id} item={hotel} />
-                    )
-                })
+              list.map((hotel) => {
+                  return (
+                    <div key={hotel.id} className='w-max'>
+                      <HotelCardHorizontal key={hotel.id} item={hotel} />
+                    </div>
+                  )
+              })
             )}
-        </Slider>
+            </div>
+        : (screenSize.smallScreen) ?
+            length >= 2 ?
+            <Slider {...settings}>
+              {list && (
+                  list.map((hotel) => {
+                      return (
+      
+                          <HotelCardHorizontal key={hotel.id} item={hotel} />
+            
+                      )
+                  })
+              )}
+            </Slider> :
+            <div className='flex gap-4 flex-row justify-start items-center w-full'>
+            {list && (
+              list.map((hotel) => {
+                  return (
+                    <div key={hotel.id} className='w-max'>
+                      <HotelCardHorizontal key={hotel.id} item={hotel} />
+                    </div>
+                  )
+              })
+            )}
+            </div>
+        :
+            length >= 5 ?
+            <Slider {...settings}>
+              {list && (
+                  list.map((hotel) => {
+                      return (
+      
+                          <HotelCardHorizontal key={hotel.id} item={hotel} />
+            
+                      )
+                  })
+              )}
+            </Slider> :
+            <div className='flex gap-4 flex-row justify-start items-center w-full'>
+            {list && (
+              list.map((hotel) => {
+                  return (
+                    <div key={hotel.id} className='w-max'>
+                      <HotelCardHorizontal key={hotel.id} item={hotel} />
+                    </div>
+                  )
+              })
+            )}
+            </div>
+      }
+      </>
     )
 }
 

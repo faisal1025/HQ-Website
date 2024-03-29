@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import Sidebar from '../components/Sidebar'
 
-const CityLayout = ({children}: {children: React.ReactNode}) => {
 
+const CityLayout = ({children}: {children: React.ReactNode}) => {
     return ( 
         <div className='flex relative'>
-            <Sidebar />
+            <Suspense>
+                <Sidebar />
+            </Suspense>
             <div className='hotel-archive w-full min-h-screen'>
                 {children}
             </div>

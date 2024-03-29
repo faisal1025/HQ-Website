@@ -8,8 +8,8 @@ import { hotels } from '../Schema';
 import Pagination from '../components/Pagination';
 
 const City = async ({params, searchParams}: {params: {city: string}, searchParams?: {page?: string}}) => {
-    const currentPage = Number(searchParams?.page) || 1;
-    const {props} = await getStateById(params.city, currentPage)
+    const query = new URLSearchParams(searchParams)
+    const {props} = await getStateById(params.city, query.toString())
     const {city, pagination} = props;
 
     return (

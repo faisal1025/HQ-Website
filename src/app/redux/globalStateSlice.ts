@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RangePickerProps } from "antd/es/date-picker";
-import { stat } from "fs";
+import { hotels } from "../Schema";
 
 interface rooms {
     guest: number
@@ -9,6 +9,8 @@ interface rooms {
 type initialState = {
     searchText: string,
     enableMobileFilter: boolean,
+    showBookNowModal: boolean,
+    itemForModal: any,
     dateVal: RangePickerProps['value'],
     rooms: rooms[],
     totalGuest: number
@@ -17,6 +19,8 @@ type initialState = {
 const initialState: initialState = {
     searchText: "",
     dateVal: null,
+    showBookNowModal: false,
+    itemForModal: null,
     enableMobileFilter: true,
     rooms: [
         {
@@ -59,6 +63,12 @@ const globalSateSlice = createSlice({
         setDateVal: (state, action) => {
             state.dateVal = action.payload
         },
+        setShowBookModal: (state, action) => {
+            state.showBookNowModal = action.payload
+        },
+        setItemForModal: (state, action) => {
+            state.itemForModal = action.payload
+        }
     },
     extraReducers: (builder) => {
 
@@ -66,4 +76,4 @@ const globalSateSlice = createSlice({
 })
 
 export default globalSateSlice.reducer;
-export const {toggleMobileFilter, increaseGuest, decreaseGuest, addRooms, setDateVal, setSearchText} = globalSateSlice.actions;
+export const {toggleMobileFilter, increaseGuest, decreaseGuest, addRooms, setDateVal, setSearchText, setShowBookModal, setItemForModal} = globalSateSlice.actions;
