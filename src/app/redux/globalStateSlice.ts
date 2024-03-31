@@ -27,7 +27,7 @@ const initialState: initialState = {
             guest: 1
         }
     ],
-    totalGuest: 1
+    totalGuest: 1,
 }
 
 const globalSateSlice = createSlice({
