@@ -17,6 +17,13 @@ const page = async ({searchParams}: {searchParams: {page?: string, query?: strin
                 <h1 className='text-3xl font-sans font-semibold'>Search Results</h1>
                 <MobileFilterSortBy />
                 {
+                    hotels.length === 0 && (
+                        <div className='flex justify-center items-center h-full text-pretty text-base font-semibold'>
+                            {"No search results found :("}
+                        </div>
+                    )
+                }
+                {
                     hotels && (
                         hotels.map((hotel: hotels)=> {
                             return (
