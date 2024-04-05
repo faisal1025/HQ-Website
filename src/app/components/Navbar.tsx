@@ -19,11 +19,11 @@ import { useRouter } from 'next/navigation';
 
 const menus: MenuProps['items'] = [
   {
-      label: <Link href={'/student_help'}>Support And Help</Link>,
+      label: <Link href={'/join_us'}>Join Us</Link>,
       key: 1
   },
   {
-      label: <Link href={'/bussiness_deals'}>Bussiness Deals</Link>,
+      label: <Link href={'/about_us'}>About Us</Link>,
       key: 2,
     },
   ]
