@@ -6,6 +6,7 @@ import BookingCardVertical from '@/app/components/BookingPageComponents/BookingC
 import { getAllOrders } from '@/app/services/authApi'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/app/redux/store'
+import MainLayout from '@/app/mainLayout/layout'
 
 const MyBooking = ({params}: {params: {username: string}}) => {
     const [loading, setLoading] = useState(true)
@@ -32,33 +33,37 @@ const MyBooking = ({params}: {params: {username: string}}) => {
         setLoading(false)
     }, [bookingListChanged])
     return (
-        <div className='p-4'>
-            <h2 className='dark:!text-white text-3xl font-sans font-semibold py-3' >My Booking</h2>
-            {
-                loading === false ?
-                result.allBooking && 
-                    result.allBooking.length === 0 ? (
-                        <div className='min-h-[80vh] flex justify-center items-center'>
-                            Currently, You have done no bookings
+        <MainLayout>
+            <section className="rounded-lg p-5  m-5  bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950 shadow-xl">
+                <div className='p-4'>
+                    <h2 className='dark:!text-white text-2xl font-sans font-semibold py-3' >My Bookings</h2>
+                    {
+                        loading === false ?
+                        result.allBooking && 
+                            result.allBooking.length === 0 ? (
+                                <div className='min-h-[80vh] flex justify-center items-center'>
+                                    Currently, You have done no bookings
+                                </div>
+                            ) : (
+                                <div className='min-h-[80vh] flex justify-center items-center flex-col'>
+                                    {
+                                        result.allBooking.map((item: booking) => {
+                                            return (
+                                                <BookingCardVertical key={item.id} item={item} />
+                                            )
+                                        })
+                                    }
+                                </div>
+                            )
+                        :
+                        <div className='h-screen flex justify-center items-center'>
+                            Loading...
                         </div>
-                    ) : (
-                        <div className='min-h-[80vh] flex justify-center items-center flex-col'>
-                            {
-                                result.allBooking.map((item: booking) => {
-                                    return (
-                                        <BookingCardVertical key={item.id} item={item} />
-                                    )
-                                })
-                            }
-                        </div>
-                    )
-                :
-                <div className='h-screen flex justify-center items-center'>
-                    Loading...
+                        
+                    }
                 </div>
-                
-            }
-        </div>
+            </section>
+        </MainLayout>
     )
 }
 

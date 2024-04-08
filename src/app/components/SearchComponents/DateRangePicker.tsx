@@ -6,7 +6,7 @@ import React from 'react'
 import dayjs from 'dayjs';
 import { FaRegCalendar } from 'react-icons/fa';
 import {useSelector} from 'react-redux'
-import { RootState } from '../redux/store';
+import { RootState } from '../../redux/store';
 import moment from 'moment';
 
 const { RangePicker } = DatePicker;

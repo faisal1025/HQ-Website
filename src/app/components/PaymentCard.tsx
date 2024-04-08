@@ -7,8 +7,8 @@ import Check from "../../../public/assets/Login.png";
 import type { Dayjs } from "dayjs";
 import { RangePickerProps } from "antd/es/date-picker";
 import Link from "next/link";
-import GuestSelector from "./GuestSelector";
-import DateRangePicker from "./DateRangePicker";
+import GuestSelector from "./SearchComponents/GuestSelector";
+import DateRangePicker from "./SearchComponents/DateRangePicker";
 import { getOffPercent, getSavingAmount } from "../utils/hotelDetailUtility";
 import { hotels } from "../Schema";
 import { checkAvailable, createOrder } from "../services/hotelApi";
@@ -181,7 +181,7 @@ const PaymentCard = ({item}: {item: hotels}) => {
             </div>
             {
               resObject.isAvailable ?
-                <button className="w-full h-9 rounded bg-green-500 hover:bg-green-600 font-semibold my-2" onClick={() => {isAuthenticated ? makeOrder() : push('/login')}}>Continue to Book</button>
+                <button className="w-full h-9 rounded bg-green-500 hover:bg-green-600 font-semibold my-2" onClick={() => {isAuthenticated ? push('/checkout') : push('/login')}}>Continue to Book</button>
               :
                 <button className="w-full h-9 rounded bg-yellow-500 hover:bg-yellow-600 font-semibold my-2" onClick={() => {checkAvailability()}}>Check Availability</button>
             }

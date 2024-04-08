@@ -3,10 +3,10 @@
 import { Dropdown, MenuProps } from 'antd'
 import React, {useState, useRef} from 'react'
 import { FaBed } from 'react-icons/fa'
-import RoomComponent from './RoomComponent'
-import { RootState } from '../redux/store'
+import RoomComponent from '../RoomComponent'
+import { RootState } from '../../redux/store'
 import { useSelector } from 'react-redux'
-import DropBox from './DropBox'
+import DropBox from '../DropBox'
 
 const items: MenuProps['items'] = [
     {
