@@ -1,44 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import { useRef } from "react";
-import emailjs from "@emailjs/browser";
-import { message } from "antd";
-
-const func = () => {
-  setTimeout(()=>{
-    message.success('Success')
-  },200)
-}
+import { handleContactForm } from "../services/authApi";
 
 const ContactForm = () => {
   const [input, setInput] = useState("");
   const form = useRef(null);
 
-  const sendEmail = (event: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID &&
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID &&
-      process.env.NEXT_PUBLIC_EMAILJS_USER_ID &&
-      form.current
-    ) {
-      emailjs
-        .sendForm(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-          form.current,
-          process.env.NEXT_PUBLIC_EMAILJS_USER_ID
-        )
-        .then(
-          (result) => {
-            {func()}
-            
-          },
-          (error) => {
-            alert(error.text);
-          }
-        );
-    }
+    const response = await handleContactForm(input);
+    setInput('');
   };
 
   return (
@@ -55,13 +27,8 @@ const ContactForm = () => {
           }}
         />
         <button
+          type="submit"
           className="notify-me-button rounded p-4 active:scale-75 transition hover:opacity-80 text-white bg-gradient-to-r from-red-400 to-red-500"
-          onSubmit={() => {
-            setInput("");
-          }}
-          onClick={() => {
-            setInput("");
-          }}
         >
           Notify me
         </button>
@@ -71,3 +38,29 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
+// import emailjs from "@emailjs/browser";
+// import { message } from "antd";
+// if (
+//   process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID &&
+//   process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID &&
+//   process.env.NEXT_PUBLIC_EMAILJS_USER_ID &&
+//   form.current
+// ) {
+//   emailjs
+//     .sendForm(
+//       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+//       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+//       form.current,
+//       process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+//     )
+//     .then(
+//       (result) => {
+//         {func()}
+        
+//       },
+//       (error) => {
+//         alert(error.text);
+//       }
+//     );
+// }

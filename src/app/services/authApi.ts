@@ -1,50 +1,98 @@
+
 import { booking } from "../Schema"
 import { getToken } from "../utils/authHelper"
-import { baseUrl } from "./cityApi"
+import axios from "axios";
+import { baseUrl } from "./cityApi";
 import Cookies from "js-cookie"
 
 type registerModal = {
-    username: string,
-    email: string,
-    password: string,
-    confirm_password: string
-}
+  username: string;
+  email: string;
+  password: string;
+  confirm_password: string;
+};
 
 type loginModal = {
-    identifier : string,
-    password: string
-}
+  identifier: string;
+  password: string;
+};
 
-export async function registerUser(value : registerModal) {
-    const response = await fetch(`${baseUrl}/auth/local/register`, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(value)
-    })
+export async function registerUser(value: registerModal) {
+  const response = await fetch(`${baseUrl}/auth/local/register`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(value),
+  });
 
-    const register = await response.json();
+  const register = await response.json();
     if(register.error){
         throw new Error('something went wrong')
     }
-    return register
+  return register;
 }
 
 export async function loginUser(value: loginModal) {
-    const response = await fetch(`${baseUrl}/auth/local`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(value)
-    })
-    const login = await response.json();
-    if(login.error) {
+  const response = await fetch(`${baseUrl}/auth/local`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(value),
+  });
+  const login = await response.json();
+if(login.error) {
         throw new Error('something went wrong')
     }
-    return login
+  return login;
+}
+
+export async function handleContactForm(value: string) {
+  const body = {
+    email: value,
+  };
+  const response = await fetch(`${baseUrl}/contact`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  const contactInfo = await response.json();
+
+  return contactInfo;
+}
+
+export async function handleCallForm(value: string) {
+  const body = {
+    email: value,
+  };
+  const response = await fetch(`${baseUrl}/join_us`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  const callInfo = await response.json();
+
+  return callInfo;
+}
+
+// Request API.
+// Add your own code here to customize or restrict how the public can register new users.
+export async function handleForgot(value: string) {
+  const {email} = {
+    email: value,
+  };
+
+  const response = await axios
+      .post('http://localhost:1337/api/auth/forgot-password', {
+        email: email, //modassirm09@gmail.com     user's emai
+      })
+  return response.data;
 }
 
 export async function getMe() {
@@ -105,4 +153,18 @@ export async function getAllOrders(username: string) {
     }
 }
 
+export async function handleForgotForm(value:{
+  email:string,
+  password:string,
+  confirm_password:string
+}, code: string | undefined){
 
+  const response = await axios
+  .post('http://localhost:1337/api/auth/reset-password', {
+    code: code, // code contained in the reset link of step 3.
+    password: value.password,
+    passwordConfirmation: value.confirm_password,
+  })
+
+  return response.data
+}
