@@ -81,8 +81,6 @@ export async function handleCallForm(value: string) {
   return callInfo;
 }
 
-// Request API.
-// Add your own code here to customize or restrict how the public can register new users.
 export async function handleForgot(value: string) {
   const {email} = {
     email: value,
@@ -90,7 +88,7 @@ export async function handleForgot(value: string) {
 
   const response = await axios
       .post('http://localhost:1337/api/auth/forgot-password', {
-        email: email, //modassirm09@gmail.com     user's emai
+        email: email,
       })
   return response.data;
 }
@@ -161,7 +159,7 @@ export async function handleForgotForm(value:{
 
   const response = await axios
   .post('http://localhost:1337/api/auth/reset-password', {
-    code: code, // code contained in the reset link of step 3.
+    code: code,
     password: value.password,
     passwordConfirmation: value.confirm_password,
   })

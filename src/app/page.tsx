@@ -4,10 +4,11 @@ import { FaArrowRight } from "react-icons/fa";
 import HotelList from "./components/HotelList";
 import Link from "next/link";
 import CitiesList from "./components/CitiesList";
-import SearchComponent from "./components/SearchComponent";
+import SearchComponent from "./components/SearchComponents/SearchComponent";
 import ContactForm from "./components/ContactForm";
 import { getAllStates } from "./services/cityApi";
 import { getAllHotels } from "./services/hotelApi";
+import MainLayout from "./mainLayout/layout";
 
 export const dynamic = 'auto'
 
@@ -16,7 +17,7 @@ export default async function Home() {
   const hotels = await getAllHotels()
 
   return (
-    <>
+    <MainLayout>
       <section className="flex flex-col justify-center items-center home-container">
         <h1 className="text-center p-2 tracking-tight text-4xl font-bold font-sans text-black max-sm:text-2xl" >We compare hotel prices from 100s of sites</h1>
         <h2 className="text-center p-2 text-lg font-semibold font-sans max-sm:text-base" >We’ll do the searching. You do the saving.</h2>
@@ -80,7 +81,7 @@ export default async function Home() {
             </div>
           </div>
       </section>
-    </>
+    </MainLayout>
   );
 }
 
