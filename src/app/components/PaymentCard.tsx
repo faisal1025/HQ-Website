@@ -181,7 +181,7 @@ const PaymentCard = ({item}: {item: hotels}) => {
             </div>
             {
               resObject.isAvailable ?
-                <button className="w-full h-9 rounded bg-green-500 hover:bg-green-600 font-semibold my-2" onClick={() => {isAuthenticated ? push('/checkout') : push('/login')}}>Continue to Book</button>
+                <button className="w-full h-9 rounded bg-green-500 hover:bg-green-600 font-semibold my-2" onClick={() => {isAuthenticated ? makeOrder() : push('/login')}}>Continue to Book</button>
               :
                 <button className="w-full h-9 rounded bg-yellow-500 hover:bg-yellow-600 font-semibold my-2" onClick={() => {checkAvailability()}}>Check Availability</button>
             }
