@@ -1,7 +1,6 @@
 'use client'
 
 import Cookies from 'js-cookie'
-// import Router from 'next/router';
 
 export type loginResponse = {
     jwt: string,
@@ -26,12 +25,7 @@ export function setToken(value : loginResponse) {
     Cookies.set('jwt', value.jwt)
     Cookies.set('username', value.user.username)
     Cookies.set('id', value.user.id.toString())
-
-    console.log("value: ", value);
-    
-    // if(Cookies.get('username')){
-    //     Router.reload()
-    // }
+    Cookies.set('email', value.user.email)
 }
 
 export function unsetToken() {
@@ -41,8 +35,7 @@ export function unsetToken() {
     Cookies.remove('jwt')
     Cookies.remove('username')
     Cookies.remove('id')  
-
-    // Router.reload() 
+    Cookies.remove('email')
 }
 
 export function getToken() {
@@ -53,7 +46,8 @@ export function getToken() {
 export function getUser() {
     return {
         username: Cookies.get('username'),
-        id: Cookies.get('id')
+        id: Cookies.get('id'),
+        email: Cookies.get('email')
     }
 }
 

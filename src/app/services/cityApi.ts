@@ -6,7 +6,11 @@ export const baseUrl = process.env.NODE_ENV === 'production' ? process.env.API_B
 export const getAllStates = async () => {
     const url = `${baseUrl}/states?populate=*`
     const response = (await axios.get(url)).data;
-   
+
+    if(response.error){
+      throw new Error('something went wrong')
+    }
+
     const cities:city[] = response.data.map((city:any): city => {
         const totalNoHotels = city.attributes.hotels.data.length
         const totalPrice = city.attributes.hotels.data.reduce((pre: number, nxt: any) => {
@@ -33,6 +37,10 @@ export const getAllStates = async () => {
 export const getStateById = async (slug: string, query: string) => {
     const url = `${baseUrl}/states/${slug}?${query}`
     const response = await (await fetch(url, {cache: 'no-cache'})).json()
+
+    if(response.error) {
+      throw new Error('something went wrong')
+    }
 
     const city: city = { ...response.data.attributes,
       totalNoHotels: response.data.attributes.hotels.data.attributes.pagination.total,

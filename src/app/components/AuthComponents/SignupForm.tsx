@@ -5,8 +5,8 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import {signUpSchema} from '../../../schemas'
 import { registerUser } from "../../services/authApi";
-import { errorResponse, loginResponse, setToken } from "@/app/utils/authHelper";
-import { setAuthAsync } from "@/app/redux/authStateSlice";
+import { errorResponse, getUser, loginResponse, setToken } from "@/app/utils/authHelper";
+import { setAuth, setAuthAsync } from "@/app/redux/authStateSlice";
 import { message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/app/redux/store";
@@ -25,7 +25,7 @@ export const SignupForm = () => {
   const [register, setRegister] = useState<loginResponse>()
   const dispatch = useDispatch<AppDispatch>()
   const {user} = useSelector((store: RootState) => store.authState)
-  const {replace} = useRouter()
+  const {back} = useRouter()
 
   const {values,errors,handleBlur,handleChange,handleSubmit,touched} = useFormik({
     initialValues: initialValues,
@@ -46,14 +46,9 @@ export const SignupForm = () => {
   useEffect(() => {
     if(register){
       setToken(register)
-      dispatch(setAuthAsync())
-      .then(() => {
-        message.info(`welcome back !! ${user.username}`)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      // replace('/')
+      dispatch(setAuth())
+      message.success(`Welcome back !!! ${getUser().username}`)
+      back()
     }else if(error){
       message.error(error.message)
     }

@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import StoreProvider from "./storeProvider";
 import Footer from "./components/Footer";
 import PaymentModal from "./components/PaymentModal";
+import Script from "next/script";
+import ConfirmBookingModal from "./components/BookingPageComponents/ConfirmBookingModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,11 +26,13 @@ export default function RootLayout({
         <StoreProvider>
           <main className="main-container">
             <PaymentModal />
+            <ConfirmBookingModal />
             <Navbar />
             {children}
             <Footer />
           </main>
         </StoreProvider>
+        <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
       </body>
     </html>
   );

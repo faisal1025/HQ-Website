@@ -50,3 +50,17 @@ export interface pagination {
     pageCount: number,
     total: number
 }
+
+export interface booking {
+    id: number,
+    razorpay_order_id: string,
+    razorpay_payment_id: string,
+    razorpay_signature: string,
+    checkin: string,
+    checkout: string,
+    createdAt: string,
+    updatedAt: string,
+    publishedAt: null,
+    Status: string,
+    hotel: hotels
+}

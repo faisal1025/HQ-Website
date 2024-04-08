@@ -8,7 +8,7 @@ import Logo from "../../../public/assets/Logo.png"
 import Link from 'next/link';
 import {Avatar, Dropdown, message} from 'antd'
 import type {MenuProps} from 'antd'
-import { setAuth, setAuthAsync } from '../redux/authStateSlice';
+import { setAuthAsync } from '../redux/authStateSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../redux/store';
 import Cookies from 'js-cookie';
@@ -57,9 +57,13 @@ const Navbar = () => {
 
   const userMenu: MenuProps['items'] = [
     {
-      label: <div onClick={handleLogout}>Logout</div>,
+      label: <Link href={`dashboard/${user.username}/my-booking`}>My Booking</Link>,
       key: 1
-    }
+    },
+    {
+      label: <div onClick={handleLogout}>Logout</div>,
+      key: 2
+    },
   ]
 
   return (
@@ -89,7 +93,7 @@ const Navbar = () => {
                 (
                   <Suspense>
                     <Dropdown menu={{items: userMenu}} trigger={['click']}>
-                      <Avatar>{user.username?.charAt(0).toUpperCase()}</Avatar>
+                      <Avatar className='bg-gradient-to-r from-slate-500 to-slate-400 dark:from-orange-400 dark:to-orange-300'>{user.username?.charAt(0).toUpperCase()}</Avatar>
                     </Dropdown>
                   </Suspense>
                 ):
