@@ -5,9 +5,9 @@ import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { signInSchema } from "../../../schemas";
 import { loginUser } from "../../services/authApi";
-import { errorResponse, loginResponse, setToken } from "../../utils/authHelper";
+import { errorResponse, getUser, loginResponse, setToken } from "../../utils/authHelper";
 import Router from "next/router";
-import { setAuth, setAuthAsync } from "../../redux/authStateSlice";
+import { setAuth } from "../../redux/authStateSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { message } from "antd";
@@ -20,11 +20,11 @@ const initialValues = {
 };
 
 export const LoginForm = () => {
-  const [error, setError] = useState<errorResponse>();
-  const [login, setLogin] = useState<loginResponse>();
-  const dispatch = useDispatch<AppDispatch>();
-  const { user } = useSelector((store: RootState) => store.authState);
-  const { replace } = useRouter();
+  const [error, setError] = useState<errorResponse>()
+  const [login, setLogin] = useState<loginResponse>()
+  const dispatch = useDispatch<AppDispatch>()
+  const {user} = useSelector((store: RootState) => store.authState)
+  const {back} = useRouter()
 
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } =
     useFormik({
@@ -43,18 +43,13 @@ export const LoginForm = () => {
     });
 
   useEffect(() => {
-    if (login) {
-      setToken(login);
-      dispatch(setAuthAsync())
-        .then(() => {
-          message.info(`welcome back !! ${user.username}`);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      // replace('/')
-    } else if (error) {
-      message.error(error.message);
+    if(login){
+      setToken(login)
+      dispatch(setAuth())
+      message.success(`Welcome back !!! ${getUser().username}`)
+      back()
+    }else if(error){
+      message.error(error.message)
     }
   }, [login, error]);
 

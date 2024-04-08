@@ -5,6 +5,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import Logo from "../../../public/assets/Logo.png"
 import Link from 'next/link';
+import Script from 'next/script';
 
 const Footer = () => {
   return (
@@ -61,6 +62,7 @@ const Footer = () => {
         <div className="copyright py-4 flex justify-center items-center">
           <h3 className='ml-2'>&copy; All Right Reserved - 2024</h3>
         </div>
+
         
     </div>
   )

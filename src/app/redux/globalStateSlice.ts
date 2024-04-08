@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RangePickerProps } from "antd/es/date-picker";
 import { hotels } from "../Schema";
+import dayjs from 'dayjs';
+import moment from 'moment';
+
+const dateFormat = 'YYYY/MM/DD';
 
 interface rooms {
     guest: number
@@ -10,16 +14,20 @@ type initialState = {
     searchText: string,
     enableMobileFilter: boolean,
     showBookNowModal: boolean,
+    showCancleBooking: boolean,
     itemForModal: any,
-    dateVal: RangePickerProps['value'],
+    dateVal: RangePickerProps['value'] | undefined,
     rooms: rooms[],
-    totalGuest: number
+    totalGuest: number,
+    orderId: number | undefined,
+    bookingListChanged: boolean
 } 
 
 const initialState: initialState = {
     searchText: "",
-    dateVal: null,
+    dateVal: [dayjs(moment().format('YYYY/MM/DD'), dateFormat), dayjs(moment().add(1, 'days').format('YYYY/MM/DD'), dateFormat)],
     showBookNowModal: false,
+    showCancleBooking: false,
     itemForModal: null,
     enableMobileFilter: true,
     rooms: [
@@ -28,6 +36,8 @@ const initialState: initialState = {
         }
     ],
     totalGuest: 1,
+    orderId: undefined,
+    bookingListChanged: false
 }
 
 const globalSateSlice = createSlice({
@@ -68,6 +78,15 @@ const globalSateSlice = createSlice({
         },
         setItemForModal: (state, action) => {
             state.itemForModal = action.payload
+        },
+        setShowCancleBooking: (state, action) => {
+            state.showCancleBooking = action.payload
+        },
+        setOrderNumber: (state, action) => {
+            state.orderId = action.payload
+        },
+        changeBookingList: (state, action) => {
+            state.bookingListChanged = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -76,4 +95,4 @@ const globalSateSlice = createSlice({
 })
 
 export default globalSateSlice.reducer;
-export const {toggleMobileFilter, increaseGuest, decreaseGuest, addRooms, setDateVal, setSearchText, setShowBookModal, setItemForModal} = globalSateSlice.actions;
+export const {toggleMobileFilter, increaseGuest, decreaseGuest, addRooms, setDateVal, changeBookingList, setOrderNumber, setShowCancleBooking, setSearchText, setShowBookModal, setItemForModal} = globalSateSlice.actions;

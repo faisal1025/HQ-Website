@@ -11,6 +11,7 @@ import { AppDispatch, RootState, store } from '../redux/store';
 import { setDateVal } from '../redux/globalStateSlice';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { baseUrl } from '../services/cityApi';
+import moment from 'moment'
 
 type RangeValue = [Dayjs | null, Dayjs | null] | null;
 
@@ -26,10 +27,13 @@ const SearchComponent = () => {
     const {replace} = useRouter()
 
     const handleSearch = () => {
-        const checkIn = dateVal && `${dateVal[0]?.date()}-${dateVal[0]?.month()}-${dateVal[0]?.year()}`
-        const checkOut = dateVal && `${dateVal[1]?.date()}-${dateVal[1]?.month()}-${dateVal[1]?.year()}`
+        const checkIn = dateVal && dateVal[0]?.format('YYYY-MM-DD')
+        const checkOut = dateVal && dateVal[1]?.format('YYYY-MM-DD')
         const room = rooms.length;
         const guest = totalGuest;
+        const room_config = rooms.reduce((pre, next, ind) => {
+            return pre += `${ind}_${next.guest}-`
+        }, "")
         const params = new URLSearchParams(searchParams)
 
         if(searchText !== ""){
@@ -60,6 +64,12 @@ const SearchComponent = () => {
             params.set('guest', String(guest));
         }else{
             params.delete('guest')
+        }
+
+        if(room_config){
+            params.set('room_config', String(room_config));
+        }else{
+            params.delete('room_config')
         }
 
         const url = `/search?${params.toString()}`
