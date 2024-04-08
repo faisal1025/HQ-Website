@@ -43,7 +43,7 @@ const page = () => {
           <p>
             Experience the height of luxury with our range of amenities,
             including a state-of-the-art fitness center, rejuvenating spa, and
-            exquisite dining options. Whether you're here for business or
+            exquisite dining options. Whether you&apos;re here for business or
             pleasure, we have everything you need for a memorable stay.
           </p>
         </div>
@@ -53,7 +53,7 @@ const page = () => {
           <p>
             Host your next event or meeting in style at [Hotel Name]. With
             flexible event spaces, cutting-edge technology, and expert event
-            planning services, we'll ensure your event is a resounding success.
+            planning services, we&apos;ll ensure your event is a resounding success.
           </p>
         </div>
 

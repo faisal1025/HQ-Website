@@ -6,7 +6,7 @@ import Link from "next/link";
 import three from "../../../public/assets/3.jpg";
 import Contact from "../components/Contact";
 
-const page = () => {
+const JoinUs = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => {
     setClick(!click);
@@ -53,4 +53,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default JoinUs;
