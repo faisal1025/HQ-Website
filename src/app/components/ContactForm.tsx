@@ -1,15 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRef } from "react";
-import emailjs from "@emailjs/browser";
-import { message } from "antd";
 import { handleContactForm } from "../services/authApi";
-
-const func = () => {
-  setTimeout(()=>{
-    message.success('Success')
-  },200)
-}
 
 const ContactForm = () => {
   const [input, setInput] = useState("");
@@ -19,30 +11,6 @@ const ContactForm = () => {
     event.preventDefault();
     const response = await handleContactForm(input);
     setInput('');
-    
-    // if (
-    //   process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID &&
-    //   process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID &&
-    //   process.env.NEXT_PUBLIC_EMAILJS_USER_ID &&
-    //   form.current
-    // ) {
-    //   emailjs
-    //     .sendForm(
-    //       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-    //       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-    //       form.current,
-    //       process.env.NEXT_PUBLIC_EMAILJS_USER_ID
-    //     )
-    //     .then(
-    //       (result) => {
-    //         {func()}
-            
-    //       },
-    //       (error) => {
-    //         alert(error.text);
-    //       }
-    //     );
-    // }
   };
 
   return (
@@ -70,3 +38,29 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
+// import emailjs from "@emailjs/browser";
+// import { message } from "antd";
+// if (
+//   process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID &&
+//   process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID &&
+//   process.env.NEXT_PUBLIC_EMAILJS_USER_ID &&
+//   form.current
+// ) {
+//   emailjs
+//     .sendForm(
+//       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+//       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+//       form.current,
+//       process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+//     )
+//     .then(
+//       (result) => {
+//         {func()}
+        
+//       },
+//       (error) => {
+//         alert(error.text);
+//       }
+//     );
+// }

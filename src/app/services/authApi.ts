@@ -1,5 +1,7 @@
+
 import { booking } from "../Schema"
 import { getToken } from "../utils/authHelper"
+import axios from "axios";
 import { baseUrl } from "./cityApi";
 import Cookies from "js-cookie"
 
@@ -63,25 +65,35 @@ export async function handleContactForm(value: string) {
   return contactInfo;
 }
 
+export async function handleCallForm(value: string) {
+  const body = {
+    email: value,
+  };
+  const response = await fetch(`${baseUrl}/join_us`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  const callInfo = await response.json();
 
-import axios from "axios";
+  return callInfo;
+}
 
 // Request API.
 // Add your own code here to customize or restrict how the public can register new users.
-export async function handleForget() {
-    // Request API.
-    axios
-      .post('http://localhost:1337/api/auth/forgot-password', {
-        email: 'user@strapi.io', // user's email
-      })
-      .then(response => {
-        console.log('Your user received an email');
-      })
-      .catch(error => {
-        console.log('An error occurred:', error.response);
-      });
-}
+export async function handleForgot(value: string) {
+  const {email} = {
+    email: value,
+  };
 
+  const response = await axios
+      .post('http://localhost:1337/api/auth/forgot-password', {
+        email: email, //modassirm09@gmail.com     user's emai
+      })
+  return response.data;
+}
 
 export async function getMe() {
     const response = await fetch(`${baseUrl}/users/me`, {
@@ -141,4 +153,18 @@ export async function getAllOrders(username: string) {
     }
 }
 
+export async function handleForgotForm(value:{
+  email:string,
+  password:string,
+  confirm_password:string
+}, code: string | undefined){
 
+  const response = await axios
+  .post('http://localhost:1337/api/auth/reset-password', {
+    code: code, // code contained in the reset link of step 3.
+    password: value.password,
+    passwordConfirmation: value.confirm_password,
+  })
+
+  return response.data
+}

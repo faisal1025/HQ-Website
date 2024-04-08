@@ -61,7 +61,7 @@ export const LoginForm = () => {
   return (
     <div>
       {forget ? (
-        <Forgot />
+         <Forgot />
       ) : (
         <form
           autoComplete="off"

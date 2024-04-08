@@ -1,7 +1,7 @@
 "use client";
-import { handleForgotForm } from "@/app/services/authApi";
 import { message } from "antd";
 import React, { useState, useRef } from "react";
+import { handleForgotForm } from "../services/authApi";
 
 const intitialFormState = {
   email:'',
