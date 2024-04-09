@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
 
+
 import five from "../../../public/assets/5.jpg";
 import Contact from "../components/Contact";
 import Testimonials from "../components/testimonials/Testimonials";
@@ -45,7 +46,7 @@ const JoinUs = () => {
               offset={-70}
               duration={500}
             >
-              <li className="hover:text-slate-200 max-md:text-[17px]">Testimonials</li>
+              <li className="hover:text-slate-300 max-md:text-[17px]">Testimonials</li>
             </Link>
             <Link
               to="specifications"
@@ -54,7 +55,7 @@ const JoinUs = () => {
               offset={-70}
               duration={500}
             >
-              <li className="hover:text-slate-200 max-md:text-[17px]">Specifications</li>
+              <li className="hover:text-slate-300 max-md:text-[17px]">Specifications</li>
             </Link>
 
             <Link
@@ -64,7 +65,7 @@ const JoinUs = () => {
               offset={-70}
               duration={500}
             >
-              <li className="hover:text-slate-200 max-md:text-[17px]">Contact Us</li>
+              <li className="hover:text-slate-300 max-md:text-[17px]">Contact Us</li>
             </Link>
           </ul>
         </div>
