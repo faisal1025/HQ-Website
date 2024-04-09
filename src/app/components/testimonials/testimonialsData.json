@@ -1,0 +1,33 @@
+
+[
+  {
+    "author": "Jayme Petracci",
+    "title": "The best overall service",
+    "content": "If you need a more complex example such as having buttons and dots/thumbnails, check out my other tutorial: How to Create a Carousel in NextJS using TailwindCSS and EmblaCarousel. It covers a more in-depth explanation of the implementation.",
+    "imgSrc": "https://randomuser.me/api/portraits/men/46.jpg"
+  },
+  {
+    "author": "Liuka Kivell",
+    "title": "The best overall service",
+    "content": "If you need a more complex example such as having buttons and dots/thumbnails, check out my other tutorial: How to Create a Carousel in NextJS using TailwindCSS and EmblaCarousel. It covers a more in-depth explanation of the implementation.",
+    "imgSrc": "https://randomuser.me/api/portraits/men/48.jpg"
+  },
+  {
+    "author": "Chrysler Grinikhinov",
+    "title": "Revenue increased by 50%",
+    "content": "If you need a more complex example such as having buttons and dots/thumbnails, check out my other tutorial: How to Create a Carousel in NextJS using TailwindCSS and EmblaCarousel. It covers a more in-depth explanation of the implementation.",
+    "imgSrc": "https://randomuser.me/api/portraits/men/49.jpg"
+  },
+  {
+    "author": "Kessiah Cornbell",
+    "title": "The best overall service",
+    "content": "If you need a more complex example such as having buttons and dots/thumbnails, check out my other tutorial: How to Create a Carousel in NextJS using TailwindCSS and EmblaCarousel. It covers a more in-depth explanation of the implementation.",
+    "imgSrc": "https://randomuser.me/api/portraits/men/50.jpg"
+  },
+  {
+    "author": "Wash Pont",
+    "title": "The best overall service",
+    "content": "If you need a more complex example such as having buttons and dots/thumbnails, check out my other tutorial: How to Create a Carousel in NextJS using TailwindCSS and EmblaCarousel. It covers a more in-depth explanation of the implementation.",
+    "imgSrc": "https://randomuser.me/api/portraits/men/51.jpg"
+  }
+]
