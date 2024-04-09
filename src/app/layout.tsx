@@ -27,9 +27,7 @@ export default function RootLayout({
           <main className="main-container">
             <PaymentModal />
             <ConfirmBookingModal />
-            <Navbar />
             {children}
-            <Footer />
           </main>
         </StoreProvider>
         <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>

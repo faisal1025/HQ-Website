@@ -2,19 +2,20 @@
 import React, {Suspense, useEffect} from 'react'
 
 import Image from "next/image";
-import {FaRegHeart, FaRegUserCircle, FaBars } from "react-icons/fa"
+import {FaRegHeart, FaRegUserCircle, FaBars, FaSearch } from "react-icons/fa"
 import { BsGlobe2 } from "react-icons/bs";
 import Logo from "../../../public/assets/Logo.png"
 import Link from 'next/link';
 import {Avatar, Dropdown, message} from 'antd'
 import type {MenuProps} from 'antd'
-import { setAuthAsync } from '../redux/authStateSlice';
+import { setAuth, setAuthAsync } from '../redux/authStateSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../redux/store';
 import Cookies from 'js-cookie';
 import { boolean } from 'yup';
 import { unsetToken } from '../utils/authHelper';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import SearchComponent from './SearchComponents/SearchComponent';
 
 
 const menus: MenuProps['items'] = [
@@ -42,17 +43,14 @@ const Navbar = () => {
   const {isAuthenticated, user} = useSelector((store: RootState) => store.authState)
   const dispatch = useDispatch<AppDispatch>()
   const {refresh} = useRouter()
+  const pathname = usePathname()
+  
   
   const handleLogout = () => {
     unsetToken()
     refresh()
-    dispatch(setAuthAsync())
-      .then(() => {
-        message.info(`logout successful`);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    dispatch(setAuth())
+    message.info('logout successfully')
   }
 
   const userMenu: MenuProps['items'] = [
@@ -73,13 +71,16 @@ const Navbar = () => {
           <Image src={Logo} alt="Logo" width={65} />
         </Link>
         <div className="flex flex-wrap text-black dark:text-white items-center justify-end gap-6 max-md:flex mr-4">
-            <Link
-              href="#"
-              className="flex items-center gap-2"
-            >
-              <i><FaRegHeart size={20} /></i>
-              <h5 className='lg:mt-0 md:mt-0 max-md:hidden'>Favroites</h5>
-            </Link>
+            {
+              pathname !== '/' &&
+              <Link
+                href="#"
+                className="flex items-center gap-2"
+              >
+                <i><FaSearch size={20} /></i>
+                <h5 className='lg:mt-0 md:mt-0 max-md:hidden'>Search</h5>
+              </Link>
+            }
           
             <Link
               href="#"

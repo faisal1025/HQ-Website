@@ -1,18 +1,23 @@
 'use client'
 
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
+import MainLayout from '../mainLayout/layout'
 
 const PaymentFaliure = () => {
+  const {back} = useRouter()
   return (
-    <div className='flex flex-col justify-center items-center h-screen'>
-      <h1 className='text-xl font-bold'>Payment faliure</h1>
-      <h3 className='text-base font-semibold text-blue-500'>
-        <Link href={'/'}>
-            Return back to home page and try again
-        </Link>
-      </h3>
-    </div>
+    <MainLayout>
+      <div className='flex flex-col justify-center items-center h-screen'>
+        <h1 className='text-xl font-bold'>Payment faliure</h1>
+        <h3 className='text-base font-semibold text-blue-500'>
+          <button onClick={() => back()}>
+              Return back
+          </button>
+        </h3>
+      </div>
+    </MainLayout>
   )
 }
 

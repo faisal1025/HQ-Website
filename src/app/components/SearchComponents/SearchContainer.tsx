@@ -2,8 +2,8 @@
 import React, { Dispatch } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import {useSelector, useDispatch} from 'react-redux' 
-import { AppDispatch, RootState } from '../redux/store'
-import { setSearchText } from '../redux/globalStateSlice'
+import { AppDispatch, RootState } from '../../redux/store'
+import { setSearchText } from '../../redux/globalStateSlice'
 
 const SearchContainer = ({className}: {className?:string}) => {
 

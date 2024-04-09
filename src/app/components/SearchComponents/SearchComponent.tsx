@@ -7,10 +7,10 @@ import GuestSelector from './GuestSelector';
 import type { Dayjs } from 'dayjs';
 import {useSelector, useDispatch} from 'react-redux'
 import { RangePickerProps } from 'antd/es/date-picker';
-import { AppDispatch, RootState, store } from '../redux/store';
-import { setDateVal } from '../redux/globalStateSlice';
+import { AppDispatch, RootState, store } from '../../redux/store';
+import { setDateVal } from '../../redux/globalStateSlice';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { baseUrl } from '../services/cityApi';
+import { baseUrl } from '../../services/cityApi';
 import moment from 'moment'
 
 type RangeValue = [Dayjs | null, Dayjs | null] | null;
