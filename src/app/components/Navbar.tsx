@@ -16,6 +16,8 @@ import { boolean } from 'yup';
 import { unsetToken } from '../utils/authHelper';
 import { useRouter, usePathname } from 'next/navigation';
 import SearchComponent from './SearchComponents/SearchComponent';
+import ThemeToggle from './ThemeToggle';
+import { setShowSearchBar } from '../redux/globalStateSlice';
 
 
 const menus: MenuProps['items'] = [
@@ -41,6 +43,7 @@ const menus: MenuProps['items'] = [
 
 const Navbar = () => {
   const {isAuthenticated, user} = useSelector((store: RootState) => store.authState)
+  const {showSearchBar} = useSelector((store: RootState) => store.globalState)
   const dispatch = useDispatch<AppDispatch>()
   const {refresh} = useRouter()
   const pathname = usePathname()
@@ -55,7 +58,7 @@ const Navbar = () => {
 
   const userMenu: MenuProps['items'] = [
     {
-      label: <Link href={`dashboard/${user.username}/my-booking`}>My Booking</Link>,
+      label: <Link href={`/dashboard/${user.username}/my-booking`}>My Booking</Link>,
       key: 1
     },
     {
@@ -73,22 +76,20 @@ const Navbar = () => {
         <div className="flex flex-wrap text-black dark:text-white items-center justify-end gap-6 max-md:flex mr-4">
             {
               pathname !== '/' &&
-              <Link
-                href="#"
+              <button
+                onClick={() => dispatch(setShowSearchBar(true))}
                 className="flex items-center gap-2"
               >
                 <i><FaSearch size={20} /></i>
                 <h5 className='lg:mt-0 md:mt-0 max-md:hidden'>Search</h5>
-              </Link>
+              </button>
             }
           
-            <Link
-              href="#"
-              className="flex items-center gap-2 max-md:hidden"
+            {/* <button
+              className="flex items-center gap-2"
             >
-              <i><BsGlobe2 size={20} /></i>
-              <h5 className='lg:mt-0 md:mt-0'>EN . $</h5>
-            </Link>
+              <ThemeToggle />
+            </button> */}
             {  
               isAuthenticated === true ? 
                 (

@@ -29,7 +29,7 @@ export default function Modal({ children, setModal }: modalProps) {
     <>
       {modal && (
         <dialog
-          className="flex z-50"
+          className="flex z-50 justify-center items-center"
           onClick={(e) => {
             e.stopPropagation();
             router.push(`${pathname}`);

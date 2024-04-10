@@ -8,7 +8,7 @@ import type { Dayjs } from 'dayjs';
 import {useSelector, useDispatch} from 'react-redux'
 import { RangePickerProps } from 'antd/es/date-picker';
 import { AppDispatch, RootState, store } from '../../redux/store';
-import { setDateVal } from '../../redux/globalStateSlice';
+import { setDateVal, setShowSearchBar } from '../../redux/globalStateSlice';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { baseUrl } from '../../services/cityApi';
 import moment from 'moment'
@@ -77,11 +77,11 @@ const SearchComponent = () => {
     }
 
     return (
-        <div className="flex flex-wrap max-w-7xl m-3 p-2 bg-white rounded-lg justify-center items-center">
+        <div className="flex flex-wrap max-w-7xl m-3 p-2 bg-white rounded-lg justify-center items-center" >
             <SearchContainer className="w-1/4 max-md:w-1/3" />
             <DateRangePicker className="w-1/3 max-md:w-1/3" onOk={onOk} />
             <GuestSelector className="w-1/5 max-md:w-1/3" />
-            <button className="rounded-full m-1 bg-gradient-to-r from-slate-500 to-slate-950 w-1/5 text-white max-md:w-1/3 max-sm:w-full h-12 active:scale-75 transition hover:opacity-80" onClick={(e) => {e.stopPropagation(); handleSearch();}}>Search</button>
+            <button className="rounded-full m-1 bg-gradient-to-r from-slate-500 to-slate-950 w-1/5 text-white max-md:w-1/3 max-sm:w-full h-12 active:scale-75 transition hover:opacity-80" onClick={(e) => {e.stopPropagation(); dispatch(setShowSearchBar(false)); handleSearch();}}>Search</button>
         </div>
     )
 }

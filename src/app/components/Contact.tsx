@@ -1,16 +1,27 @@
 "use client";
 import React, { useState } from "react";
 import { useRef } from "react";
-import { handleContactForm } from "../services/authApi";
+import { handleCallForm } from "../services/authApi";
+import { message } from "antd";
 
 const Contact = () => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    name: "",
+    email: "",
+    phone: ""
+  });
   const form = useRef(null);
 
   const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const response = await handleContactForm(input);
-    setInput("");
+    const response = await handleCallForm(input);
+    if(response.error === undefined)
+      message.success(response.msg)
+    setInput({
+      name: "",
+      email: "",
+      phone: ""
+    });
   };
 
   return (
@@ -29,20 +40,24 @@ const Contact = () => {
             type="text"
             placeholder="Enter Your Name"
             id="name"
+            value={input.name}
+            onChange={(e) => {setInput({...input, name: e.target.value})}}
             className="w-[45%] my-2 bg-slate-100 rounded h-8 px-3 font-bold "
           />
           <input
             type="email"
             placeholder="Enter Your Email Address"
             name="user_email"
-            value={input}
-            onChange={(e)=>{setInput(e.target.value)}}
+            value={input.email}
+            onChange={(e)=>{setInput({...input, email: e.target.value})}}
             className="w-[45%] my-2 bg-slate-100 rounded h-8 px-3 font-bold"
           />
           <input
-            type="text"
+            type="tel"
             placeholder="Enter Your Phone Number"
             id="phone"
+            value={input.phone}
+            onChange={(e)=>{setInput({...input, phone: e.target.value})}}
             className="w-[45%] my-2 bg-slate-100 rounded h-8 px-3 font-bold"
           />
           <button
@@ -83,6 +98,8 @@ const Contact = () => {
                     type="text"
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                     placeholder="Enter Your Name"
+                    value={input.name}
+                    onChange={(e) => {setInput({...input, name: e.target.value})}}
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -115,10 +132,8 @@ const Contact = () => {
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                     placeholder="Enter email"
                     name="user_email"
-                    value={input}
-                    onChange={(e) => {
-                      setInput(e.target.value);
-                    }}
+                    value={input.email}
+                    onChange={(e) => {setInput({...input, email: e.target.value})}}
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -150,9 +165,9 @@ const Contact = () => {
                     type="text"
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                     placeholder="Enter phone number"
-                    name="user_email"
-                    // value={input}
-                    // onChange={(e)=>{setInput(e.target.value)}}
+                    name="user_phone"
+                    value={input.phone}
+                    onChange={(e) => {setInput({...input, phone: e.target.value})}}
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -181,10 +196,6 @@ const Contact = () => {
               </div>
 
               <div className="flex items-center justify-between">
-                {/* <p className="text-sm text-gray-500">
-          No account?
-          <a className="underline" href="#">Sign up</a>
-        </p> */}
 
                 <button
                   type="submit"

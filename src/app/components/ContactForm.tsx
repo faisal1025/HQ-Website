@@ -14,7 +14,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="email-contact flex gap-4 justify-center items-center">
+    <div className="email-contact flex gap-4 justify-center items-center text-center">
       <form ref={form} onSubmit={sendEmail}>
         <input
           type="email"
@@ -38,29 +38,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-
-// import emailjs from "@emailjs/browser";
-// import { message } from "antd";
-// if (
-//   process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID &&
-//   process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID &&
-//   process.env.NEXT_PUBLIC_EMAILJS_USER_ID &&
-//   form.current
-// ) {
-//   emailjs
-//     .sendForm(
-//       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-//       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-//       form.current,
-//       process.env.NEXT_PUBLIC_EMAILJS_USER_ID
-//     )
-//     .then(
-//       (result) => {
-//         {func()}
-        
-//       },
-//       (error) => {
-//         alert(error.text);
-//       }
-//     );
-// }

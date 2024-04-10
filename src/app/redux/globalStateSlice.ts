@@ -20,7 +20,9 @@ type initialState = {
     rooms: rooms[],
     totalGuest: number,
     orderId: number | undefined,
-    bookingListChanged: boolean
+    bookingListChanged: boolean,
+    loading: boolean,
+    showSearchBar: boolean
 } 
 
 const initialState: initialState = {
@@ -37,7 +39,9 @@ const initialState: initialState = {
     ],
     totalGuest: 1,
     orderId: undefined,
-    bookingListChanged: false
+    bookingListChanged: false,
+    loading: false,
+    showSearchBar: false
 }
 
 const globalSateSlice = createSlice({
@@ -47,21 +51,27 @@ const globalSateSlice = createSlice({
         toggleMobileFilter: (state, action) => { 
             state.enableMobileFilter = action.payload;
         },
+        setLoading: (state, action) => {
+            state.loading = action.payload
+        },
         increaseGuest: (state, action) => {
-            if(state.rooms[action.payload].guest > 3) return;
+            if(state.rooms[action.payload].guest >= 3) return;
             state.rooms[action.payload].guest += 1;
             state.totalGuest += 1;
         },
         decreaseGuest: (state, action) => {
-            if(state.rooms[action.payload].guest <= 1) {
+            if(state.rooms[action.payload].guest <= 1 && state.rooms.length === 1) {
+                return
+            }else if(state.rooms[action.payload].guest <= 1 && state.rooms.length > 1) {
                 state.rooms = state.rooms.filter((room, ind) => {
                     return (ind !== action.payload);
                 })
                 state.totalGuest -= 1;
                 return;
+            } else {
+                state.rooms[action.payload].guest -= 1;
+                state.totalGuest -= 1;
             }
-            state.rooms[action.payload].guest -= 1;
-            state.totalGuest -= 1;
         },
         addRooms: (state) => {
             state.rooms = [...state.rooms, {guest: 1}]
@@ -87,6 +97,9 @@ const globalSateSlice = createSlice({
         },
         changeBookingList: (state, action) => {
             state.bookingListChanged = action.payload
+        },
+        setShowSearchBar: (state, action) => {
+            state.showSearchBar = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -95,4 +108,4 @@ const globalSateSlice = createSlice({
 })
 
 export default globalSateSlice.reducer;
-export const {toggleMobileFilter, increaseGuest, decreaseGuest, addRooms, setDateVal, changeBookingList, setOrderNumber, setShowCancleBooking, setSearchText, setShowBookModal, setItemForModal} = globalSateSlice.actions;
+export const {toggleMobileFilter, increaseGuest, setShowSearchBar, setLoading, decreaseGuest, addRooms, setDateVal, changeBookingList, setOrderNumber, setShowCancleBooking, setSearchText, setShowBookModal, setItemForModal} = globalSateSlice.actions;

@@ -65,9 +65,11 @@ export async function handleContactForm(value: string) {
   return contactInfo;
 }
 
-export async function handleCallForm(value: string) {
+export async function handleCallForm(value: {email: string, name: string, phone: string}) {
   const body = {
-    email: value,
+    email: value.email,
+    name: value.name,
+    phone: value.phone
   };
   const response = await fetch(`${baseUrl}/join_us`, {
     method: "POST",
@@ -102,7 +104,7 @@ export async function getMe() {
         }
     })
     const user = await response.json();
-    if(user.error.status === 401) {
+    if(user.error && user.error.status === 401) {
         throw new Error('User should be logged in')
     }else if(user.error){
         throw new Error('Something went wrong')
@@ -142,6 +144,9 @@ export async function getAllOrders(username: string) {
                 ...booking.hotel,
                 thumbnail: booking.hotel.thumbnail.url,
             },
+            givenRooms: booking.rooms.map((room: any) => {
+              return room.id
+            })
         }
     })
 
@@ -152,7 +157,6 @@ export async function getAllOrders(username: string) {
 }
 
 export async function handleForgotForm(value:{
-  email:string,
   password:string,
   confirm_password:string
 }, code: string | undefined){

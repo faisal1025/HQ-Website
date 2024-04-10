@@ -1,10 +1,21 @@
 import axios from "axios";
 import { amenities, city, hotels } from "../Schema";
+// const qs = require('qs');
+
+// const query = qs.stringify({
+//   filters: {
+//     hotels: {
+//         $not: [],
+//     },
+//   },
+// }, {
+//   encodeValuesOnly: true,
+// });
 
 export const baseUrl = process.env.NODE_ENV === 'production' ? process.env.API_BASE_URL_PROD : process.env.API_BASE_URL_DEV
 
 export const getAllStates = async () => {
-    const url = `${baseUrl}/states?populate=*`
+    const url = `${baseUrl}/states`
     const response = (await axios.get(url)).data;
 
     if(response.error){

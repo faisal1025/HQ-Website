@@ -104,11 +104,13 @@ export const LoginForm = () => {
         </form>
       )}
 
-      <span className="dark:text-white">
-        <span className="cursor-pointer ml-[30%]" onClick={getForget} >
-          Forgott Password ?
-        </span>
-      </span>
+      <div className="dark:text-white text-center">
+        <div className="cursor-pointer font-medium text-sm text-blue-500" onClick={getForget} >
+          {
+            forget ? "back to login" : "Forgot Password ?"
+          }
+        </div>
+      </div>
     </div>
   );
 };
