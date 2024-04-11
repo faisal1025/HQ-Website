@@ -6,14 +6,14 @@ import Link from "next/link";
 import CitiesList from "./components/CitiesList";
 import SearchComponent from "./components/SearchComponents/SearchComponent";
 import ContactForm from "./components/ContactForm";
-import { getAllStates } from "./services/cityApi";
+// import { getAllStates } from "./services/cityApi";
 import { getAllHotels } from "./services/hotelApi";
 import MainLayout from "./mainLayout/layout";
 
 export const dynamic = 'auto'
 
 export default async function Home() {
-  const cities = await getAllStates()
+  // const cities = await getAllStates()
   const hotels = await getAllHotels()
 
   return (
@@ -44,7 +44,7 @@ export default async function Home() {
       <section className="rounded-lg p-5  m-5  bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950 shadow-xl">
         <h3 className="dark:!text-white text-xl font-sans font-semibold">Popular Searches</h3>
         <div className={`relative mt-14`}>
-          <CitiesList list={cities.props.cities}/>
+          {/* <CitiesList list={cities.props.cities}/> */}
         </div>
       </section>
 
@@ -68,7 +68,7 @@ export default async function Home() {
               <h3 className="!text-white text-xl title-text" >Your Gateway to Blissful Stays</h3>
               <p className="!text-white para-text text-base">We are there for you every time every where</p>
               <ul className="grid grid-cols-3 max-md:grid-cols-2 gap-4 my-4 list-none">
-                {
+                {/* {
                   cities.props.cities && cities.props.cities.map((city, ind) => {
                     return (
                       <li key={city.id} className="title-text cursor-pointer text-blue-500 font-sans font-semibold">
@@ -78,7 +78,7 @@ export default async function Home() {
                       </li>
                     )
                   })
-                }
+                } */}
               </ul>
             </div>
           </div>

@@ -8,6 +8,8 @@ const SpecificationsCard = () => {
     alt=""
     src="https://images.unsplash.com/photo-1603871165848-0aa92c869fa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
     className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+    width={17}
+    height={16}
   />
 
   <div className="relative p-4 sm:p-6 lg:p-8">

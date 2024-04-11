@@ -9,6 +9,9 @@ import Contact from "../components/Contact";
 import Testimonials from "../components/testimonials/Testimonials";
 import Specifications from "../components/specifications/Specifications";
 
+import Back from "../../../public/assets/leftArrow.png";
+
+
 const JoinUs = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => {
@@ -16,15 +19,26 @@ const JoinUs = () => {
   };
 
   return (
-    <div className="bg-slate-200">
+    <div className="bg-slate-200 overflow-x-hidden">
       <div className="relative flex h-screen ">
-        <Image
-          className="w-full " //max-md:h-[50%]
+
+      {/* <Link to ='/'> */}
+      <a href="/">
+
+        <div className="flex gap-2 mt-3 ml-3 max-md:mt-3  cursor-pointer">
+          <Image src={Back} alt="back button" width={33} className="bg-slate-500 hover:bg-slate-600 "></Image>
+          <h3 className="font-bold text-xl">Home</h3>
+        </div>
+      </a>
+        {/* </Link> */}
+
+        <Image layout="responive"
+          className="w-full overflow-hidden max-md:h-[60%] " //max-md:h-[50%]
           src={five}
           alt="contact-bg"
-          width={130}
+          width={0}
         />
-        <div className="tracking-tighter absolute top-[4rem] left-10 max-w-full max-md:left-4 max-md:text-sm">
+        <div className="tracking-tighter absolute top-[4rem] left-10 max-w-full max-md:left-4 max-md:text-sm max-md:mt-9">
           <div className="font-bold text-5xl text-white max-md:text-2xl ">
             HQ EVENTS
           </div>
@@ -35,7 +49,7 @@ const JoinUs = () => {
             easy, Just for you.
           </div>
         </div>
-        <div className="tracking-tighter absolute top-[19px] left-[65%] max-w-full max-md:left-5">
+        <div className="tracking-tighter absolute top-[19px] left-[65%] max-w-full max-md:left-7 max-md:mt-6">
           <ul className=" flex flex-row gap-9 font-bold tracking-tighter text-white cursor-pointer text-xl">
         
 
@@ -69,7 +83,7 @@ const JoinUs = () => {
             </Link>
           </ul>
         </div>
-        <div className="tracking-tighter text-slate-500 absolute top-[53%]  max-w-full md:left-14 max-md:left-4 max-md:top-[30%]">
+        <div className="tracking-tighter text-slate-500 absolute top-[53%]  max-w-full md:left-14 max-md:left-4 max-md:top-[35%]">
           <div className="bg-white rounded text-[33px] font-bold f  px-2 max-md:text-[15px]">
             Become an HQ
           </div>
