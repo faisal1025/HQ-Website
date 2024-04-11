@@ -71,8 +71,10 @@ export default async function Home() {
                 {
                   cities.props.cities && cities.props.cities.map((city, ind) => {
                     return (
-                      <li key={city.id} className="title-text text-blue-500 font-sans font-semibold">
-                        {city.name}
+                      <li key={city.id} className="title-text cursor-pointer text-blue-500 font-sans font-semibold">
+                        <Link href={`/${city.slug}`}>
+                          {city.name}
+                        </Link>
                       </li>
                     )
                   })

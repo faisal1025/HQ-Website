@@ -24,7 +24,7 @@ export async function cancleRoomBooking(orderId: number | undefined, user: {
     })
 
     const status = await response.json()
-    if(status.error.status === 401) {
+    if(status.error && status.error.status === 401) {
         throw new Error('User should be logged in')
     }else if(status.error){
         throw new Error('Something went wrong')
@@ -52,10 +52,22 @@ export async function sendMailForCancleBooking(razorpay_payment_id: string, user
     })
 
     const status = await response.json()
-    if(status.error.status === 401) {
+    if(status.error && status.error.status === 401) {
         throw new Error('User should be logged in')
     }else if(status.error){
         throw new Error('Something went wrong')
     }
     return status
+}
+
+export async function getKey() {
+    const url = `${baseUrl}/getKey`
+    const response = await (await fetch(url, {
+        method: 'GET'
+    })).json()
+
+    if(response.error){
+        throw new Error('something went wrong')
+    }
+    return response
 }

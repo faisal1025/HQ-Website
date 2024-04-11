@@ -188,7 +188,7 @@ body {
 /* hotel page archive end */
 /* modal style start */
 dialog {
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 100%;
   z-index: 10;
@@ -196,9 +196,6 @@ dialog {
   top: 0;
   cursor: pointer;
   overflow-y: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border: none;
 }
 

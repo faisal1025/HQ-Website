@@ -95,11 +95,6 @@ export  const createOrder = async (value: {payableAmount: string | number}) => {
     })
     
     const checkout = await response.json();
-    if(checkout.error.status === 401) {
-        throw new Error('User should be logged in')
-    }else if(checkout.error){
-        throw new Error('Something went wrong')
-    }
     return checkout;
 }
 
@@ -115,8 +110,37 @@ export const checkAvailable = async (data: any) => {
     })
 
     const res = await response.json();
+    console.log("res", res);
+    
     if(res.error){
         throw new Error('Something went wrong')
     }
     return res;
+}
+
+export async function createPayAtHotel({payableAmount, user, hotel, checkin, checkout, givenRooms}: {payableAmount: string | number, user: {
+    username: string | undefined,
+    email: string | undefined,
+    id: string | undefined
+}, hotel: number, checkin: Date, checkout: Date, givenRooms: any}) {
+    const data = {
+        payableAmount,
+        user,
+        hotel,
+        checkin,
+        checkout,
+        givenRooms
+    }
+    const url = `${baseUrl}/pay-at-hotel`
+    const response = await (await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${getToken()}`
+        },
+        body: JSON.stringify(data)
+    })).json()
+  
+    return response
 }

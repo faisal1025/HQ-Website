@@ -11,14 +11,15 @@ import GuestSelector from "./SearchComponents/GuestSelector";
 import DateRangePicker from "./SearchComponents/DateRangePicker";
 import { getOffPercent, getSavingAmount } from "../utils/hotelDetailUtility";
 import { hotels } from "../Schema";
-import { checkAvailable, createOrder } from "../services/hotelApi";
+import { checkAvailable, createOrder, createPayAtHotel } from "../services/hotelApi";
 import { baseUrl } from "../services/cityApi";
 import { useSelector, useDispatch } from 'react-redux'
 import { AppDispatch, RootState } from "../redux/store";
 import { getMe } from "../services/authApi";
 import { useRouter } from "next/navigation";
-import { setDateVal } from "../redux/globalStateSlice";
+import { setDateVal, setLoading } from "../redux/globalStateSlice";
 import moment from 'moment';
+import {Divider, message} from 'antd'
 
 type RangeValue = [Dayjs | null, Dayjs | null] | null;
 
@@ -34,7 +35,21 @@ const PaymentCard = ({item}: {item: hotels}) => {
   const {user, isAuthenticated, token} = useSelector((store: RootState) => store.authState)
   const {dateVal, rooms, totalGuest} = useSelector((store: RootState) => store.globalState)
   const dispatch  = useDispatch<AppDispatch>() 
-  useEffect(() => {
+  
+  const onOk = (value: RangePickerProps["value"]) => {
+    dispatch(setDateVal(value));
+  };
+
+  const handlePayAtHotel = async  () => {
+    dispatch(setLoading(true))
+    const response = await createPayAtHotel({payableAmount: item.payableAmount, 
+      user,
+      hotel: item.id, 
+      checkin: resObject.checkin,
+      checkout: resObject.checkout,
+      givenRooms: resObject.givenRooms
+    })
+    dispatch(setLoading(false))
     setResObject({
       isAvailable: false,
       givenRooms: [],
@@ -42,29 +57,47 @@ const PaymentCard = ({item}: {item: hotels}) => {
       checkout: new Date(),
       info: ''
     })
-  }, [dateVal, rooms])
-
-  const onOk = (value: RangePickerProps["value"]) => {
-    dispatch(setDateVal(value));
-  };
-
+    if(response.error && response.error.status === 401){
+      message.error('User neeed to be authenticated')
+      throw new Error('User neeed to be authenticated')
+    }else if(response.error){
+      message.error('Something went wrong. Please try again')
+      throw new Error('Something went wrong. Please try again')
+    }
+    if(response.status === 200){
+      message.success('Your room is successfully booked. pay at hotel')
+    }else{
+      message.error("something went wrong ! rooms haven't booked try again")
+    }
+  }
+  
   const makeOrder = async () => {
-    const {data: {attributes, id}} = await createOrder({payableAmount: item.payableAmount})
+    dispatch(setLoading(true));
+    const {data, error} = await createOrder({payableAmount: item.payableAmount})
     const me = await getMe()
-    
-    const options = {
-        key: attributes.key, // Enter the Key ID generated from the Dashboard
-        amount: (attributes.amount*100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    dispatch(setLoading(false))
+    if(error && error.status === 401) {
+      message.error('User should be logged in')
+        throw new Error('User should be logged in')
+      }else if(error){
+        message.error('Something went wrong. Please try again')
+        throw new Error('Something went wrong')
+      }
+      
+      const options = {
+        key: data.attributes.key, // Enter the Key ID generated from the Dashboard
+        amount: (data.attributes.amount*100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: "INR",
         name: "HQ-Events",
         description: "Test Transaction",
         image: "https://example.com/your_logo",
-        order_id: id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         // callback_url: `${baseUrl}/paymentVerification?id=${me.id}&hotel=${item.id}`,
         handler: async function(response: any) {
           const value = {
-            id: me.id,
+            me: me,
             hotel: item.id,
+            amount: data.attributes.amount,
             checkin: resObject.checkin,
             checkout: resObject.checkout,
             givenRooms: resObject.givenRooms,
@@ -82,6 +115,13 @@ const PaymentCard = ({item}: {item: hotels}) => {
             body: JSON.stringify(value)
           })
           res = await res.json()
+          setResObject({
+            isAvailable: false,
+            givenRooms: [],
+            checkin: new Date(),
+            checkout: new Date(),
+            info: ''
+          })
           if(res.status === 200){
             push('/payment-success')
           }else{
@@ -89,51 +129,66 @@ const PaymentCard = ({item}: {item: hotels}) => {
           }
         },
         prefill: {
-            "name": me.username,
-            "email": me.email,
-            "contact": "9000090000"
+          "name": me.username,
+          "email": me.email,
+          "contact": "9000090000"
         },
         notes: {
-            "address": "Razorpay Corporate Office"
+          "address": "Razorpay Corporate Office"
         },
         theme: {
-            "color": "#121212"
+          "color": "#121212"
         }
-    };
-    const rzp1 = new (window as any).Razorpay(options)
-    rzp1.open();
-  }
-
-  const checkAvailability = async () => {
-    const checkIn = dateVal && dateVal[0]?.format('YYYY-MM-DD')
-    const checkOut = dateVal && dateVal[1]?.format('YYYY-MM-DD')
-    
-    const room = rooms.length;
-    const guest = totalGuest;
-    let room_config = rooms.reduce((pre, next, ind) => {
-        return pre += `${ind}_${next.guest}-`
-    }, "")
-    room_config = room_config.slice(0, -1);
-    const data = {
-      hotelId: item.id,
-      checkIn,
-      checkOut,
-      room_config,
-      room,
-      guest
+      };
+      const rzp1 = new (window as any).Razorpay(options)
+      rzp1.open();
     }
-    const res = await checkAvailable(data)
     
-    setResObject({
-      ...resObject,
-      givenRooms: res.givenRooms,
-      isAvailable: res.isAvailable,
-      checkin: res.checkin,
-      checkout: res.checkout,
-      info: res.isAvailable ? 'Rooms are available proceed' : 'Rooms are not available at this date'
-    })
-    
-  }
+    useEffect(() => {
+      const updatePayableAmount = () => {
+        const days = dateVal?.[1]?.diff(dateVal[0], 'days') || 1
+        item.payableAmount = (days*Number(item.price)*Number(rooms.length))+Number(item.taxAndFee)
+      }
+      setResObject({
+        isAvailable: false,
+        givenRooms: [],
+        checkin: new Date(),
+        checkout: new Date(),
+        info: ''
+      })
+      updatePayableAmount();
+    }, [dateVal, rooms, item])
+
+    const checkAvailability = async () => {
+      const checkIn = dateVal && dateVal[0]?.format('YYYY-MM-DD')
+      const checkOut = dateVal && dateVal[1]?.format('YYYY-MM-DD')
+      
+      const room = rooms.length;
+      const guest = totalGuest;
+      let room_config = rooms.reduce((pre, next, ind) => {
+          return pre += `${ind}_${next.guest}-`
+      }, "")
+      room_config = room_config.slice(0, -1);
+      const data = {
+        hotelId: item.id,
+        checkIn,
+        checkOut,
+        room_config,
+        room,
+        guest
+      }
+      const res = await checkAvailable(data)
+      
+      setResObject({
+        ...resObject,
+        givenRooms: res.givenRooms,
+        isAvailable: res.isAvailable,
+        checkin: res.checkin,
+        checkout: res.checkout,
+        info: res.isAvailable ? 'Rooms are available proceed' : 'Rooms are not available at this date'
+      })
+      
+    }
 
   return (
     <section className="p-2 max-md:text-sm">
@@ -181,7 +236,11 @@ const PaymentCard = ({item}: {item: hotels}) => {
             </div>
             {
               resObject.isAvailable ?
-                <button className="w-full h-9 rounded bg-green-500 hover:bg-green-600 font-semibold my-2" onClick={() => {isAuthenticated ? makeOrder() : push('/login')}}>Continue to Book</button>
+                <div>
+                  <button className="w-full h-9 rounded bg-green-500 hover:bg-green-600 font-semibold my-2" onClick={() => {isAuthenticated ? makeOrder() : push('/login')}}>Continue to Book</button>
+                  <Divider>or</Divider>
+                  <button className="w-full h-9 text-white rounded-full active:scale-75 transition bg-gradient-to-r from-slate-800 to-slate-600 font-semibold my-2" onClick={() => {isAuthenticated ? handlePayAtHotel() : push('/login')}}>Pay at hotel</button>
+                </div>
               :
                 <button className="w-full h-9 rounded bg-yellow-500 hover:bg-yellow-600 font-semibold my-2" onClick={() => {checkAvailability()}}>Check Availability</button>
             }

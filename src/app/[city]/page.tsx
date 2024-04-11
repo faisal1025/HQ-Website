@@ -19,11 +19,15 @@ const City = async ({params, searchParams}: {params: {city: string}, searchParam
                 <MobileFilterSortBy />
                 {
                     city.hotels && (
-                        city.hotels.map((hotel: hotels)=> {
-                            return (
-                                <HotelCardVertical key={hotel.id} city={city.slug} item={hotel} />
-                            )
-                        })
+                        city.hotels.length > 0 ? 
+                            city.hotels.map((hotel: hotels)=> {
+                                return (
+                                    <HotelCardVertical key={hotel.id} city={city.slug} item={hotel} />
+                                )
+                            }) : 
+                            <div className='flex h-screen justify-center items-center'>
+                                {'No Any Hotels Found :('}
+                            </div>
                     )
                 }
                 {

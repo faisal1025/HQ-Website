@@ -56,6 +56,8 @@ export interface booking {
     razorpay_order_id: string,
     razorpay_payment_id: string,
     razorpay_signature: string,
+    givenRooms: [],
+    amount: number,
     checkin: string,
     checkout: string,
     createdAt: string,

@@ -23,7 +23,7 @@ import { MdAdd } from 'react-icons/md'
                 )
             })  
         }
-        <div className='flex justify-end p-1 pt-2 items-center'>
+        <div className='flex justify-end pt-4 items-center'>
             <button onClick={() => dispatch(addRooms())} className='flex text-blue-500 text-[12px] justify-end w-fit items-center gap-1'>
                 <MdAdd /> 
                 <div className='w-max'>

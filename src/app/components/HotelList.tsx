@@ -67,7 +67,7 @@ const HotelList = ({list}:{list: hotels[]}) => {
             }
           },
           {
-            breakpoint: 420,
+            breakpoint: 540,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1

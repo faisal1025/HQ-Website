@@ -25,17 +25,17 @@ const LoginSignupComponent = () => {
 
           <Divider className="dark:text-white">
             {showLogin ? (
-              <span className="dark:text-white">
-                Not have an account ?
-                <span className="cursor-pointer" onClick={toggelForm}>
-                  Signup
+              <span className="dark:text-white text-base font-medium text-slate-500">
+                {'Not have an account ? '}
+                <span className="cursor-pointer text-blue-500" onClick={toggelForm}>
+                  {'Signup'}
                 </span>
               </span>
             ) : (
-              <span className="dark:text-white">
-                Already have Account ?
-                <span className="cursor-pointer" onClick={toggelForm}>
-                  Login
+              <span className="dark:text-white text-base font-medium text-slate-500">
+                {'Already have Account ? '}
+                <span className="cursor-pointer text-blue-500" onClick={toggelForm}>
+                  {'Login'}
                 </span>
               </span>
             )}
