@@ -9,6 +9,7 @@ import CrouselComponent from "@/app/components/HotelDetailPageComponents/Crousel
 import { getHotelById } from "@/app/services/hotelApi";
 import { amenities } from "@/app/Schema";
 import MainLayout from "@/app/mainLayout/layout";
+import Map from "@/app/components/Map";
 
 
 const HotelDetails = async ({params}: {params: {hotel: string}}) => {
@@ -163,6 +164,7 @@ const HotelDetails = async ({params}: {params: {hotel: string}}) => {
                                         <Image src={Image1} alt="fs" width={120} height={150} className="rounded"/>
                                     </div>
                                 </div>
+                                <Map/>
                         </div>
                     </div>
 

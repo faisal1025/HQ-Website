@@ -6,7 +6,7 @@ import testmonialData from "./testimonialsData.json";
 
 const Testimonials = () => {
   return (
-    <div className="testimonials">
+    <div className="testimonials max-md:my-[-70%]">
     <main
       className={`flex  flex-col items-center justify-between py-2`}
     >

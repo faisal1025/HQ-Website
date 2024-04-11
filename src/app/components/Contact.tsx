@@ -26,9 +26,9 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact_us ">
+    <div className="contact_us max-md:my-[-50%]">
       <div className="content p-5 mt-3 border-solid border-2 border-slate-500 ">
-        <h1 className="flex items-center justify-center font-bold text-[30px] max-md:text-md tracking-tighter max-md:text-sm">
+        <h1 className="flex items-center justify-center font-bold text-[30px] max-md:text-md tracking-tighter max-md:text-[20px]">
           Get Associated With HQ
         </h1>
         {/* <form
@@ -213,6 +213,8 @@ const Contact = () => {
               alt=""
               src="https://images.unsplash.com/photo-1630450202872-e0829c9d6172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
               className="absolute inset-0 h-full w-full object-cover"
+              width={16}
+              height={16}
             />
           </div>
         </section>
