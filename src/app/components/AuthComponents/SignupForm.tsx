@@ -52,7 +52,7 @@ export const SignupForm = () => {
     }else if(error){
       message.error(error.message)
     }
-  }, [register, error])
+  }, [register, error, back, dispatch])
 
   return (
     <form className="w-full" onSubmit={handleSubmit}>

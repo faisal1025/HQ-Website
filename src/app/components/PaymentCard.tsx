@@ -157,7 +157,7 @@ const PaymentCard = ({item}: {item: hotels}) => {
         info: ''
       })
       updatePayableAmount();
-    }, [dateVal, rooms])
+    }, [dateVal, rooms, item])
 
     const checkAvailability = async () => {
       const checkIn = dateVal && dateVal[0]?.format('YYYY-MM-DD')

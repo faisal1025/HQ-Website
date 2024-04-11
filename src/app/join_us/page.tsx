@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
 
 

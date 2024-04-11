@@ -51,7 +51,7 @@ export const LoginForm = () => {
     }else if(error){
       message.error(error.message)
     }
-  }, [login, error]);
+  }, [login, error, back, dispatch]);
 
   const [forget, setForget] = useState(false);
   const getForget = () => {

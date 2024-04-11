@@ -31,7 +31,7 @@ const MyBooking = ({params}: {params: {username: string}}) => {
         }
         getBookingDetails()
         setLoading(false)
-    }, [bookingListChanged])
+    }, [bookingListChanged, params.username])
     return (
         <MainLayout>
             <section className="rounded-lg p-5  m-5  bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950 shadow-xl">

@@ -9,6 +9,7 @@ import Script from "next/script";
 import ConfirmBookingModal from "./components/BookingPageComponents/ConfirmBookingModal";
 import LoadingOutlay from "./components/HotelDetailPageComponents/Loading";
 import SearchBar from "./components/SearchBar";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <StoreProvider>
           <main className="main-container">
-            <SearchBar />
+            <Suspense>
+              <SearchBar />
+            </Suspense>
             <LoadingOutlay />
             <PaymentModal />
             <ConfirmBookingModal />
