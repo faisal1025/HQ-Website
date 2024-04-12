@@ -92,7 +92,7 @@ const BookingCardVertical = ({item} : {item:booking}) => {
                 <div className='flex flex-col justify-start min-w-[52%] hotel-container py-2 max-md:w-[80%] max-sm:w-full max-sm:px-2'>
                     <Link href={`/${item.hotel.state.slug}/${item.hotel.slug}`}>
                         <h2 className='text-2xl font-sans font-semibold capitalize tracking-tight'>{ item.hotel.name }</h2>
-                        <h2 className='text-base text-slate-800 ont-sans font-medium capitalize'>{ `${item.hotel.address}, ${item.hotel.city}` }</h2>
+                        <h2 className='text-base text-slate-800 dark:text-slate-400 ont-sans font-medium capitalize'>{ `${item.hotel.address}, ${item.hotel.city}` }</h2>
                         <div className='flex gap-1 items-center py-2 text-xs font-sans capitalize font-semibold'>
                             <div className='px-1 py-1 flex gap-1 items-center w-fit bg-green-600 text-white'>{item.hotel.rating} <i className='inline-block m-auto p-auto'><MdOutlineStarPurple500 size={14} /></i></div> {" "}
                             <div>( {item.hotel.reviews?.length} Ratings ) . {getRatingStatus(item.hotel.rating)}</div>
@@ -109,7 +109,7 @@ const BookingCardVertical = ({item} : {item:booking}) => {
                         <div className='transaction-block flex justify-between items-center'>
                             <div>{`Order Id: ${item.razorpay_order_id}`}</div>
                             <div>
-                                {`Status: `} <span className={`${item.Status === 'Confirmed' ? 'text-green-700' : item.Status === 'Check In' ? 'text-yellow-700' : 'text-red-700'}`}>{item.Status}</span>
+                                {`Status: `} <span className={`${item.Status === 'Confirmed' ? 'text-green-700 dark:text-green-500' : item.Status === 'Check In' ? 'text-yellow-700' : 'text-red-700'}`}>{item.Status}</span>
                             </div>
                         </div>
                         <div className='flex justify-end items-center gap-4'>    

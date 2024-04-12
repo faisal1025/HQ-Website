@@ -4,8 +4,12 @@ import { useRef } from "react";
 import { handleCallForm } from "../services/authApi";
 import { message } from "antd";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../redux/store";
+import { setLoading } from "../redux/globalStateSlice";
 
 const Contact = () => {
+  const dispatch = useDispatch<AppDispatch>()
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -15,9 +19,15 @@ const Contact = () => {
 
   const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log("input", input);
+    dispatch(setLoading(true))
     const response = await handleCallForm(input);
+    dispatch(setLoading(false))
     if(response.error === undefined)
       message.success(response.msg)
+    else{
+      message.error('Something went wrong. Please try again')
+    }
     setInput({
       name: "",
       email: "",
