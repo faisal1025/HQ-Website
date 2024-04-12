@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import SearchComponent from './SearchComponents/SearchComponent'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../redux/store'
@@ -25,7 +25,9 @@ const SearchBar = () => {
                 }}
             >
                 <div className='my-40' onClick={(e) => e.stopPropagation()}>
-                    <SearchComponent />
+                    <Suspense>
+                        <SearchComponent />
+                    </Suspense>
                 </div>
             </dialog>
         </div>

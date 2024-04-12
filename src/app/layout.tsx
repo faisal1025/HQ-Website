@@ -28,9 +28,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <StoreProvider>
           <main className="main-container">
-            <Suspense>
-              <SearchBar />
-            </Suspense>
+            <SearchBar />
             <LoadingOutlay />
             <PaymentModal />
             <ConfirmBookingModal />
