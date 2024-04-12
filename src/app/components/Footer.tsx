@@ -6,8 +6,13 @@ import { FaFacebookF } from "react-icons/fa";
 import Logo from "../../../public/assets/Logo.png"
 import Link from 'next/link';
 import Script from 'next/script';
+import { getAllStates } from '../services/cityApi';
+import { city } from '../Schema';
 
-const Footer = () => {
+const Footer = async () => {
+
+  const cities = await getAllStates()
+
   return (
     <div className='main mt-4 rounded-md bg-gradient-to-b from-indigo-300 to-indigo-200 dark:from-slate-800 dark:to-slate-700 tracking-tight'>
 
@@ -17,28 +22,28 @@ const Footer = () => {
                       <h3 className='flex justify-center text-xl max-sm:text-base mt-3 font-bold'>HQ Hotels</h3>
 
                       <div className="flex gap-4 py-2 justify-evenly">
-                        <ul className='flex flex-col max-w-fit gap-4 cursor-pointer'>
-                            <li className='hover:underline'>Hotel in Delhi</li>
-                            <li  className='hover:underline'>Hotel in Jaipur</li>
-                            <li  className='hover:underline'>Hotel in Delhi</li>
-                            <li  className='hover:underline'>Hotel in Jaipur</li>
+                        <ul className='flex flex-col items-center max-w-fit gap-4 cursor-pointer'>
+                          {
+                            cities.props.cities.slice(0, 4).map((city: city) => {
+                              return <Link key={city.id} href={`/${city.slug}`}>
+                                  <li className='hover:underline'>Hotel in {city.name}</li>
+                              </Link>
+                            })
+                          }
+                         
                         </ul>
-                        <ul className='second-hotel-footer-col flex flex-col max-w-fit gap-4 cursor-pointer'>
-                            <li className='hover:underline'>Hotel in Delhi</li>
-                            <li  className='hover:underline'>Hotel in Jaipur</li>
-                            <li  className='hover:underline'>Hotel in Delhi</li>
-                            <li  className='hover:underline'>Hotel in Jaipur</li>
-                        </ul>
+                        {/* <ul className='second-hotel-footer-col flex flex-col max-w-fit gap-4 cursor-pointer'>
+                        </ul> */}
                       </div>            
               </div>
               <div className="three flex items-center flex-col  px-2 lg:mt-3">
                   <h3 className='flex mt-3 text-xl max-sm:text-base font-bold'>General</h3>
                   <div className="py-2">
                       <ul className='flex gap-4 items-center flex-col '>
-                          <li className='cursor-pointer  hover:underline'>About Us</li>
-                          <li className='cursor-pointer  hover:underline'>Join Us</li>
-                          <li className='cursor-pointer  hover:underline'>Contact Us</li>
-                          <li className='cursor-pointer  hover:underline'>Hotel in Jaipur</li>
+                          <Link href={'/about_us'} className='cursor-pointer  hover:underline'>About Us</Link>
+                          <Link href={'/join_us'} className='cursor-pointer  hover:underline'>Join Us</Link>
+                          {/* <Link href={'/login'} className='cursor-pointer  hover:underline'>Sign In</Link> */}
+                         
                       </ul>
                   </div>
               </div>
