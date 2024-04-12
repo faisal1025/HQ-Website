@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -9,9 +10,18 @@ import Script from 'next/script';
 import { getAllStates } from '../services/cityApi';
 import { city } from '../Schema';
 
-const Footer = async () => {
+const Footer = () => {
 
-  const cities = await getAllStates()
+  const [cities, setCities] = useState<city[]>([])
+
+  useEffect(() => {
+    const getFooterStates = async () => {
+      const cities = await getAllStates()
+      setCities(cities.props.cities)
+    }
+    getFooterStates();
+  }, [])
+
 
   return (
     <div className='main mt-4 rounded-md bg-gradient-to-b from-indigo-300 to-indigo-200 dark:from-slate-800 dark:to-slate-700 tracking-tight'>
@@ -24,7 +34,7 @@ const Footer = async () => {
                       <div className="flex gap-4 py-2 justify-evenly">
                         <ul className='flex flex-col items-center max-w-fit gap-4 cursor-pointer'>
                           {
-                            cities.props.cities.slice(0, 4).map((city: city) => {
+                            cities.slice(0, 4).map((city: city) => {
                               return <Link key={city.id} href={`/${city.slug}`}>
                                   <li className='hover:underline'>Hotel in {city.name}</li>
                               </Link>
