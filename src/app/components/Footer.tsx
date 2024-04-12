@@ -25,7 +25,7 @@ const Footer = async () => {
                         <ul className='flex flex-col items-center max-w-fit gap-4 cursor-pointer'>
                           {
                             cities.props.cities.slice(0, 4).map((city: city) => {
-                              return <Link href={`/${city.slug}`}>
+                              return <Link key={city.id} href={`/${city.slug}`}>
                                   <li className='hover:underline'>Hotel in {city.name}</li>
                               </Link>
                             })
