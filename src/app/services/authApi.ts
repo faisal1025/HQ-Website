@@ -71,7 +71,7 @@ export async function handleCallForm(value: {email: string, name: string, phone:
     name: value.name,
     phone: value.phone
   };
-  const response = await fetch(`${baseUrl}/join_us`, {
+  const response = await fetch(`${baseUrl}/join-us`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -79,7 +79,8 @@ export async function handleCallForm(value: {email: string, name: string, phone:
     body: JSON.stringify(body),
   });
   const callInfo = await response.json();
-
+  console.log("callInfo", callInfo);
+  
   return callInfo;
 }
 

@@ -45,7 +45,7 @@ const MyBooking = ({params}: {params: {username: string}}) => {
                                     Currently, You have done no bookings
                                 </div>
                             ) : (
-                                <div className='min-h-[80vh] flex justify-center items-center flex-col'>
+                                <div className='min-h-[80vh] flex justify-start items-center flex-col'>
                                     {
                                         result.allBooking.map((item: booking) => {
                                             return (

@@ -3,7 +3,6 @@ import Image from "next/image";
 import React, { Suspense, useState } from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
 
-
 import five from "../../../public/assets/5.jpg";
 import Contact from "../components/Contact";
 import Testimonials from "../components/testimonials/Testimonials";
@@ -23,20 +22,21 @@ const JoinUs = () => {
       <div className="relative flex h-screen ">
 
       {/* <Link to ='/'> */}
-      <a href="/">
+        <a href="/">
 
-        <div className="flex gap-2 mt-3 ml-3 max-md:mt-3  cursor-pointer">
-          <Image src={Back} alt="back button" width={33} className="bg-slate-500 hover:bg-slate-600 "></Image>
-          <h3 className="font-bold text-xl">Home</h3>
-        </div>
-      </a>
+          <div className="flex gap-2 mt-3 ml-3 max-md:mt-3  cursor-pointer">
+            <Image src={Back} alt="back button" width={33} className="bg-slate-500 hover:bg-slate-600 "></Image>
+            <h3 className="font-bold text-xl">Home</h3>
+          </div>
+        </a>
         {/* </Link> */}
 
-        <Image layout="responive"
+        <Image
           className="w-full overflow-hidden max-md:h-[60%] " //max-md:h-[50%]
           src={five}
           alt="contact-bg"
-          width={0}
+          width={130}
+          layout="responsive"
         />
         <div className="tracking-tighter absolute top-[4rem] left-10 max-w-full max-md:left-4 max-md:text-sm max-md:mt-9">
           <div className="font-bold text-5xl text-white max-md:text-2xl ">

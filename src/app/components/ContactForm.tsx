@@ -2,14 +2,26 @@
 import React, { useState } from "react";
 import { useRef } from "react";
 import { handleContactForm } from "../services/authApi";
+import { message } from "antd";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../redux/store";
+import { setLoading } from "../redux/globalStateSlice";
 
 const ContactForm = () => {
   const [input, setInput] = useState("");
+  const dispatch = useDispatch<AppDispatch>()
   const form = useRef(null);
 
   const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    dispatch(setLoading(true))
     const response = await handleContactForm(input);
+    dispatch(setLoading(false))
+    if(response.error === undefined){
+      message.success(response.msg)
+    }else{
+      message.error('something went wrong. please try again')
+    }
     setInput('');
   };
 
