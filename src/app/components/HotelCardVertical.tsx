@@ -12,15 +12,14 @@ import PaymentCard from './PaymentCard';
 import { amenities, hotels } from '../Schema';
 import { useSelector, useDispatch } from 'react-redux'
 import { AppDispatch, RootState } from '../redux/store';
-import { setItemForModal, setShowBookModal } from '../redux/globalStateSlice';
+import PaymentModal from './PaymentModal';
+import { setShowBookModal } from '../redux/globalStateSlice';
 
 const HotelCardVertical = ({item, city}: {item: hotels, city: string}) => {
-
-    const {showBookNowModal} = useSelector((store: RootState) => store.globalState)
+    
     const dispatch = useDispatch<AppDispatch>()
     
     const openPaymentModal = () => {
-        dispatch(setItemForModal(item));
         dispatch(setShowBookModal(true));
     }
 
@@ -58,6 +57,7 @@ const HotelCardVertical = ({item, city}: {item: hotels, city: string}) => {
                             <span className='text-green-600'>{getOffPercent(item.originalPrice, item.price)} % off</span>
                         </div>
                        {/* modal space */}
+                       <PaymentModal item={item} />
                         <div className='flex items-end gap-2'>
                             <Link href={`${city}/${item.slug}`} className='text-sm para-text action-button transition active:scale-75 p-2 px-4 border-2 border-solid border-black rounded-full'>View Details</Link>
                             <Link href={`?modal=true`} className='text-sm para-text action-button transition active:scale-75 bg-slate-950 border-2 border-solid border-black text-white p-2 px-4 rounded-full' onClick={openPaymentModal}>Book Now</Link>

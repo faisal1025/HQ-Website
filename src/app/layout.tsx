@@ -30,7 +30,6 @@ export default function RootLayout({
           <main className="main-container">
             <SearchBar />
             <LoadingOutlay />
-            <PaymentModal />
             <ConfirmBookingModal />
             {children}
           </main>
