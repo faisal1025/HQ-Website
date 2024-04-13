@@ -15,7 +15,6 @@ type initialState = {
     enableMobileFilter: boolean,
     showBookNowModal: boolean,
     showCancleBooking: boolean,
-    itemForModal: any,
     dateVal: RangePickerProps['value'] | undefined,
     rooms: rooms[],
     totalGuest: number,
@@ -30,7 +29,6 @@ const initialState: initialState = {
     dateVal: [dayjs(moment().format('YYYY/MM/DD'), dateFormat), dayjs(moment().add(1, 'days').format('YYYY/MM/DD'), dateFormat)],
     showBookNowModal: false,
     showCancleBooking: false,
-    itemForModal: null,
     enableMobileFilter: true,
     rooms: [
         {
@@ -86,9 +84,6 @@ const globalSateSlice = createSlice({
         setShowBookModal: (state, action) => {
             state.showBookNowModal = action.payload
         },
-        setItemForModal: (state, action) => {
-            state.itemForModal = action.payload
-        },
         setShowCancleBooking: (state, action) => {
             state.showCancleBooking = action.payload
         },
@@ -108,4 +103,4 @@ const globalSateSlice = createSlice({
 })
 
 export default globalSateSlice.reducer;
-export const {toggleMobileFilter, increaseGuest, setShowSearchBar, setLoading, decreaseGuest, addRooms, setDateVal, changeBookingList, setOrderNumber, setShowCancleBooking, setSearchText, setShowBookModal, setItemForModal} = globalSateSlice.actions;
+export const {toggleMobileFilter, increaseGuest, setShowSearchBar, setLoading, decreaseGuest, addRooms, setDateVal, changeBookingList, setOrderNumber, setShowCancleBooking, setSearchText, setShowBookModal} = globalSateSlice.actions;
