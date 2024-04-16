@@ -5,6 +5,7 @@ import { handleForgotForm } from "../services/authApi";
 import MainLayout from "../mainLayout/layout";
 import { useFormik } from "formik";
 import { resetSchema } from "@/schemas";
+import { useRouter } from "next/navigation";
 
 const initialValues = {
   password:'',
@@ -12,21 +13,20 @@ const initialValues = {
 }
 
 const ResetPassword = ({searchParams}:{searchParams?:{code: string}}) => {
-  
-  const [formData, setFormData] = useState(initialValues);
+  const {push} = useRouter()
 
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } =
   useFormik({
     initialValues: initialValues,
     validationSchema: resetSchema,
     onSubmit: async (values, action) => {
-      const response = await handleForgotForm(formData, searchParams?.code);
+      const response = await handleForgotForm(values, searchParams?.code);
       if(response.error === undefined){
         message.success('Your password successfully changed login with your new password')
       }else{
         message.error("something went wrong please try again.")
       }
-      setFormData(initialValues)
+      push('/login')
     },
   });
 
