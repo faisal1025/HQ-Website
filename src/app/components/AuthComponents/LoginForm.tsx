@@ -23,24 +23,25 @@ export const LoginForm = () => {
   const [error, setError] = useState<errorResponse>()
   const [login, setLogin] = useState<loginResponse>()
   const dispatch = useDispatch<AppDispatch>()
-  const {user} = useSelector((store: RootState) => store.authState)
   const {back} = useRouter()
 
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } =
-    useFormik({
-      initialValues: initialValues,
-      validationSchema: signInSchema,
-      onSubmit: async (values, action) => {
-        const login = await loginUser(values);
+  useFormik({
+    initialValues: initialValues,
+    validationSchema: signInSchema,
+    onSubmit: async (values, action) => {
+      const login = await loginUser(values);
 
-        if (login.error === undefined) {
-          setLogin(login);
-        } else {
-          setError(login.error);
-        }
-        action.resetForm();
-      },
-    });
+      if (login.error === undefined) {
+        setLogin(login);
+      } else {
+        console.log("login", login);
+        
+        setError(login.error);
+      }
+      action.resetForm();
+    },
+  });
 
   useEffect(() => {
     if(login){
@@ -80,7 +81,7 @@ export const LoginForm = () => {
             onBlur={handleBlur}
           />
           {errors.identifier && touched.identifier ? (
-            <p className="text-sm text-red-500">{errors.identifier}</p>
+            <p className="text-sm text-red-500 drop-shadow-xl">{errors.identifier}</p>
           ) : null}
           <input
             className="rounded-full my-1 dark:bg-slate-500 dark:text-white text-base w-full p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
@@ -93,7 +94,7 @@ export const LoginForm = () => {
             onBlur={handleBlur}
           />
           {errors.password && touched.password ? (
-            <p className="text-sm text-red-500">{errors.password}</p>
+            <p className="text-sm text-red-500 drop-shadow-xl">{errors.password}</p>
           ) : null}
           <button
             type="submit"

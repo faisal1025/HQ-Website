@@ -16,23 +16,23 @@ const LoginSignupComponent = () => {
 
   return (
     <div className="w-[30rem]">
-      <Card>
-        <div className="card-header p-4 text-[30px] max-md:text-xl">
+      <div className="bg-black bg-opacity-30 px-8 py-10 rounded-md border">
+        <div className="card-header p-4 text-[30px] max-md:text-xl text-white">
           <h1>Login/Signup</h1>
         </div>
         <div className="card-content p-4 text-lg">
           {showLogin ? <LoginForm /> : <SignupForm />}
 
-          <Divider className="dark:text-white">
+          <Divider className="text-slate-200">
             {showLogin ? (
-              <span className="dark:text-white text-base font-medium text-slate-500">
+              <span className="text-slate-200 text-base font-medium">
                 {'Not have an account ? '}
                 <span className="cursor-pointer text-blue-500" onClick={toggelForm}>
                   {'Signup'}
                 </span>
               </span>
             ) : (
-              <span className="dark:text-white text-base font-medium text-slate-500">
+              <span className="text-slate-200 text-base font-medium">
                 {'Already have Account ? '}
                 <span className="cursor-pointer text-blue-500" onClick={toggelForm}>
                   {'Login'}
@@ -41,7 +41,7 @@ const LoginSignupComponent = () => {
             )}
           </Divider>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };
