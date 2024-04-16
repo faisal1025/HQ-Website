@@ -1,24 +1,23 @@
-import Image from "next/image";
 import React from "react";
-import Back from "../../../public/assets/leftArrow.png";
 import Link from "next/link";
+
+import Image from "next/image";
+
+import { IoMdHome } from "react-icons/io";
 
 const page = () => {
   return (
     <div className="overflow-x-hidden">
       <div>
         <Link href="/">
-          <div className="flex gap-2 mt-3 ml-3 max-md:mt-3  cursor-pointer">
-            <Image
-              src={Back}
-              alt="back button"
-              width={33}
-              className="bg-slate-500 hover:bg-slate-600"
-            ></Image>
-            <h3 className="font-bold text-xl">Home</h3>
+          <div className="flex mt-3 ml-3 max-md:mt-3 cursor-pointer">
+            <IoMdHome className=" w-8 h-6 " />
+            <h3 className="font-bold text-xl max-md:text-sm max-md:my-1">
+              Home
+            </h3>
           </div>
         </Link>
-        <h1 className="ml-[43%] text-4xl font-bold max-md:text-[30px] max-md:ml-[34%] max-lg:ml-[37%] tracking-tight">
+        <h1 className="ml-[43%] text-4xl font-bold max-md:text-[30px] max-md:ml-[32%] max-lg:ml-[37%] tracking-tight">
           ABOUT US
         </h1>
       </div>
@@ -324,9 +323,13 @@ const page = () => {
               </svg>
 
               <h2 className="mt-6 text-xl font-bold text-white">Call Us</h2>
-
-              <p className="mt-1 text-sm text-gray-300">+91-8282323232</p>
-              <p className="mt-1 text-sm text-gray-300">+91-7282323232</p>
+              <a href="tel:8282323232" className="mt-1 text-sm text-gray-300">
+                +91-8282323232
+              </a>
+              <br />
+              <a href="tel:7282323232" className="mt-1 text-sm text-gray-300">
+                +91-7282323232
+              </a>
             </a>
 
             <a className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
@@ -349,7 +352,12 @@ const page = () => {
 
               <h2 className="mt-4 text-xl font-bold text-white">Email Us</h2>
 
-              <p className="mt-1 text-sm text-gray-300">Hqevents@outlook.com</p>
+              <a
+                href="mailto:Hqevents@outlook.com"
+                className="mt-1 text-sm text-gray-300"
+              >
+                Hqevents@outlook.com
+              </a>
             </a>
 
             <a className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
@@ -373,7 +381,8 @@ const page = () => {
               <h2 className="mt-4 text-xl font-bold text-white">Address</h2>
 
               <p className="mt-1 text-sm text-gray-300">
-                Floor-8, Real Estate Building, Noida Sector-54, New Delhi - 110063
+                Floor-8, Real Estate Building, Noida Sector-54, New Delhi -
+                110063
               </p>
             </a>
           </div>
