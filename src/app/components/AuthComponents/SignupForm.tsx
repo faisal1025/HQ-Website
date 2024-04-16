@@ -24,7 +24,6 @@ export const SignupForm = () => {
   const [error, setError] = useState<errorResponse>()
   const [register, setRegister] = useState<loginResponse>()
   const dispatch = useDispatch<AppDispatch>()
-  const {user} = useSelector((store: RootState) => store.authState)
   const {back} = useRouter()
 
   const {values,errors,handleBlur,handleChange,handleSubmit,touched} = useFormik({
@@ -66,7 +65,7 @@ export const SignupForm = () => {
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      {errors.username && touched.username ? <p className="text-sm text-red-500">{errors.username}</p>:null}
+      {errors.username && touched.username ? <p className="text-sm text-red-500 drop-shadow-xl">{errors.username}</p>:null}
       <input
         className="rounded-full my-1 dark:bg-slate-500 dark:text-white mb-1 text-base w-full p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
         autoSave="false"
@@ -77,7 +76,7 @@ export const SignupForm = () => {
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      {errors.email && touched.email ? <p className="text-sm text-red-500">{errors.email}</p>:null}
+      {errors.email && touched.email ? <p className="text-sm text-red-500 drop-shadow-xl">{errors.email}</p>:null}
       <input
         className="rounded-full my-1 dark:bg-slate-500 dark:text-white text-base w-full p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
         type="password"
@@ -87,7 +86,7 @@ export const SignupForm = () => {
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      {errors.password && touched.password ? <p className="text-sm text-red-500">{errors.password}</p>:null}
+      {errors.password && touched.password ? <p className="text-sm text-red-500 drop-shadow-xl">{errors.password}</p>:null}
 
       <input
         className="rounded-full my-1 dark:bg-slate-500 dark:text-white text-base w-full p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
@@ -98,7 +97,7 @@ export const SignupForm = () => {
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      {errors.confirm_password && touched.confirm_password ? <p className="text-sm text-red-500">{errors.confirm_password}</p>:null}
+      {errors.confirm_password && touched.confirm_password ? <p className="text-sm text-red-500 drop-shadow-xl">{errors.confirm_password}</p>:null}
       <button type="submit" className="rounded-full my-4 bg-gradient-to-r from-slate-500 to-slate-950 w-full text-white h-12 active:scale-75 transition hover:opacity-80">
         SignUp
       </button>

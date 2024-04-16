@@ -37,7 +37,8 @@
     "slick-carousel": "^1.8.1",
     "slick-slider": "^1.8.2",
     "swiper": "^11.0.6",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "yup-password": "^0.4.0"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",

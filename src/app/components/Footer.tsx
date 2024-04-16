@@ -24,7 +24,7 @@ const Footer = () => {
 
 
   return (
-    <div className='main mt-4 rounded-md bg-gradient-to-b from-indigo-300 to-indigo-200 dark:from-slate-800 dark:to-slate-700 tracking-tight'>
+    <div className='main mt-0 rounded-md bg-gradient-to-b from-indigo-300 to-indigo-200 dark:from-slate-800 dark:to-slate-700 tracking-tight'>
 
         <div className="sub_main py-4 justify-around flex flex-row-reverse gap-3 flex-wrap text-base max-md:text-sm font-sans">
             <div className='flex justify-around gap-2 w-2/4 max-sm:w-full'>

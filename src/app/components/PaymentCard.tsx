@@ -24,6 +24,7 @@ import {Divider, message} from 'antd'
 type RangeValue = [Dayjs | null, Dayjs | null] | null;
 
 const PaymentCard = ({item}: {item: hotels}) => {
+  const [loading, setloading] = useState(false)
   const {push} = useRouter()
   const [resObject, setResObject] = useState({
     isAvailable: false,
@@ -165,7 +166,7 @@ const PaymentCard = ({item}: {item: hotels}) => {
       
       const room = rooms.length;
       const guest = totalGuest;
-      let room_config = rooms.reduce((pre, next, ind) => {
+      let room_config = rooms.reduce((pre: string, next: { guest: any; }, ind: any) => {
           return pre += `${ind}_${next.guest}-`
       }, "")
       room_config = room_config.slice(0, -1);
@@ -177,8 +178,9 @@ const PaymentCard = ({item}: {item: hotels}) => {
         room,
         guest
       }
+      setloading(true)
       const res = await checkAvailable(data)
-      
+      setloading(false)
       setResObject({
         ...resObject,
         givenRooms: res.givenRooms,
@@ -242,7 +244,10 @@ const PaymentCard = ({item}: {item: hotels}) => {
                   <button className="w-full h-9 text-white rounded-full active:scale-75 transition bg-gradient-to-r from-slate-800 to-slate-600 font-semibold my-2" onClick={() => {isAuthenticated ? handlePayAtHotel() : push('/login')}}>Pay at hotel</button>
                 </div>
               :
-                <button className="w-full h-9 rounded bg-yellow-500 hover:bg-yellow-600 font-semibold my-2" onClick={() => {checkAvailability()}}>Check Availability</button>
+                <button className="w-full h-9 rounded bg-yellow-500 hover:bg-yellow-600 font-semibold my-2" onClick={() => {checkAvailability()}}>{loading ? <div className='flex gap-2 justify-center items-center'>
+                  <span>Checking</span><Image alt='loader' src={'/assets/SpinnerSm.svg'} width={20} height={20} />
+                </div> :
+                'Check Availability'}</button>
             }
             {
               resObject.isAvailable ? 

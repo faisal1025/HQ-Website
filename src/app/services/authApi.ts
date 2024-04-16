@@ -28,9 +28,6 @@ export async function registerUser(value: registerModal) {
   });
 
   const register = await response.json();
-    if(register.error){
-        throw new Error('something went wrong')
-    }
   return register;
 }
 
@@ -43,9 +40,6 @@ export async function loginUser(value: loginModal) {
     body: JSON.stringify(value),
   });
   const login = await response.json();
-if(login.error) {
-        throw new Error('something went wrong')
-    }
   return login;
 }
 
