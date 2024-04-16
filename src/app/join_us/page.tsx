@@ -7,9 +7,7 @@ import five from "../../../public/assets/5.jpg";
 import Contact from "../components/Contact";
 import Testimonials from "../components/testimonials/Testimonials";
 import Specifications from "../components/specifications/Specifications";
-
-import Back from "../../../public/assets/leftArrow.png";
-
+import { IoMdHome } from "react-icons/io";
 
 const JoinUs = () => {
   const [click, setClick] = useState(false);
@@ -20,23 +18,20 @@ const JoinUs = () => {
   return (
     <div className="bg-slate-200 overflow-x-hidden">
       <div className="relative flex h-screen ">
-
-      {/* <Link to ='/'> */}
         <a href="/">
-
-          <div className="flex gap-2 mt-3 ml-3 max-md:mt-3  cursor-pointer">
-            <Image src={Back} alt="back button" width={33} className="bg-slate-500 hover:bg-slate-600 "></Image>
-            <h3 className="font-bold text-xl">Home</h3>
+          <div className="flex mt-3 ml-3 max-md:mt-3  cursor-pointer">
+            <IoMdHome className=" w-8 h-6 " />
+            <h3 className="font-bold text-xl max-md:text-sm max-md:my-1">
+              Home
+            </h3>
           </div>
         </a>
-        {/* </Link> */}
-
         <Image
           className="w-full overflow-hidden max-md:h-[60%] " //max-md:h-[50%]
           src={five}
           alt="contact-bg"
           width={130}
-          layout="responsive"
+          layout="" //responsive
         />
         <div className="tracking-tighter absolute top-[4rem] left-10 max-w-full max-md:left-4 max-md:text-sm max-md:mt-9">
           <div className="font-bold text-5xl text-white max-md:text-2xl ">
@@ -49,10 +44,8 @@ const JoinUs = () => {
             easy, Just for you.
           </div>
         </div>
-        <div className="tracking-tighter absolute top-[19px] left-[65%] max-w-full max-md:left-7 max-md:mt-6">
-          <ul className=" flex flex-row gap-9 font-bold tracking-tighter text-white cursor-pointer text-xl">
-        
-
+        <div className="tracking-tighter absolute top-[19px] left-[65%] max-w-full max-md:left-7 max-md:mt-6 md:left-[45%] lg:left-[60%]">
+          <ul className=" flex flex-row gap-9 font-bold tracking-tighter text-white cursor-pointer text-xl ">
             <Link
               to="testimonials"
               spy={true}
@@ -60,7 +53,9 @@ const JoinUs = () => {
               offset={-70}
               duration={500}
             >
-              <li className="hover:text-slate-300 max-md:text-[17px]">Testimonials</li>
+              <li className="hover:text-slate-300  max-md:text-[15px]">
+                Testimonials
+              </li>
             </Link>
             <Link
               to="specifications"
@@ -69,7 +64,9 @@ const JoinUs = () => {
               offset={-70}
               duration={500}
             >
-              <li className="hover:text-slate-300 max-md:text-[17px]">Specifications</li>
+              <li className="hover:text-slate-300 max-md:text-[15px]">
+                Specifications
+              </li>
             </Link>
 
             <Link
@@ -79,7 +76,9 @@ const JoinUs = () => {
               offset={-70}
               duration={500}
             >
-              <li className="hover:text-slate-300 max-md:text-[17px]">Contact Us</li>
+              <li className="hover:text-slate-300 max-md:text-[15px]">
+                Contact Us
+              </li>
             </Link>
           </ul>
         </div>
@@ -109,7 +108,7 @@ const JoinUs = () => {
       </div>
       <div className="">
         <Testimonials />
-        <Specifications/>
+        <Specifications />
         <Contact />
       </div>
     </div>
