@@ -84,7 +84,7 @@ export async function handleForgot(value: string) {
   };
 
   const response = await axios
-      .post('http://localhost:1337/api/auth/forgot-password', {
+      .post(`${baseUrl}/auth/forgot-password`, {
         email: email,
       })
   return response.data;
@@ -157,7 +157,7 @@ export async function handleForgotForm(value:{
 }, code: string | undefined){
 
   const response = await axios
-  .post('http://localhost:1337/api/auth/reset-password', {
+  .post(`${baseUrl}/auth/reset-password`, {
     code: code,
     password: value.password,
     passwordConfirmation: value.confirm_password,
