@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { setLoading } from "../redux/globalStateSlice";
 
+import glad from '../../../public/assets/glad.jpeg'
+
 const Contact = () => {
   const dispatch = useDispatch<AppDispatch>()
   const [input, setInput] = useState({
@@ -85,12 +87,6 @@ const Contact = () => {
               <h1 className="text-2xl font-bold sm:text-3xl">
                 Get started today!
               </h1>
-
-              <p className="mt-4 text-gray-500">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-                libero nulla eaque error neque ipsa culpa autem, at itaque
-                nostrum!
-              </p>
             </div>
 
             <form
@@ -221,10 +217,11 @@ const Contact = () => {
           <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
             <Image
               alt=""
-              src="https://images.unsplash.com/photo-1630450202872-e0829c9d6172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+              // src="https://images.unsplash.com/photo-1630450202872-e0829c9d6172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+              src={glad}
               className="absolute inset-0 h-full w-full object-cover"
-              width={16}
-              height={16}
+              width={300}
+              height={300}
             />
           </div>
         </section>
