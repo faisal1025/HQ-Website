@@ -38,48 +38,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact_us max-md:my-[-50%]">
-      <div className="content p-5 mt-3 border-solid border-2 border-slate-500 ">
+    <div className="contact_us">
+      <div className="content p-5 mt-3 border-solid border-2 border-slate-500 bg-gradient-to-r dark:from-slate-800 dark:to-slate-600 to-cyan-100 from-violet-300">
         <h1 className="flex items-center justify-center font-bold text-[30px] max-md:text-md tracking-tighter max-md:text-[20px]">
           Get Associated With HQ
         </h1>
-        {/* <form
-          className="flex flex-col w-full items-center justify-center  max-md:text-[10px] mt-3"
-          action=""
-          ref={form}
-          onSubmit={sendEmail}
-        >
-          <input
-            type="text"
-            placeholder="Enter Your Name"
-            id="name"
-            value={input.name}
-            onChange={(e) => {setInput({...input, name: e.target.value})}}
-            className="w-[45%] my-2 bg-slate-100 rounded h-8 px-3 font-bold "
-          />
-          <input
-            type="email"
-            placeholder="Enter Your Email Address"
-            name="user_email"
-            value={input.email}
-            onChange={(e)=>{setInput({...input, email: e.target.value})}}
-            className="w-[45%] my-2 bg-slate-100 rounded h-8 px-3 font-bold"
-          />
-          <input
-            type="tel"
-            placeholder="Enter Your Phone Number"
-            id="phone"
-            value={input.phone}
-            onChange={(e)=>{setInput({...input, phone: e.target.value})}}
-            className="w-[45%] my-2 bg-slate-100 rounded h-8 px-3 font-bold"
-          />
-          <button
-            type="submit"
-            className="w-[45%] my-2 bg-blue-400 hover:bg-blue-600 rounded h-8 px-3 font-bold"
-          >
-            Request Call
-          </button>
-        </form> */}
 
         <section className="relative flex flex-wrap lg:h-screen lg:items-center mt-6">
           <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">

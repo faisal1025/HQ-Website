@@ -221,10 +221,10 @@ const page = () => {
               <FaPhone className="w-14 text-pink-500 h-6"/>
 
               <h2 className="mt-6 text-xl font-bold text-white">Call Us</h2>
-              <a href="tel:8282323232" className="mt-1 text-sm text-gray-300">
+              <Link href="tel:8282323232" className="mt-1 text-sm text-gray-300">
                 +91-9654888027
 
-              </a>
+              </Link>
               {/* <br />
               <a href="tel:7282323232" className="mt-1 text-sm text-gray-300">
                 +91-7282323232
@@ -236,12 +236,12 @@ const page = () => {
 
               <h2 className="mt-4 text-xl font-bold text-white">Email Us</h2>
 
-              <a
-                href="mailto:Hqevents@outlook.com"
+              <Link
+                href="mailto:contact@hqevents.in"
                 className="mt-1 text-sm text-gray-300"
               >
               contact@hqevents.in
-            </a>
+            </Link>
             </a>
 
             <a className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
@@ -362,6 +362,6 @@ const page = () => {
     to [Hotel Name].
   </p>
 </div> */}
-</div>;
+</div>
 
 export default page;
