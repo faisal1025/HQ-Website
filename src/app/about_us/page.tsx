@@ -4,6 +4,19 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { IoMdHome } from "react-icons/io";
+import { IoIosApps } from "react-icons/io";
+import { FaCartFlatbed } from "react-icons/fa6";
+import { MdEmojiEvents } from "react-icons/md";
+import { FaEnvira } from "react-icons/fa";
+import { MdSurroundSound } from "react-icons/md";
+import { GiReceiveMoney } from "react-icons/gi";
+import { FaPhone } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { MdMyLocation } from "react-icons/md";
+
+import about_1 from '../../../public/assets/about_1.avif'
+import about_2 from '../../../public/assets/about_2.avif'
+
 
 const page = () => {
   return (
@@ -17,7 +30,7 @@ const page = () => {
             </h3>
           </div>
         </Link>
-        <h1 className="ml-[43%] text-4xl font-bold max-md:text-[30px] max-md:ml-[32%] max-lg:ml-[37%] tracking-tight">
+        <h1 className="dark:text-white ml-[43%] text-4xl font-bold max-md:text-[30px] max-md:ml-[32%] max-lg:ml-[37%] tracking-tight">
           ABOUT US
         </h1>
       </div>
@@ -28,7 +41,7 @@ const page = () => {
             <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full">
               <Image
                 alt="about our company"
-                src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                src={about_1}
                 className="absolute inset-0 h-full w-full object-cover"
                 width={100}
                 height={100}
@@ -39,21 +52,14 @@ const page = () => {
             <div className="lg:py-24">
               <h2 className="text-3xl font-bold sm:text-3xl">The First Step</h2>
 
-              <p className="mt-4 text-gray-600 text-lg font-bold text-wrap">
+              <p className="dark:text-white mt-4 text-gray-600 text-lg font-bold text-wrap">
                 Our journey got started as HQ events in year 2017 with top notch
                 service in managing events at various occasions. We managed
                 events at different hotels, the occasions includes national,
-                international, domestic as well as personal evnets, we got
-                rewarded as top events management company by ITC in different
+                international, domestic as well as personal events, we got
+                rewarded as top events management company through different
                 years.
               </p>
-
-              {/* <a
-                href="#"
-                className="mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
-              >
-                Get Started Today
-              </a> */}
             </div>
           </div>
         </div>
@@ -66,7 +72,7 @@ const page = () => {
               <div className="relative h-64 sm:h-80 lg:h-full">
                 <Image
                   alt="about our journey"
-                  src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                  src={about_2}
                   className="absolute inset-0 h-full w-full object-cover"
                   width={100}
                   height={100}
@@ -79,7 +85,7 @@ const page = () => {
               <span className="hidden lg:absolute lg:inset-y-0 lg:-start-16 lg:block lg:w-16 lg:bg-gray-100"></span>
 
               <div className="p-8 sm:p- lg:p-24">
-                <h2 className="text-4xl font-bold sm:text-3xl">
+                <h2 className="text-4xl font-bold sm:text-3xl dark:text-black">
                   The Second step - JOURNEY TOWARDS THE SUCCESS.
                 </h2>
 
@@ -108,7 +114,7 @@ const page = () => {
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 bg-slate-100">
           <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="mx-auto max-w-lg text-center lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
-              <h2 className="text-3xl font-bold sm:text-4xl">
+              <h2 className="text-3xl font-bold sm:text-4xl dark:text-black">
                 What make us different?
               </h2>
 
@@ -118,40 +124,18 @@ const page = () => {
                 as HQ events in year 2017 with top notch service in managing
                 events at various occasions. We managed events at different
                 hotels, the occasions includes national, international, domestic
-                as well as personal evnets, we got rewarded as top events
-                management company by ITC in different years.
+                as well as personal events, we got rewarded as top events
+                management company through different years.
               </p>
-
-              {/* <a
-                href="#"
-                className="mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
-              >
-                Get Started Today
-              </a> */}
             </div>
 
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 dark:text-black">
               <a className="hover:bg-slate-200 block rounded-xl border border-gray-200 p-4 shadow-sm hover:border-gray-400 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
                 <span className="inline-block rounded-lg bg-gray-50 p-3">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+                  <FaCartFlatbed />
                 </span>
 
-                <h2 className="mt-2 font-bold">Accoomodation</h2>
+                <h2 className="mt-2 font-bold dark:text-black">Accoomodation</h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   Accomodation with best comfort and eassy.
@@ -159,23 +143,8 @@ const page = () => {
               </a>
 
               <a className="hover:bg-slate-200 block rounded-xl border border-gray-200 p-4 shadow-sm hover:border-gray-400 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
-                <span className="inline-block rounded-lg bg-gray-50 p-3">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+                <span className="inline-block rounded-lg bg-gray-50 p-3 ">
+                  <IoIosApps />
                 </span>
 
                 <h2 className="mt-2 font-bold">Amenities</h2>
@@ -187,22 +156,7 @@ const page = () => {
 
               <a className="hover:bg-slate-200 block rounded-xl border border-gray-200 p-4 shadow-sm hover:border-gray-400 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
                 <span className="inline-block rounded-lg bg-gray-50 p-3">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+                  <MdEmojiEvents/>
                 </span>
 
                 <h2 className="mt-2 font-bold">Events</h2>
@@ -214,22 +168,8 @@ const page = () => {
 
               <a className="hover:bg-slate-200 block rounded-xl border border-gray-200 p-4 shadow-sm hover:border-gray-400 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
                 <span className="inline-block rounded-lg bg-gray-50 p-3">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+
+                  <FaEnvira/>
                 </span>
 
                 <h2 className="mt-2 font-bold">Eco-friendly</h2>
@@ -241,22 +181,8 @@ const page = () => {
 
               <a className="hover:bg-slate-200 block rounded-xl border border-gray-200 p-4 shadow-sm hover:border-gray-400 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
                 <span className="inline-block rounded-lg bg-gray-50 p-3">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+ 
+                  <MdSurroundSound/>
                 </span>
 
                 <h2 className="mt-2 font-bold">Surroundings</h2>
@@ -268,22 +194,8 @@ const page = () => {
 
               <a className="hover:bg-slate-200 block rounded-xl border border-gray-200 p-4 shadow-sm hover:border-gray-400 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
                 <span className="inline-block rounded-lg bg-gray-50 p-3">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+
+                  <GiReceiveMoney/>
                 </span>
 
                 <h2 className="mt-2 font-bold">Cost effecient</h2>
@@ -305,50 +217,22 @@ const page = () => {
 
           <div className="mt-5 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <a className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-10 text-pink-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                />
-              </svg>
+
+              <FaPhone className="w-14 text-pink-500 h-6"/>
 
               <h2 className="mt-6 text-xl font-bold text-white">Call Us</h2>
               <a href="tel:8282323232" className="mt-1 text-sm text-gray-300">
-                +91-8282323232
+                +91-9654888027
+
               </a>
-              <br />
+              {/* <br />
               <a href="tel:7282323232" className="mt-1 text-sm text-gray-300">
                 +91-7282323232
-              </a>
+              </a> */}
             </a>
 
             <a className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-10 text-pink-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                />
-              </svg>
+              <MdEmail className="w-8 text-pink-500 h-6"/>
 
               <h2 className="mt-4 text-xl font-bold text-white">Email Us</h2>
 
@@ -356,33 +240,16 @@ const page = () => {
                 href="mailto:Hqevents@outlook.com"
                 className="mt-1 text-sm text-gray-300"
               >
-                Hqevents@outlook.com
-              </a>
+              contact@hqevents.in
+            </a>
             </a>
 
             <a className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-10 text-pink-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                />
-              </svg>
-
+              <MdMyLocation className="w-8 text-pink-500 h-6"/>
               <h2 className="mt-4 text-xl font-bold text-white">Address</h2>
 
               <p className="mt-1 text-sm text-gray-300">
-                Floor-8, Real Estate Building, Noida Sector-54, New Delhi -
-                110063
+              2nd Floor, F35/4, Okhla Phase - 2,  New Delhi - 110020
               </p>
             </a>
           </div>

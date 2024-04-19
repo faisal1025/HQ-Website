@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import one from '../../../../public/assets/1.png'
+import user from '../../../../public/assets/user.jpg'
 
 type Props = {
   title: string;
@@ -20,7 +20,7 @@ const TestimonialCard = (props: Props) => {
           height={80}
           width={80}
           // src={props.imgSrc}
-          src={one}
+          src={user}
         />
       </div>
       <div>
