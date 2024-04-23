@@ -77,70 +77,70 @@ const HotelDetails = async ({params}: {params: {hotel: string}}) => {
                                         <div className="w-full py-2">
                                             <div className="flex justify-between mt-1 ">
                                                 <div className="mb-1 text-base flex items-center gap-1 dark:text-white ml-4 text-[13px] max-md:">
-                                                    {hotel.rating} <i><MdOutlineStar /></i>
+                                                    {5} <i><MdOutlineStar /></i>
                                                 </div>
                                                 <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
-                                                    90%
+                                                    60%
                                                 </h4>
                                             </div>
                                             <div className="w-full max-md:w-full my-1 bg-gray-200 rounded-full h-1 dark:bg-gray-900">
-                                                <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[90%]"></div>
+                                                <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[60%]"></div>
                                             </div>
                                         </div>
 
                                         <div className="w-full py-2">
                                             <div className="flex justify-between mt-1 ">
                                                 <div className="mb-1 text-base flex items-center gap-1 dark:text-white ml-4 text-[13px] max-md:">
-                                                    {hotel.rating} <i><MdOutlineStar /></i>
+                                                    {4} <i><MdOutlineStar /></i>
                                                 </div>
                                                 <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
-                                                    90%
+                                                    25%
                                                 </h4>
                                             </div>
                                             <div className="w-full max-md:w-full my-1 bg-gray-200 rounded-full h-1 dark:bg-gray-900">
-                                                <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[90%]"></div>
+                                                <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[25%]"></div>
                                             </div>
                                         </div>
 
                                         <div className="w-full py-2">
                                             <div className="flex justify-between mt-1 ">
                                                 <div className="mb-1 text-base flex items-center gap-1 dark:text-white ml-4 text-[13px] max-md:">
-                                                    {hotel.rating} <i><MdOutlineStar /></i>
+                                                    {3} <i><MdOutlineStar /></i>
                                                 </div>
                                                 <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
-                                                    90%
+                                                    10%
                                                 </h4>
                                             </div>
                                             <div className="w-full max-md:w-full my-1 bg-gray-200 rounded-full h-1 dark:bg-gray-900">
-                                                <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[90%]"></div>
+                                                <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[10%]"></div>
                                             </div>
                                         </div>
 
                                         <div className="w-full py-2">
                                             <div className="flex justify-between mt-1 ">
                                                 <div className="mb-1 text-base flex items-center gap-1 dark:text-white ml-4 text-[13px] max-md:">
-                                                    {hotel.rating} <i><MdOutlineStar /></i>
+                                                    {2} <i><MdOutlineStar /></i>
                                                 </div>
                                                 <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
-                                                    80%
+                                                    3%
                                                 </h4>
                                             </div>
                                             <div className="w-full max-md:w-full my-1 bg-gray-200 rounded-full h-1 dark:bg-gray-900">
-                                                <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[80%]"></div>
+                                                <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[3%]"></div>
                                             </div>
                                         </div>
 
                                         <div className="w-full py-2">
                                             <div className="flex justify-between mt-1 ">
                                                 <div className="mb-1 text-base flex items-center gap-1 dark:text-white ml-4 text-[13px] max-md:">
-                                                    {hotel.rating} <i><MdOutlineStar /></i>
+                                                    {1} <i><MdOutlineStar /></i>
                                                 </div>
                                                 <h4 className="ml-[80%] text-[12px] text-base max-md:ml-[58%]">
-                                                    70%
+                                                    2%
                                                 </h4>
                                             </div>
                                             <div className="w-full max-md:w-full my-1 bg-gray-200 rounded-full h-1 dark:bg-gray-900">
-                                                <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[70%]"></div>
+                                                <div className="bg-red-500 h-1 rounded-full dark:bg-blue-500 w-[2%]"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -164,7 +164,7 @@ const HotelDetails = async ({params}: {params: {hotel: string}}) => {
                                         <Image src={Image1} alt="fs" width={120} height={150} className="rounded"/>
                                     </div>
                                 </div>
-                                <Map/>
+                                {/* <Map/> */}
                         </div>
                     </div>
 
