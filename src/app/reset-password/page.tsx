@@ -14,12 +14,14 @@ const initialValues = {
 
 const ResetPassword = ({searchParams}:{searchParams?:{code: string}}) => {
   const {push} = useRouter()
+  console.log(searchParams?.code)
 
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } =
   useFormik({
     initialValues: initialValues,
     validationSchema: resetSchema,
     onSubmit: async (values, action) => {
+      console.log(searchParams?.code)
       const response = await handleForgotForm(values, searchParams?.code);
       console.log("reset-password", response);
       
