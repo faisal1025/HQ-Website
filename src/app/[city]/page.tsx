@@ -22,7 +22,9 @@ const City = async ({params, searchParams}: {params: {city: string}, searchParam
                         city.hotels.length > 0 ? 
                             city.hotels.map((hotel: hotels)=> {
                                 return (
-                                    <HotelCardVertical key={hotel.id} city={city.slug} item={hotel} />
+                                    <Suspense>
+                                        <HotelCardVertical key={hotel.id} city={city.slug} item={hotel} />
+                                    </Suspense>
                                 )
                             }) : 
                             <div className='flex h-screen justify-center items-center'>

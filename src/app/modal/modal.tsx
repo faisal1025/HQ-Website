@@ -32,7 +32,7 @@ export default function Modal({ children, setModal }: modalProps) {
           className="flex z-50 justify-center items-center"
           onClick={(e) => {
             e.stopPropagation();
-            router.push(`${pathname}`);
+            router.back();
             dispatch(setModal(false));
             const elem = document.body;
             elem.classList.remove("fixedPosition");
@@ -49,7 +49,7 @@ export default function Modal({ children, setModal }: modalProps) {
               className="close-modal-btn"
               onClick={() => {
                 dispatch(setModal(false));
-                router.push(`${pathname}`);
+                router.back();
                 const elem = document.body;
                 elem.classList.remove("fixedPosition");
               }}

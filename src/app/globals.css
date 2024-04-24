@@ -354,3 +354,7 @@ dialog {
   }
 }
 /* booking style end */
+
+[type='button'], [type='reset'], [type='submit']{
+  background-color: #00000073;
+}
