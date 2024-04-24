@@ -27,8 +27,8 @@ const page = async ({searchParams}: {searchParams: {page?: string, query?: strin
                     hotels && (
                         hotels.map((hotel: hotels)=> {
                             return (
-                                <Suspense>
-                                    <HotelCardVertical key={hotel.id} city={hotel.state.slug} item={hotel} />
+                                <Suspense key={hotel.id}>
+                                    <HotelCardVertical city={hotel.state.slug} item={hotel} />
                                 </Suspense>
                             )
                         })

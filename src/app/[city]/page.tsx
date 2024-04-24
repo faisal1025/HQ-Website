@@ -22,8 +22,8 @@ const City = async ({params, searchParams}: {params: {city: string}, searchParam
                         city.hotels.length > 0 ? 
                             city.hotels.map((hotel: hotels)=> {
                                 return (
-                                    <Suspense>
-                                        <HotelCardVertical key={hotel.id} city={city.slug} item={hotel} />
+                                    <Suspense key={hotel.id}>
+                                        <HotelCardVertical city={city.slug} item={hotel} />
                                     </Suspense>
                                 )
                             }) : 
