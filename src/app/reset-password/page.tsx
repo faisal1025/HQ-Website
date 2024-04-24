@@ -21,6 +21,8 @@ const ResetPassword = ({searchParams}:{searchParams?:{code: string}}) => {
     validationSchema: resetSchema,
     onSubmit: async (values, action) => {
       const response = await handleForgotForm(values, searchParams?.code);
+      console.log("reset-password", response);
+      
       if(response.error === undefined){
         message.success('Your password successfully changed login with your new password')
       }else{
