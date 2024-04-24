@@ -155,7 +155,8 @@ export async function handleForgotForm(value:{
   password:string,
   confirm_password:string
 }, code: string | undefined){
-
+  console.log("password value: ", value.password, value.confirm_password, code);
+  
   const response = await axios
   .post(`${baseUrl}/auth/reset-password`, {
     code: code,

@@ -9,7 +9,7 @@ import Pagination from '../components/Pagination';
 const page = async ({searchParams}: {searchParams: {page?: string, query?: string, checkIn?: string, checkOut?: string, rooms?: string, guest?: string}}) => {
     const params = new URLSearchParams(searchParams)
     const {props} = await getSearchHotels(params.toString());
-    const {hotels, pagination} = props;
+    const {hotels, pagination} = props
 
     return (
         <CityLayout>
@@ -27,7 +27,9 @@ const page = async ({searchParams}: {searchParams: {page?: string, query?: strin
                     hotels && (
                         hotels.map((hotel: hotels)=> {
                             return (
-                                <HotelCardVertical key={hotel.id} city={hotel.state.slug} item={hotel} />
+                                <Suspense key={hotel.id}>
+                                    <HotelCardVertical city={hotel.state.slug} item={hotel} />
+                                </Suspense>
                             )
                         })
                     )
