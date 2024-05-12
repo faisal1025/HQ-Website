@@ -24,7 +24,7 @@ const CitiesList = ({list}:{list: city[]}) => {
             smallScreen: (window.innerWidth <= 600)
           })
       }
-
+      handleResize();
       window.addEventListener('resize', handleResize);
 
       return () => {
@@ -162,7 +162,7 @@ const CitiesList = ({list}:{list: city[]}) => {
                   })
               )}
             </Slider> :
-            <div className='flex gap-4 flex-row justify-start items-center w-full'>
+            <div className='flex flex-wrap gap-4 flex-row justify-start items-center w-full'>
             {list && (
               list.map((city) => {
                   return (

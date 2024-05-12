@@ -79,7 +79,11 @@ const globalSateSlice = createSlice({
             state.searchText = action.payload
         },
         setDateVal: (state, action) => {
-            state.dateVal = action.payload
+            const dates = action.payload;
+            if(dates[0] !== null && dates[1] !== null && dates[0] > dates[1]){
+                dates.reverse()
+            }
+            state.dateVal = dates
         },
         setShowBookModal: (state, action) => {
             state.showBookNowModal = action.payload

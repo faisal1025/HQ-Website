@@ -40,7 +40,7 @@ const PaymentCard = ({item}: {item: hotels}) => {
   const onOk = (value: RangePickerProps["value"]) => {
     dispatch(setDateVal(value));
   };
-
+  
   const handlePayAtHotel = async  () => {
     dispatch(setLoading(true))
     const response = await createPayAtHotel({payableAmount: item.payableAmount, 
@@ -147,7 +147,7 @@ const PaymentCard = ({item}: {item: hotels}) => {
     
     useEffect(() => {
       const updatePayableAmount = () => {
-        const days = dateVal?.[1]?.diff(dateVal[0], 'days') || 1
+        const days = dateVal?.[1]?.diff(dateVal[0], 'days') ? dateVal?.[1]?.diff(dateVal[0], 'days')+1 : 1
         item.payableAmount = (days*Number(item.price)*Number(rooms.length))+Number(item.taxAndFee)
       }
       setResObject({

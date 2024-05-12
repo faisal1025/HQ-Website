@@ -23,6 +23,7 @@ const DateRangePicker = ({className, onOk}: {className?:string, onOk: (value: Ra
             <div className="flex flex-col justify-center h-full px-3 w-full text-black font-sans font-semibold focus:border-0">
               <label className=" text-xs">Date</label>
               <RangePicker className="text-base" 
+                value={dateVal}
                 showTime={{ format: 'HH:mm' }}
                 defaultValue={[dayjs(moment().format('YYYY/MM/DD'), dateFormat), dayjs(moment().add(1, 'days').format('YYYY/MM/DD'), dateFormat)]}
                 format="YYYY-MM-DD" onOk={onOk}
