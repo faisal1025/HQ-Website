@@ -14,19 +14,19 @@ const HotelList = ({list}:{list: hotels[]}) => {
 
     const [screenSize, setScreenSize] = useState({
       largeScreen: false,
-      mediumScreen:  false,
+      mediumScreen: false,
       smallScreen: false
     });
 
     useEffect(() => {
-      function handleResize() {
+      function handleResize() {          
           setScreenSize({
             largeScreen: (window && window.innerWidth <= 1550 && window.innerWidth > 1150),
             mediumScreen: (window && window.innerWidth <= 1150 && window.innerWidth > 600),
             smallScreen: (window && window.innerWidth <= 600)
           })
       }
-
+      handleResize();
       window.addEventListener('resize', handleResize);
 
       return () => {
@@ -160,7 +160,7 @@ const HotelList = ({list}:{list: hotels[]}) => {
             )}
             </div>
         :
-            length >= 5 ?
+            length >= 4 ?
             <Slider {...settings}>
               {list && (
                   list.map((hotel) => {
@@ -172,7 +172,7 @@ const HotelList = ({list}:{list: hotels[]}) => {
                   })
               )}
             </Slider> :
-            <div className='flex gap-4 flex-row justify-start items-center w-full'>
+            <div className='flex flex-wrap gap-4 flex-row justify-start items-center w-full'>
             {list && (
               list.map((hotel) => {
                   return (
