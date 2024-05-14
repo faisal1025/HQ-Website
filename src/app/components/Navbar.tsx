@@ -26,11 +26,23 @@ const menus: MenuProps['items'] = [
       key: 1
   },
   {
-      label: <Link href={'/about_us'}>About Us</Link>,
-      key: 2,
-    },
-  ]
-  const mobileMenu: MenuProps['items'] = [
+    label: <Link href={'/about_us'}>About Us</Link>,
+    key: 2,
+  },
+  {
+    label: <Link href={'/privacy-policy'}>Privacy Policy</Link>,
+    key: 3,
+  },
+  {
+    label: <Link href={'/terms-conditions'}>Terms and Conditions</Link>,
+    key: 4,
+  },
+  {
+    label: <Link href={'/cancellation-refund-policy'}>Refund Policy</Link>,
+    key: 5,
+  },
+]
+const mobileMenu: MenuProps['items'] = [
   {
     label: <Link href={'/student_help'}>Support And Help</Link>,
     key: 1

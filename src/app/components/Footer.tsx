@@ -68,14 +68,23 @@ const Footer = () => {
 
         <div className="social  flex justify-between items-center mt-2">
           <hr className='w-[41%] '/>
-            <i className='px-2'><FaFacebookF /></i>
-            <i className='px-2'><FaInstagram /></i>
-            <i className='px-2'><FaLinkedinIn /></i>
+            <Link href={'facebook.com'} target='_blank' className='px-2'><FaFacebookF /></Link>
+            <Link href={'https://www.instagram.com/hqevents4?utm_source=qr&igsh=MWJpZ3l2b3JlZmh3OQ%3D%3D'} target='_blank' className='px-2'><FaInstagram /></Link>
+            <Link href={'https://www.linkedin.com/company/happiness-quotient-events/'} target='_blank' className='px-2'><FaLinkedinIn /></Link>
           <hr className='w-[41%]'/>
         </div>
 
-        <div className="copyright py-4 flex justify-center items-center">
-          <h3 className='ml-2'>&copy; All Right Reserved - 2024</h3>
+        <div className="copyright py-4 flex flex-wrap justify-center text-xs gap-3 items-center">
+          <h3 className='w-fit text-nowrap'>hqevents.in&copy; All Right Reserved - 2024</h3>
+          <Link href={'/privacy-policy'}>
+            <h3 className='w-fit text-nowrap'>Privacy Policy</h3>
+          </Link>
+          <Link href={'/terms-conditions'}>
+            <h3 className='w-fit text-nowrap'>Terms and Conditions</h3>
+          </Link>
+          <Link href={'/cancellation-refund-policy'}>
+            <h3 className='w-fit text-nowrap'>Refund Policy</h3>
+          </Link>
         </div>
 
         

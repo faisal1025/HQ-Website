@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @font-face {
   font-family: "ProtestRiot";
   src: url('../../public//fonts/ProtestRiot-Regular.ttf');
@@ -357,4 +358,10 @@ dialog {
 
 [type='button'], [type='reset'], [type='submit']{
   background-color: #00000073;
+}
+
+.privacy-terms li {
+  display: flex;
+  gap: 2px;
+  align-items: center;
 }
