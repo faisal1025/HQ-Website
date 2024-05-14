@@ -20,7 +20,8 @@ const ResetPassword = ({searchParams}:{searchParams?:{code: string}}) => {
     initialValues: initialValues,
     validationSchema: resetSchema,
     onSubmit: async (values, action) => {
-     
+      console.log("on submit code: ", searchParams?.code);
+      
       const response = await handleForgotForm(values, searchParams?.code);
     
       
