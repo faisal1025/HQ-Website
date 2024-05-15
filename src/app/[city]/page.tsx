@@ -7,6 +7,8 @@ import MobileFilterSortBy from '../components/StateDetailPageComponents/MobileFi
 import { hotels } from '../Schema';
 import Pagination from '../components/Pagination';
 
+export const dynamic='force-dynamic';
+
 const City = async ({params, searchParams}: {params: {city: string}, searchParams?: {page?: string}}) => {
     const query = new URLSearchParams(searchParams)
     const {props} = await getStateById(params.city, query.toString())
