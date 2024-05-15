@@ -1,11 +1,13 @@
 "use client";
 import { Card, message } from "antd";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { handleForgotForm } from "../services/authApi";
 import MainLayout from "../mainLayout/layout";
 import { useFormik } from "formik";
 import { resetSchema } from "@/schemas";
 import { useRouter } from "next/navigation";
+
+export const dynamic = 'force-dynamic'
 
 const initialValues = {
   password:'',
@@ -13,6 +15,10 @@ const initialValues = {
 }
 
 const ResetPassword = ({searchParams}:{searchParams?:{code: string}}) => {
+  useEffect(() => {
+    console.log(searchParams?.code);
+    
+  }, [])
   const {push} = useRouter()
 
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } =
