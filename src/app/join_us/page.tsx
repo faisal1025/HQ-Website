@@ -1,6 +1,7 @@
-"use client";
+"use client"
+
 import Image from "next/image";
-import React, { Suspense, useState } from "react";
+import React from "react";
 import reactScroll from "react-scroll";
 import Link from "next/link";
 import Logo from "../../../public/assets/Logo.png"
@@ -14,11 +15,7 @@ import { FaPhone } from "react-icons/fa";
 import { MdEmail, MdMyLocation } from "react-icons/md";
 
 const JoinUs = () => {
-  const [click, setClick] = useState(false);
-  const handleClick = () => {
-    setClick(!click);
-  };
-
+  
   return (
     
       <div className="overflow-x-hidden">

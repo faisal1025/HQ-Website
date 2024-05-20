@@ -2,6 +2,12 @@ import Link from 'next/link'
 import React from 'react'
 import { IoMdHome } from 'react-icons/io'
 import SupportPageLayout from '../SupportPageLayout/layout'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Terms-and-conditions',
+  description: "terms and conditions page for HQ-Rooms"
+}
 
 const termsAndConditions = () => {
   return (

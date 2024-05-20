@@ -10,7 +10,24 @@ import { getHotelById } from "@/app/services/hotelApi";
 import { amenities } from "@/app/Schema";
 import MainLayout from "@/app/mainLayout/layout";
 import Map from "@/app/components/Map";
+import { Metadata, ResolvingMetadata } from "next";
 
+type Props = {
+    params: { hotel: string, city: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+}
+
+  
+export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+
+    return {
+        title: `${params.hotel} in ${params.city}`,
+        description: "hotel detail page for each hqrooms room"
+    }
+}
 
 const HotelDetails = async ({params}: {params: {hotel: string}}) => {
     

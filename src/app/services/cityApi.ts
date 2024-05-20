@@ -35,7 +35,6 @@ export const getAllStates = async () => {
 }
 
 export const getStateById = async (slug: string, query: string) => {
-    console.log("query of hotel: ", query);
     
     const url = `${baseUrl}/states/${slug}?${query}`
     const response = await (await fetch(url, {cache: 'no-cache'})).json()
