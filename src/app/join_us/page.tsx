@@ -17,7 +17,7 @@ import { MdEmail, MdMyLocation } from "react-icons/md";
 const JoinUs = () => {
   
   return (
-    
+    <>
       <div className="overflow-x-hidden">
         <div className="min-h-screen" style={{background: `#ffffff url(/assets/5.jpg) no-repeat center`, backgroundSize: 'cover'}}>
           <div className="flex justify-between max-sm:flex-wrap items-center gap-3 tracking-tighter max-w-full h-[15vh] p-3">
@@ -156,7 +156,7 @@ const JoinUs = () => {
           </section>
         </div>
       </div>
- 
+    </>
   );
 };
 
