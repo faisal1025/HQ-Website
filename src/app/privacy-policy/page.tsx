@@ -3,6 +3,12 @@ import React from 'react'
 import { IoMdHome } from 'react-icons/io'
 import supportPageLayout from '../SupportPageLayout/layout'
 import SupportPageLayout from '../SupportPageLayout/layout'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Privacy-Policy',
+  description: "privacy policy page for HQ-Rooms"
+}
 
 const privacyPolicy = () => {
   return (

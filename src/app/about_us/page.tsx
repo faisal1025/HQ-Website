@@ -17,7 +17,12 @@ import { MdMyLocation } from "react-icons/md";
 import about_1 from '../../../public/assets/about_1.avif'
 import about_2 from '../../../public/assets/about_2.avif'
 import SupportPageLayout from "../SupportPageLayout/layout";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: 'About-Us',
+  description: "about us page for HQ-Rooms"
+}
 
 const page = () => {
   return (

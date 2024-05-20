@@ -74,7 +74,7 @@ const Footer = () => {
           <hr className='w-[41%]'/>
         </div>
 
-        <div className="copyright py-4 flex flex-wrap justify-center text-xs gap-3 items-center">
+        <div className="copyright px-8 py-4 flex flex-wrap justify-center text-xs gap-3 items-center">
           <h3 className='w-fit text-nowrap'>hqevents.in&copy; All Right Reserved - 2024</h3>
           <Link href={'/privacy-policy'}>
             <h3 className='w-fit text-nowrap'>Privacy Policy</h3>

@@ -6,8 +6,26 @@ import { getStateById } from '../services/cityApi';
 import MobileFilterSortBy from '../components/StateDetailPageComponents/MobileFilterSortBy';
 import { hotels } from '../Schema';
 import Pagination from '../components/Pagination';
+import { Metadata, ResolvingMetadata } from 'next';
 
 export const dynamic='force-dynamic';
+
+type Props = {
+    params: { city: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+}
+
+  
+export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+
+    return {
+        title: `hotels in ${params.city}`,
+        description: "city hotel list page for hqrooms"
+    }
+}
 
 const City = async ({params, searchParams}: {params: {city: string}, searchParams?: {page?: string}}) => {
     const query = new URLSearchParams(searchParams)

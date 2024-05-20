@@ -9,8 +9,14 @@ import ContactForm from "./components/ContactForm";
 import { getAllStates } from "./services/cityApi";
 import { getAllHotels } from "./services/hotelApi";
 import MainLayout from "./mainLayout/layout";
+import { Metadata } from "next";
 
 export const dynamic = 'auto'
+
+export const metadata: Metadata = {
+  title: 'Home',
+  description: "Home page for HQ-Rooms"
+}
 
 export default async function Home() {
   const cities = await getAllStates()

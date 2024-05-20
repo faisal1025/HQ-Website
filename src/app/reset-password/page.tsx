@@ -1,3 +1,4 @@
+
 "use client";
 import { Card, message } from "antd";
 import React, { useState, useRef, useEffect, Suspense } from "react";
@@ -7,6 +8,7 @@ import { useFormik } from "formik";
 import { resetSchema } from "@/schemas";
 import { useRouter } from "next/navigation";
 import GetSearchParams from "../components/AuthComponents/GetSearchParams";
+
 
 const initialValues = {
   password:'',
@@ -30,7 +32,6 @@ const ResetPassword = () => {
     initialValues: initialValues,
     validationSchema: resetSchema,
     onSubmit: async (values, action) => {
-      console.log("on submit code: ", code);
       
       const response = await handleForgotForm(values, code);
     

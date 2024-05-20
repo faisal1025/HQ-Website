@@ -14,8 +14,11 @@ import { Suspense } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Home-HQ-Events",
-  description: "Home Page of HQ-Events",
+  title: {
+    template: '%s | HQ-ROOMS',
+    default: 'HQ-ROOMS',
+  },
+  description: "Home Page of HQ-Rooms",
 };
 
 export default function RootLayout({

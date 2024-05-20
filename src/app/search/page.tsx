@@ -5,6 +5,24 @@ import HotelCardVertical from '../components/HotelCardVertical';
 import { hotels } from '../Schema';
 import { getSearchHotels } from '../services/hotelApi';
 import Pagination from '../components/Pagination';
+import { Metadata, ResolvingMetadata } from 'next';
+
+type Props = {
+    params: { id: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+}
+
+  
+export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+
+    return {
+        title: `hotels in ${searchParams.query}`,
+        description: "search page for hqrooms"
+    }
+}
 
 const page = async ({searchParams}: {searchParams: {page?: string, query?: string, checkIn?: string, checkOut?: string, rooms?: string, guest?: string}}) => {
     const params = new URLSearchParams(searchParams)
