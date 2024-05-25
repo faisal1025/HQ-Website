@@ -21,7 +21,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: 'About-Us',
-  description: "about us page for HQ-Rooms"
+  description: "This page contains the details of our company our services, trust, our contact details of the hq rooms"
 }
 
 const page = () => {

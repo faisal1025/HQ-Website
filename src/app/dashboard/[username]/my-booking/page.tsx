@@ -7,6 +7,7 @@ import { getAllOrders } from '@/app/services/authApi'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/app/redux/store'
 import MainLayout from '@/app/mainLayout/layout'
+import Head from 'next/head'
 
 const MyBooking = ({params}: {params: {username: string}}) => {
     const [loading, setLoading] = useState(true)
@@ -33,37 +34,51 @@ const MyBooking = ({params}: {params: {username: string}}) => {
         setLoading(false)
     }, [bookingListChanged, params.username])
     return (
-        <MainLayout>
-            <section className="rounded-lg p-5  m-5  bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950 shadow-xl">
-                <div className='p-4'>
-                    <h2 className='dark:!text-white text-2xl font-sans font-semibold py-3' >My Bookings</h2>
-                    {
-                        loading === false ?
-                        result.allBooking && 
-                            result.allBooking.length === 0 ? (
-                                <div className='min-h-[80vh] flex justify-center items-center'>
-                                    Currently, You have done no bookings
-                                </div>
-                            ) : (
-                                <div className='min-h-[80vh] flex justify-start items-center flex-col'>
-                                    {
-                                        result.allBooking.map((item: booking) => {
-                                            return (
-                                                <BookingCardVertical key={item.id} item={item} />
-                                            )
-                                        })
-                                    }
-                                </div>
-                            )
-                        :
-                        <div className='h-screen flex justify-center items-center'>
-                            Loading...
-                        </div>
-                        
-                    }
-                </div>
-            </section>
-        </MainLayout>
+        <>
+            
+            <title>All Bookings of {params.username} | Hq Rooms</title>
+            <meta
+            name="description"
+            content="This page show all the bookings of the logged in user in hotel hq rooms"
+            />
+            <meta property="og:title" content={`All bookings of the ${params.username}`}/>
+            <meta
+            property="og:description"
+            content={`This is the page for ${params.username} all the bookings of this user`}
+            />
+            
+            <MainLayout>
+                <section className="rounded-lg p-5  m-5  bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950 shadow-xl">
+                    <div className='p-4'>
+                        <h2 className='dark:!text-white text-2xl font-sans font-semibold py-3' >My Bookings</h2>
+                        {
+                            loading === false ?
+                            result.allBooking && 
+                                result.allBooking.length === 0 ? (
+                                    <div className='min-h-[80vh] flex justify-center items-center'>
+                                        Currently, You have done no bookings
+                                    </div>
+                                ) : (
+                                    <div className='min-h-[80vh] flex justify-start items-center flex-col'>
+                                        {
+                                            result.allBooking.map((item: booking) => {
+                                                return (
+                                                    <BookingCardVertical key={item.id} item={item} />
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                )
+                            :
+                            <div className='h-screen flex justify-center items-center'>
+                                Loading...
+                            </div>
+                            
+                        }
+                    </div>
+                </section>
+            </MainLayout>
+        </>
     )
 }
 

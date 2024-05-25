@@ -13,11 +13,24 @@ import { IoMdHome } from "react-icons/io";
 import SupportPageLayout from "../SupportPageLayout/layout";
 import { FaPhone } from "react-icons/fa";
 import { MdEmail, MdMyLocation } from "react-icons/md";
+import Head from "next/head";
 
 const JoinUs = () => {
   
   return (
     <>
+     
+      <title>Join US | Hq Rooms</title>
+      <meta
+        name="description"
+        content="This is the join us page or contact us page for our hq rooms website through which hotels can join in this aggregator."
+      />
+      <meta property="og:title" content={`Join Us page for the hq rooms website through which hotel can join`}/>
+      <meta
+      property="og:description"
+      content={`Join Us page for the hq rooms website through which hotel can join our hq family`}
+      />
+      
       <div className="overflow-x-hidden">
         <div className="min-h-screen" style={{background: `#ffffff url(/assets/5.jpg) no-repeat center`, backgroundSize: 'cover'}}>
           <div className="flex justify-between max-sm:flex-wrap items-center gap-3 tracking-tighter max-w-full h-[15vh] p-3">

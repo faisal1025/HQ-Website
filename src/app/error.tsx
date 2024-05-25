@@ -9,7 +9,7 @@ const error = ({error, reset}: {error: Error, reset: () => void}) => {
             <p className='text-base font-semibold'>
                 There was a problem 
             </p>
-            <h1 className='text-4xl font-bold'>
+            <h1 className='text-3xl font-bold px-4'>
                 {error.message || 'Some thing went wrong'}
             </h1>
             <p className='text-base font-semibold'>

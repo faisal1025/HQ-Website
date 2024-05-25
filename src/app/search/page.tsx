@@ -20,7 +20,11 @@ export async function generateMetadata(
 
     return {
         title: `hotels in ${searchParams.query}`,
-        description: "search page for hqrooms"
+        description: `Search page for hqrooms provide all the hotels of ${searchParams.query}`,
+        openGraph: {
+            title: `hotels in ${searchParams.query}`,
+            description: `Search page for hqrooms provide all the hotels in ${searchParams.query} state at our cheaper and best rate.`
+        }
     }
 }
 
