@@ -28,7 +28,7 @@ export default async function Home() {
 
   const jsonLd = {
     '@context': 'https://hqrooms.in',
-    '@type': 'Hotels',
+    '@type': 'Home',
     name: 'hq rooms hotels',
     description: 'HQ Rooms is a hotel booking service provide you the best deals on hotel rooms booking with the lowest price guaranty after comparing from the price from every where',
   }

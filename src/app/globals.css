@@ -365,3 +365,16 @@ dialog {
   gap: 2px;
   align-items: center;
 }
+
+@media (max-width: 463px) {
+  .map-container{
+    height: 320px;
+    width: 300px;
+  }
+}
+@media (max-width: 385px) {
+  .map-container{
+    height: 300px;
+    width: 230px;
+  }
+}
