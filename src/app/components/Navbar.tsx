@@ -22,7 +22,7 @@ import { setShowSearchBar } from '../redux/globalStateSlice';
 
 const menus: MenuProps['items'] = [
   {
-      label: <Link href={'/join_us'}>Contact Us</Link>,
+      label: <Link href={'/join_us'}>Join Us</Link>,
       key: 1
   },
   {

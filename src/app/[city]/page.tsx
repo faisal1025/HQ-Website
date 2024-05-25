@@ -23,7 +23,11 @@ export async function generateMetadata(
 
     return {
         title: `hotels in ${params.city}`,
-        description: "city hotel list page for hqrooms"
+        description: "page will show all the hotels available in that state and rooms to book",
+        openGraph: {
+            title: `hotels in ${params.city}`,
+            description: `Our luxary hotel in the best rate is currently in your town ${params.city}, we provide you the best deals ever.`
+        }
     }
 }
 
@@ -32,8 +36,22 @@ const City = async ({params, searchParams}: {params: {city: string}, searchParam
     const {props} = await getStateById(params.city, query.toString())
     const {city, pagination} = props;
 
+    const jsonLd = {
+        '@context': `https://hqrooms.in/${params.city}`,
+        '@type': 'States',
+        name: city.name,
+        image: city.thumbnail,
+        description: `All the hotels in this ${city.name} state`,
+    }
+
     return (
         <CityLayout>
+
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+
             <section className='h-full p-5 bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950 shadow-xl relative'>
                 <h1 className='text-3xl font-sans font-semibold'>Hotels in {city.name}</h1>
                 <MobileFilterSortBy />

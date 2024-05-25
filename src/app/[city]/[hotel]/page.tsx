@@ -25,17 +25,35 @@ export async function generateMetadata(
 
     return {
         title: `${params.hotel} in ${params.city}`,
-        description: "hotel detail page for each hqrooms room"
+        description: `${params.hotel} hotel detail page for each hqrooms room. This will show all the details about specific hotels`,
+        openGraph: {
+            title: `${params.hotel} in ${params.city}`,
+            description: `The ${params.hotel} is a luxary hotel in the best rate we provide you the best in your town ${params.city}`
+        }
     }
 }
 
-const HotelDetails = async ({params}: {params: {hotel: string}}) => {
+const HotelDetails = async ({params}: {params: {hotel: string, city: string}}) => {
     
     const {props} = await getHotelById(params.hotel)
     const {hotel} = props
 
+    const jsonLd = {
+        '@context': `https://hqrooms.in/${params.city}/${params.hotel}`,
+        '@type': 'Hotel',
+        name: hotel.name,
+        image: hotel.thumbnail,
+        description: `The ${params.hotel} is a luxary hotel in the best rate we provide you the best in your town ${params.city}`,
+    }
+
     return (
         <MainLayout>
+
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+
             <section className="overflow-x-hidden">
                 <CrouselComponent list={hotel.photos}/>
 

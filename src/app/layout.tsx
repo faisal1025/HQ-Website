@@ -15,10 +15,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | HQ-ROOMS',
-    default: 'HQ-ROOMS',
+    template: '%s | Hq Rooms',
+    default: 'Hq Rooms',
   },
   description: "Home Page of HQ-Rooms",
+  metadataBase: new URL('https://hqrooms.in')
 };
 
 export default function RootLayout({

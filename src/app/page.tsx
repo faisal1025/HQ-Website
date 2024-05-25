@@ -14,16 +14,31 @@ import { Metadata } from "next";
 export const dynamic = 'auto'
 
 export const metadata: Metadata = {
-  title: 'Home',
-  description: "Home page for HQ-Rooms"
+  title: 'Hq Rooms best deals on hotel booking, Book now | Hq Rooms',
+  description: "HQ Rooms is a hotel booking service provide you the best deals on hotel rooms booking with the lowest price guaranty after comparing from the price from every where.",
+  openGraph: {
+    title: 'Hq Rooms best deals on hotel booking, Book now',
+    description: 'HQ Rooms is a hotel booking service provide you the best deals on hotel rooms booking with the lowest price guaranty after comparing from the price from every where',
+  },
 }
 
 export default async function Home() {
   const cities = await getAllStates()
   const hotels = await getAllHotels()
 
+  const jsonLd = {
+    '@context': 'https://hqrooms.in',
+    '@type': 'Hotels',
+    name: 'hq rooms hotels',
+    description: 'HQ Rooms is a hotel booking service provide you the best deals on hotel rooms booking with the lowest price guaranty after comparing from the price from every where',
+  }
+
   return (
     <MainLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="flex flex-col justify-center items-center home-container">
         <h1 className="text-center p-2 tracking-tight text-4xl font-bold font-sans text-black max-sm:text-2xl" >We compare hotel prices from 100s of sites</h1>
         <h2 className="text-center p-2 text-lg font-semibold font-sans max-sm:text-base" >We’ll do the searching. You do the saving.</h2>

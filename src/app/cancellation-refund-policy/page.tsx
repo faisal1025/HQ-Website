@@ -6,7 +6,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: 'Refund-Policy',
-    description: "cancellation and refund page for HQ-Rooms"
+    description: "cancellation and refund policy for HQ-Rooms. shows all the statements"
 }
 
 const cancellationAndRefundPolicy = () => {

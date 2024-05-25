@@ -51,9 +51,7 @@ const Footer = () => {
                   <div className="py-2">
                       <ul className='flex gap-4 items-center flex-col '>
                           <Link href={'/about_us'} className='cursor-pointer  hover:underline'>About Us</Link>
-                          <Link href={'/join_us'} className='cursor-pointer  hover:underline'>Contact Us</Link>
-                          {/* <Link href={'/login'} className='cursor-pointer  hover:underline'>Sign In</Link> */}
-                         
+                          <Link href={'/join_us'} className='cursor-pointer  hover:underline'>Join Us</Link>
                       </ul>
                   </div>
               </div>
