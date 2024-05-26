@@ -202,7 +202,7 @@ const HotelDetails = async ({params}: {params: {hotel: string, city: string}}) =
                         </div>
                         <div className="flex flex-col py-2">
                             <h3 className="font-bold mb-4">Map</h3>
-                            <Map/>
+                            <Map name={hotel.name} address={hotel.address}/>
                         </div>
                     </div>
 

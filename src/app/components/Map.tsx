@@ -2,8 +2,9 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import { Loader } from '@googlemaps/js-api-loader'
+import axios from 'axios'
 
-const Map = () => {
+const Map = ({name, address}: {name: string, address?: string}) => {
   const [showMap, setShowMap] = useState<boolean>(false)
   const mapRef = useRef<HTMLDivElement>(null)
 
@@ -17,24 +18,41 @@ const Map = () => {
       const {Map} = await loader.importLibrary('maps')
       const {AdvancedMarkerElement} = await loader.importLibrary('marker')
 
-      const locationInMap = {
-        lat: 28.535517,
-        lng: 77.391029
+      try {
+        const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(name)}&key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`;
+  
+        const response = await axios.get(url);
+        const { results } = response.data;
+        console.log("co-ordinates: ", results);
+
+        let locationInMap = {
+          lat: 28.570102,
+          lng: 77.339505
+        }
+
+        if (results.length > 0) {
+          const { lat, lng } = results[0].geometry.location;
+          locationInMap.lat = lat; locationInMap.lng = lng;
+        } else {
+            console.log('No results found for the given address.');
+        }
+  
+        const options: google.maps.MapOptions = {
+          center: locationInMap,
+          zoom: 19,
+          mapId: 'hotel map'
+        }
+  
+        const map = new Map(mapRef.current as HTMLDivElement, options)
+  
+        const marker = new AdvancedMarkerElement({
+          map,
+          position: locationInMap,
+          title: 'Holet'
+        })
+      } catch (error) {
+        console.log(error);
       }
-
-      const options: google.maps.MapOptions = {
-        center: locationInMap,
-        zoom: 15,
-        mapId: 'hotel map'
-      }
-
-      const map = new Map(mapRef.current as HTMLDivElement, options)
-
-      const marker = new AdvancedMarkerElement({
-        map,
-        position: locationInMap,
-        title: 'Noida'
-      })
     }
 
     if(showMap) initializeMap();
