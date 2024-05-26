@@ -40,7 +40,7 @@ const HotelDetails = async ({params}: {params: {hotel: string, city: string}}) =
 
     const jsonLd = {
         '@context': `https://hqrooms.in/${params.city}/${params.hotel}`,
-        '@type': 'Hotel',
+        '@type': `Hotels`,
         name: hotel.name,
         image: hotel.thumbnail,
         description: `The ${params.hotel} is a luxary hotel in the best rate we provide you the best in your town ${params.city}`,
@@ -199,7 +199,10 @@ const HotelDetails = async ({params}: {params: {hotel: string, city: string}}) =
                                         <Image src={Image1} alt="fs" width={120} height={150} className="rounded"/>
                                     </div>
                                 </div>
-                                {/* <Map/> */}
+                        </div>
+                        <div className="flex flex-col py-2">
+                            <h3 className="font-bold mb-4">Map</h3>
+                            <Map name={hotel.name} address={hotel.address}/>
                         </div>
                     </div>
 
