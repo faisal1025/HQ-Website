@@ -8,7 +8,7 @@ const GetSearchParams = ({search, getVal}: {search: string, getVal: (val:string 
     const val = searchParams.get(search)
     useEffect(() => {
         getVal(val)
-    }, [])
+    }, [getVal, val])
     return (
         <>
         </>
