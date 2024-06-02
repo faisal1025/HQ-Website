@@ -1,9 +1,11 @@
+'use client'
+
 import { AppDispatch, RootState } from '@/app/redux/store'
 import {useDispatch, useSelector} from 'react-redux'
 import React, { useState } from 'react';
 import OtpInput from 'react-otp-input';
 import { changeBookingList, setShowCancleBooking } from '@/app/redux/globalStateSlice';
-import { usePathname, useRouter } from 'next/navigation';
+import { redirect, usePathname, useRouter } from 'next/navigation';
 import { cancleRoomBooking } from '@/app/services/ordersApi';
 import { message } from 'antd';
 
@@ -22,12 +24,9 @@ const CancleBookingModal = () => {
     }
     
     const confirmButton = async () => {
-        console.log('otp: ', otp);
         
         if(otp !== undefined) {
             const res = await cancleRoomBooking(orderId, user, otp);
-            
-            console.log("on confirm", res);
             
             if(res.status === true){
                 message.success(res.msg)
@@ -37,9 +36,9 @@ const CancleBookingModal = () => {
                 dispatch(changeBookingList(!bookingListChanged))
             }
             dispatch(setShowCancleBooking(false));
-            router.back();
             const elem = document.body;
             elem.classList.remove("fixedPosition");
+            router.back()
         }else{
             message.error('Please enter otp to cancle booking')
         }

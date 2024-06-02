@@ -5,7 +5,7 @@ import { getToken } from "../utils/authHelper";
 
 export const getAllHotels = async () => {
     const url = `${baseUrl}/hotels?populate=*`
-    const response = (await axios.get(url)).data;
+    const response = await (await fetch(url, { next: { revalidate: 3600 } })).json();
     if(response.error){
         throw new Error('Something went wrong')
     }
@@ -33,7 +33,7 @@ export const getAllHotels = async () => {
 export const getHotelById = async (slug: string) => {
     const url = `${baseUrl}/hotels/${slug}`;
   
-    const response = await (await fetch(url, {cache: 'no-cache'})).json();
+    const response = await (await fetch(url, { next: { revalidate: 3600 } })).json();
     if(response.error){
         throw new Error('Something went wrong')
     }

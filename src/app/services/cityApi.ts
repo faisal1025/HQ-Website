@@ -5,7 +5,7 @@ export const baseUrl = process.env.NODE_ENV === 'production' ? process.env.API_B
 
 export const getAllStates = async () => {
     const url = `${baseUrl}/states`
-    const response = (await axios.get(url)).data;
+    const response = await (await fetch(url, { next: { revalidate: 3600 } })).json();
 
     if(response.error){
       throw new Error('something went wrong')

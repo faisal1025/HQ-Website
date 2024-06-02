@@ -15,10 +15,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Hq Rooms',
-    default: 'Hq Rooms',
+    template: '%s | Hq Rooms | India',
+    default: 'Hq Rooms | India',
   },
-  description: "Home Page of HQ-Rooms",
+  description: "HQ Rooms is a hotel booking service provide you the best deals in all over the India on hotel rooms booking with the lowest price guaranty after comparing from the price from every where.",
   metadataBase: new URL('https://hqrooms.in')
 };
 

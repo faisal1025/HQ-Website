@@ -21,7 +21,7 @@ const BookingCardVertical = ({item} : {item:booking}) => {
     const {push} = useRouter() 
 
     const cancleBooking = async () => {
-        const res = await sendMailForCancleBooking(item.razorpay_payment_id, user)
+        const res = await sendMailForCancleBooking(item.razorpay_order_id, user)
         dispatch(setShowCancleBooking(true));
         dispatch(setOrderNumber(item.id))
     }
@@ -67,7 +67,7 @@ const BookingCardVertical = ({item} : {item:booking}) => {
             prefill: {
                 "name": user.username,
                 "email": user.email,
-                "contact": "9000090000"
+                "contact": user.phoneNumber
             },
             notes: {
                 "address": "Razorpay Corporate Office"
@@ -114,7 +114,7 @@ const BookingCardVertical = ({item} : {item:booking}) => {
                         </div>
                         <div className='flex justify-end items-center gap-4'>    
                             <button className={`p-4 text-white rounded-lg min-w-1/5 ${item.razorpay_payment_id ? 'bg-green-600' : 'bg-yellow-600 active:scale-75 transition'}`} 
-                                    disabled={item.razorpay_payment_id ? true : false}
+                                    disabled={item.razorpay_payment_id ? true : item.Status === 'Cancelled' ? true : false}
                                     onClick={makePayment} >
                                         {item.razorpay_payment_id ? <>Paid (Amount &#x20b9;{item.amount/100})</> : <>Pay Now &#x20b9; {item.amount/100}</>}
                             </button> 

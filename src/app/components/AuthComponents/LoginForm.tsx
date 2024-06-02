@@ -65,14 +65,11 @@ export const LoginForm = () => {
          <Forgot />
       ) : (
         <form
-          autoComplete="off"
-          autoSave="off"
           className="w-full"
           onSubmit={handleSubmit}
         >
           <input
             className="rounded-full my-1 dark:bg-slate-500 dark:text-white mb-1 text-base w-full p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
-            autoComplete="off"
             type="email"
             placeholder="Email"
             name="identifier"
@@ -85,7 +82,6 @@ export const LoginForm = () => {
           ) : null}
           <input
             className="rounded-full my-1 dark:bg-slate-500 dark:text-white text-base w-full p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
-            autoComplete="off"
             type="password"
             placeholder="Password"
             name="password"

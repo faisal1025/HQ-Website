@@ -1,5 +1,7 @@
+import { cookies } from "next/headers";
 import { getToken } from "../utils/authHelper";
 import { baseUrl } from "./cityApi";
+import Cookies from 'js-cookie'
 
 
 export async function cancleRoomBooking(orderId: number | undefined, user: {
@@ -14,16 +16,22 @@ export async function cancleRoomBooking(orderId: number | undefined, user: {
         otp
     }
 
+    const jwtToken = Cookies.get('jwt')
+    console.log("jwt token: ", jwtToken);
+    
+
     const response = await fetch(`${baseUrl}/cancle-room-booking`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${getToken()}`
+            'Authorization': `Bearer ${Cookies.get('jwt')}`
         },
         body: JSON.stringify(value)
     })
 
     const status = await response.json()
+    console.log("status: ", status);
+    
     if(status.error && status.error.status === 401) {
         throw new Error('User should be logged in')
     }else if(status.error){
@@ -32,13 +40,13 @@ export async function cancleRoomBooking(orderId: number | undefined, user: {
     return status
 }
 
-export async function sendMailForCancleBooking(razorpay_payment_id: string, user: {
+export async function sendMailForCancleBooking(razorpay_order_id: string, user: {
     username: string | undefined;
     id: string | undefined;
     email: string | undefined;
 }) {
     const value = {
-        razorpay_payment_id,
+        razorpay_order_id,
         user
     }
 
@@ -46,9 +54,9 @@ export async function sendMailForCancleBooking(razorpay_payment_id: string, user
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${getToken()}`
+            'Authorization': `Bearer ${Cookies.get('jwt')}`
         },
-        body: JSON.stringify(value)
+        body: JSON.stringify(value),
     })
 
     const status = await response.json()

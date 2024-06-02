@@ -33,7 +33,7 @@ const CitiesList = ({list}:{list: city[]}) => {
     }, [])
 
     const settings = {
-        arrows: false,
+        arrows: true,
         dots: false,
         infinite: false,
         speed: 500,

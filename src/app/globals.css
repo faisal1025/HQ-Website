@@ -50,7 +50,7 @@ body {
   background-image: linear-gradient(
   rgba(0, 0, 0, 0.3),
   rgba(0, 0, 0, 0.1),
-  rgb(255, 255, 255)), url('../../public//banner_pics/white\ blue\ natural\ landscape\ of\ the\ sea\ and\ mountains\ freedom\ facebook\ cover.png');
+  rgb(255, 255, 255)), url('../../public//banner_pics/white-blue-natural-landscape-of-the-sea-and-mountains-freedom-hero-cover-hqrooms.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -187,6 +187,10 @@ body {
   }
 }
 /* hotel page archive end */
+
+/* state card style starts */
+
+/* state card style end*/
 /* modal style start */
 dialog {
   position: fixed;
