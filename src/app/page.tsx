@@ -11,14 +11,13 @@ import { getAllHotels } from "./services/hotelApi";
 import MainLayout from "./mainLayout/layout";
 import { Metadata } from "next";
 
-export const dynamic = 'auto'
 
 export const metadata: Metadata = {
-  title: 'Hq Rooms best deals on hotel booking, Book now | Hq Rooms',
-  description: "HQ Rooms is a hotel booking service provide you the best deals on hotel rooms booking with the lowest price guaranty after comparing from the price from every where.",
+  title: 'Hqrooms india best deals on hotel booking, Book now | Hq Rooms',
+  description: "HQ Rooms is a hotel booking service provide you the best deals in all over the India on hotel rooms booking with the lowest price guaranty after comparing from the price from every where.",
   openGraph: {
     title: 'Hq Rooms best deals on hotel booking, Book now',
-    description: 'HQ Rooms is a hotel booking service provide you the best deals on hotel rooms booking with the lowest price guaranty after comparing from the price from every where',
+    description: 'HQ Rooms | India is a hotel booking service provide you the best deals on hotel rooms booking with the lowest price guaranty after comparing from the price from every where',
   },
 }
 

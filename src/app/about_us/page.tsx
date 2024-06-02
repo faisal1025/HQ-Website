@@ -21,7 +21,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: 'About-Us',
-  description: "This page contains the details of our company our services, trust, our contact details of the hq rooms"
+  description: "We are hqrooms larget market to give you best deals on hotels all over the india with our services, trust, our contact details of the hq rooms",
+  openGraph: {
+    title: 'About hqrooms india largest hotel booking service',
+    description: 'About us , This is hqrooms india largets hotel rooms booking deal because we consider only best deals with a lowest price for you'
+  }
 }
 
 const page = () => {

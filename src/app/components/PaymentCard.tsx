@@ -60,10 +60,8 @@ const PaymentCard = ({item}: {item: hotels}) => {
     })
     if(response.error && response.error.status === 401){
       message.error('User neeed to be authenticated')
-      throw new Error('User neeed to be authenticated')
     }else if(response.error){
       message.error('Something went wrong. Please try again')
-      throw new Error('Something went wrong. Please try again')
     }
     if(response.status === 200){
       message.success('Your room is successfully booked. pay at hotel')
@@ -77,73 +75,74 @@ const PaymentCard = ({item}: {item: hotels}) => {
     const {data, error} = await createOrder({payableAmount: item.payableAmount})
     const me = await getMe()
     dispatch(setLoading(false))
-    if(error && error.status === 401) {
-      message.error('User should be logged in')
-        throw new Error('User should be logged in')
-      }else if(error){
-        message.error('Something went wrong. Please try again')
-        throw new Error('Something went wrong')
-      }
-      
-      const options = {
-        key: data.attributes.key, // Enter the Key ID generated from the Dashboard
-        amount: (data.attributes.amount*100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        currency: "INR",
-        name: "HQ-Events",
-        description: "Test Transaction",
-        image: "https://example.com/your_logo",
-        order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        // callback_url: `${baseUrl}/paymentVerification?id=${me.id}&hotel=${item.id}`,
-        handler: async function(response: any) {
-          const value = {
-            me: me,
-            hotel: item.id,
-            amount: data.attributes.amount,
-            checkin: resObject.checkin,
-            checkout: resObject.checkout,
-            givenRooms: resObject.givenRooms,
-            razorpay_order_id: response.razorpay_order_id,
-            razorpay_payment_id:  response.razorpay_payment_id,
-            razorpay_signature: response.razorpay_signature 
-          }
-          
-          let res = await fetch(`${baseUrl}/paymentVerification`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(value)
-          })
-          res = await res.json()
-          setResObject({
-            isAvailable: false,
-            givenRooms: [],
-            checkin: new Date(),
-            checkout: new Date(),
-            info: ''
-          })
-          if(res.status === 200){
-            push('/payment-success')
-          }else{
-            push('/payment-faliure')
-          }
-        },
-        prefill: {
-          "name": me.username,
-          "email": me.email,
-          "contact": "9000090000"
-        },
-        notes: {
-          "address": "Razorpay Corporate Office"
-        },
-        theme: {
-          "color": "#121212"
-        }
-      };
-      const rzp1 = new (window as any).Razorpay(options)
-      rzp1.open();
+
+    if(error && error.status === 401 || (me.error && me.error === 401)) {
+      message.error('User should be logged in, please login again')
+      return;
+    }else if(error || me.error){
+      message.error('Something went wrong. Please try again')
+      return;
     }
+      
+    const options = {
+      key: data?.attributes?.key, // Enter the Key ID generated from the Dashboard
+      amount: (data.attributes.amount*100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      currency: "INR",
+      name: "HQ-Events",
+      description: "Test Transaction",
+      image: "https://example.com/your_logo",
+      order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      // callback_url: `${baseUrl}/paymentVerification?id=${me.id}&hotel=${item.id}`,
+      handler: async function(response: any) {
+        const value = {
+          me: me,
+          hotel: item.id,
+          amount: data.attributes.amount,
+          checkin: resObject.checkin,
+          checkout: resObject.checkout,
+          givenRooms: resObject.givenRooms,
+          razorpay_order_id: response.razorpay_order_id,
+          razorpay_payment_id:  response.razorpay_payment_id,
+          razorpay_signature: response.razorpay_signature 
+        }
+        
+        let res = await fetch(`${baseUrl}/paymentVerification`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(value)
+        })
+        res = await res.json()
+        setResObject({
+          isAvailable: false,
+          givenRooms: [],
+          checkin: new Date(),
+          checkout: new Date(),
+          info: ''
+        })
+        if(res.status === 200){
+          push('/payment-success')
+        }else{
+          push('/payment-faliure')
+        }
+      },
+      prefill: {
+        "name": me.username,
+        "email": me.email,
+        "contact": me.phoneNumber
+      },
+      notes: {
+        "address": "Razorpay Corporate Office"
+      },
+      theme: {
+        "color": "#121212"
+      }
+    };
+    const rzp1 = new (window as any).Razorpay(options)
+    rzp1.open();
+  }
     
     useEffect(() => {
       const updatePayableAmount = () => {

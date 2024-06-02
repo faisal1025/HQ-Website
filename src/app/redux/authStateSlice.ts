@@ -9,7 +9,8 @@ interface initialState {
     user: {
         username: string | undefined,
         id: string | undefined,
-        email: string | undefined
+        email: string | undefined,
+        phoneNumber: string | undefined
     },
     token: string | undefined,
 }

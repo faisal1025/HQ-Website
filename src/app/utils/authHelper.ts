@@ -7,6 +7,7 @@ export type loginResponse = {
     user: {
         username: string,
         email: string,
+        phoneNumber: string,
         id: number
     }
 }
@@ -26,6 +27,7 @@ export function setToken(value : loginResponse) {
     Cookies.set('username', value.user.username)
     Cookies.set('id', value.user.id.toString())
     Cookies.set('email', value.user.email)
+    Cookies.set('phoneNumber', value.user.phoneNumber)
 }
 
 export function unsetToken() {
@@ -36,6 +38,7 @@ export function unsetToken() {
     Cookies.remove('username')
     Cookies.remove('id')  
     Cookies.remove('email')
+    Cookies.remove('phoneNumber')
 }
 
 export function getToken() {
@@ -47,7 +50,8 @@ export function getUser() {
     return {
         username: Cookies.get('username'),
         id: Cookies.get('id'),
-        email: Cookies.get('email')
+        email: Cookies.get('email'),
+        phoneNumber: Cookies.get('phoneNumber')
     }
 }
 
