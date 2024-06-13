@@ -52,11 +52,10 @@ const SocketClient = () => {
 
         if(Cookies.get('roomId')) {
             setRoomId(Cookies.get('roomId'))
-
+            socket.emit('join', {name: fullName, roomId: Cookies.get('roomId')})
             updateMessage()
         }
             
-        socket.emit('join', {name: fullName, roomId: Cookies.get('roomId')})
         socket.on('connect', () => {
             console.log('Connected to the web socket');
         })
@@ -79,7 +78,7 @@ const SocketClient = () => {
             })
         }
         
-    }, [fullName, messages, socket])
+    }, [])
     
     async function fetchMessages() : Promise<{fetchedMessages: Array<messageObj>, err: Error | null}> {
         try {
@@ -195,7 +194,7 @@ const SocketClient = () => {
                                         null: (
                                             <form className='flex justify-between gap-4 items-start' onSubmit={handleJoin}>
                                                 <div className='w-3/5'>
-                                                    <input type="text" onChange={(e) => {setFullName(e.target.value); if(nameError.length > 0) setNameError('')}} placeholder='Enter your full name' className='p-3 w-full rounded border border-gray-500 dark:border-gray-200' />
+                                                    <input type="text" onChange={(e) => {setFullName(e.target.value); if(nameError.length > 0) setNameError('')}} placeholder='Enter your full name' className='p-3 w-full rounded border border-gray-500 dark:border-gray-200 dark:text-black' />
                                                     {nameError.length !== 0  ? (
                                                     <p className="text-sm text-red-500 drop-shadow-xl">{nameError}</p>
                                                     ) : null}
@@ -223,7 +222,7 @@ const SocketClient = () => {
                             <div className='bg-gradient-to-t from-violet-200 to-sky-50 dark:from-sky-950 dark:to-slate-600 px-3 py-3 flex justify-around rounded'>
                                 <form className='flex justify-evenly gap-4 items-start' onSubmit={sendMsg}>
                                     <div>
-                                        <input type="text" onChange={(e) => {setNewMessage(e.target.value); if(messageError.length !== 0) setMessageError(''); }} placeholder='write your message' className='p-3 rounded border border-gray-500 dark:border-gray-200' />
+                                        <input type="text" onChange={(e) => {setNewMessage(e.target.value); if(messageError.length !== 0) setMessageError(''); }} placeholder='write your message' className='p-3 rounded border border-gray-500 dark:border-gray-200 dark:text-black' />
                                         {messageError.length !== 0  ? (
                                             <p className="text-sm text-red-500 drop-shadow-xl">{messageError}</p>
                                         ) : null}
