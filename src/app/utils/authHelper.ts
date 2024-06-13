@@ -1,6 +1,7 @@
 'use client'
 
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
+import jwt from 'jsonwebtoken'
 
 export type loginResponse = {
     jwt: string,
@@ -47,6 +48,13 @@ export function getToken() {
 }
 
 export function getUser() {
+    const token = Cookies.get('jwt')
+    if(token){
+        const user = jwt.decode(token, {json: true})
+        console.log("user", user);
+    }
+    
+    // return user;
     return {
         username: Cookies.get('username'),
         id: Cookies.get('id'),

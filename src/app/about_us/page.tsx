@@ -40,7 +40,7 @@ const page = () => {
 
         <section>
           <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+            <div className="grid max-md:grid-cols-1 gap-8 grid-cols-2 lg:gap-16">
               <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full">
                 <Image
                   alt="about our company"
@@ -70,25 +70,23 @@ const page = () => {
 
         <section>
           <div className="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:h-screen lg:grid-cols-2">
-              <div className="relative z-10 lg:py-16">
-                <div className="relative h-64 sm:h-80 lg:h-full">
-                  <Image
-                    alt="about our journey"
-                    src={about_2}
-                    className="absolute inset-0 h-full w-full object-cover"
-                    width={100}
-                    height={100}
-                    layout="responsive"
-                  />
-                </div>
+            <div className="flex max-lg:flex-wrap justify-center items-center">
+
+              <div className="-mr-8 max-md:-mb-0 z-10 w-[37rem]">
+                <Image
+                  alt="about our journey"
+                  src={about_2}
+                  className=" w-full h-full object-cover"
+                  width={500}
+                  height={500}
+                  layout="responsive"
+                />
               </div>
+              <div className="flex flex-col items-center w-[37rem] bg-gray-100 max-md:p-8 p-24">
+                {/* <span className="hidden lg:absolute lg:inset-y-0 lg:-start-16 lg:block lg:w-16 lg:bg-gray-100"></span> */}
 
-              <div className="relative flex items-center bg-gray-100">
-                <span className="hidden lg:absolute lg:inset-y-0 lg:-start-16 lg:block lg:w-16 lg:bg-gray-100"></span>
-
-                <div className="p-8 sm:p- lg:p-24">
-                  <h2 className="text-4xl font-bold sm:text-3xl dark:text-black">
+                
+                  <h2 className="text-3xl font-bold sm:text-3xl dark:text-black">
                     The Second step - JOURNEY TOWARDS THE SUCCESS.
                   </h2>
 
@@ -101,14 +99,9 @@ const page = () => {
                     getting benifited with best user experience
                   </p>
 
-                  {/* <a
-                    href="#"
-                    className="mt-8 inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                  >
-                    Get in Touch
-                  </a> */}
-                </div>
+            
               </div>
+
             </div>
           </div>
         </section>
@@ -123,7 +116,7 @@ const page = () => {
 
                 <p className="mt-4 text-gray-600 font-bold">
                   Welcome to our luxurious hotels. Our hotels offers an
-                  unforgettable experience for every guest Our journey got started
+                  unforgettable experience in a lowest price deals for every guest Our journey got started
                   as HQ events in year 2017 with top notch service in managing
                   events at various occasions. We managed events at different
                   hotels, the occasions includes national, international, domestic
@@ -133,6 +126,19 @@ const page = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 dark:text-black">
+                <a className="hover:bg-slate-200 block rounded-xl border border-gray-200 p-4 shadow-sm hover:border-gray-400 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
+                  <span className="inline-block rounded-lg bg-gray-50 p-3">
+
+                    <GiReceiveMoney/>
+                  </span>
+
+                  <h2 className="mt-2 font-bold">Cost effecient</h2>
+
+                  <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
+                    Best deals that is cheap and best.
+                  </p>
+                </a>
+
                 <a className="hover:bg-slate-200 block rounded-xl border border-gray-200 p-4 shadow-sm hover:border-gray-400 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
                   <span className="inline-block rounded-lg bg-gray-50 p-3">
                     <FaCartFlatbed />
@@ -195,18 +201,7 @@ const page = () => {
                   </p>
                 </a>
 
-                <a className="hover:bg-slate-200 block rounded-xl border border-gray-200 p-4 shadow-sm hover:border-gray-400 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
-                  <span className="inline-block rounded-lg bg-gray-50 p-3">
-
-                    <GiReceiveMoney/>
-                  </span>
-
-                  <h2 className="mt-2 font-bold">Cost effecient</h2>
-
-                  <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-                    Best deals that is cheap and best.
-                  </p>
-                </a>
+                
               </div>
             </div>
           </div>

@@ -65,6 +65,12 @@ body {
 }
 /* hero section end */
 
+/* chat box start */
+.chat-box::-webkit-scrollbar{
+  visibility: hidden;
+}
+/* chat box end */
+
 /* slick slider gap start */
 .slick-slide .card {
   margin: 0rem 10px;
