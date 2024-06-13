@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import SocketClient from '../components/SocketClient';
 
 const MainLayout = ({children}: Readonly<{
     children: React.ReactNode;
@@ -9,6 +10,7 @@ const MainLayout = ({children}: Readonly<{
         <div>
             <Navbar />
             {children}
+            <SocketClient />
             <Footer />
         </div>
     )

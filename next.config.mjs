@@ -6,6 +6,8 @@ const nextConfig = {
     env: {
         API_BASE_URL_DEV: 'http://127.0.0.1:1337/api',
         API_BASE_URL_PROD: 'https://admin.hqrooms.in/api',
+        SOCKET_API_URL_DEV: 'http://127.0.0.1:1337/',
+        SOCKET_API_URL_PROD: 'https://admin.hqrooms.in/',
         APP_ENV: 'development',
         NEXT_PUBLIC_GOOGLE_API_KEY: 'AIzaSyAmXiS-0NmNL6GjJ5IZ21BQ3VPeucTjFT4',
     },

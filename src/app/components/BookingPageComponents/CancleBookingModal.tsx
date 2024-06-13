@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import React, { useState } from 'react';
 import OtpInput from 'react-otp-input';
 import { changeBookingList, setShowCancleBooking } from '@/app/redux/globalStateSlice';
-import { redirect, usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { cancleRoomBooking } from '@/app/services/ordersApi';
 import { message } from 'antd';
 
