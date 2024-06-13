@@ -7,6 +7,7 @@ import {message} from 'antd'
 import {useSelector, useDispatch} from 'react-redux'
 import { RootState } from '../redux/store'
 import { baseUrl } from '../services/cityApi'
+import { socketUrl } from '../services/cityApi'
 
 type messageObj = {
     id?: number,
@@ -28,7 +29,7 @@ const SocketClient = () => {
     const [messages, setMessages] = useState<Array<messageObj>>([])
     const [messageError, setMessageError] = useState('') 
     const {isAuthenticated, user} = useSelector((store: RootState) => store.authState)
-    const socket = useMemo(() => io('http://127.0.0.1:1337/', {
+    const socket = useMemo(() => io(socketUrl || 'https://admin.hqrooms.in/', {
         withCredentials: true,
         extraHeaders: {
             "my-custom-header": "abcd"
@@ -77,7 +78,7 @@ const SocketClient = () => {
             })
         }
         
-    }, [])
+    }, [fullName, messages, socket])
     
     async function fetchMessages() : Promise<{fetchedMessages: Array<messageObj>, err: Error | null}> {
         try {
