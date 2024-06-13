@@ -2,7 +2,7 @@ import axios from "axios";
 import { amenities, city, hotels } from "../Schema";
 
 export const baseUrl = process.env.NODE_ENV === 'production' ? process.env.API_BASE_URL_PROD : process.env.API_BASE_URL_DEV
-export const socketUrl = process.env.NODE_ENV === 'production' ? process.env.SOCKET_API_URL_DEV : process.env.SOCKET_API_URL_PROD
+export const socketUrl = process.env.NODE_ENV === 'production' ? process.env.SOCKET_API_URL_PROD : process.env.SOCKET_API_URL_DEV
 
 export const getAllStates = async () => {
     const url = `${baseUrl}/states`
