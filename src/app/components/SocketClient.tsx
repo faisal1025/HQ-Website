@@ -72,6 +72,7 @@ const SocketClient = () => {
         })
 
         return () => {
+            socket.disconnect()
             window.removeEventListener('click', (event: MouseEvent) => {
                 setChat(false)
                 
@@ -193,8 +194,8 @@ const SocketClient = () => {
                                         (isAuthenticated ? 
                                         null: (
                                             <form className='flex justify-between gap-4 items-start' onSubmit={handleJoin}>
-                                                <div>
-                                                    <input type="text" onChange={(e) => {setFullName(e.target.value); if(nameError.length > 0) setNameError('')}} placeholder='Enter your full name' className='p-3 w-3/5 rounded border border-gray-500 dark:border-gray-200' />
+                                                <div className='w-3/5'>
+                                                    <input type="text" onChange={(e) => {setFullName(e.target.value); if(nameError.length > 0) setNameError('')}} placeholder='Enter your full name' className='p-3 w-full rounded border border-gray-500 dark:border-gray-200' />
                                                     {nameError.length !== 0  ? (
                                                     <p className="text-sm text-red-500 drop-shadow-xl">{nameError}</p>
                                                     ) : null}
