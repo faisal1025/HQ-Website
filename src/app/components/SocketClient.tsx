@@ -181,13 +181,13 @@ const SocketClient = () => {
         <>
             {
                 (
-                    <div className='flex flex-col gap-2 justify-end items-end fixed bottom-8 right-16 w-96'>
+                    <div className='flex flex-col gap-2 justify-end items-end fixed bottom-4 right-4 w-96 max-sm:w-72'>
                         <div onClick={e => e.stopPropagation()} className={`flex border border-slate-500  w-full flex-col rounded-lg bg-gradient-to-r from-indigo-200 to-indigo-50 dark:from-slate-700 dark:to-slate-950 shadow-xl transition-all ${chat ? 'flex' : 'hidden'}`}>
-                            <div className='flex justify-between items-center bg-gradient-to-t from-violet-200 to-sky-50 dark:from-sky-950 dark:to-slate-600 px-4 py-4 text-xl rounded'>
+                            <div className='flex justify-between items-center bg-gradient-to-t from-violet-200 to-sky-50 dark:from-sky-950 dark:to-slate-600 px-4 py-4 text-xl max-sm:text-base rounded'>
                                 <span>Chat with HQ Rooms</span>
                                 <span onClick={handleChatClear} className='text-red-500 hover:underline cursor-pointer text-sm'>Clear Chat</span>
                             </div>
-                            <div className='px-4 py-4 h-52 overflow-y-scroll chat-box'> 
+                            <div className='pl-4 py-2 max-sm:pl-2 h-52 overflow-y-scroll chat-box max-sm:text-sm'> 
                                 {
                                     roomId === undefined &&
                                         (isAuthenticated ? 
@@ -219,19 +219,19 @@ const SocketClient = () => {
                                 }
                                 
                             </div>
-                            <div className='bg-gradient-to-t from-violet-200 to-sky-50 dark:from-sky-950 dark:to-slate-600 px-3 py-3 flex justify-around rounded'>
+                            <div className='bg-gradient-to-t from-violet-200 to-sky-50 dark:from-sky-950 dark:to-slate-600 px-3 py-3 flex justify-around rounded max-sm:text-sm'>
                                 <form className='flex justify-evenly gap-4 items-start' onSubmit={sendMsg}>
-                                    <div>
-                                        <input type="text" onChange={(e) => {setNewMessage(e.target.value); if(messageError.length !== 0) setMessageError(''); }} placeholder='write your message' className='p-3 rounded border border-gray-500 dark:border-gray-200 dark:text-black' />
+                                    <div className='w-3/5'>
+                                        <input type="text" onChange={(e) => {setNewMessage(e.target.value); if(messageError.length !== 0) setMessageError(''); }} placeholder='write your message' className='p-3 rounded border border-gray-500 dark:border-gray-200 dark:text-black w-full' />
                                         {messageError.length !== 0  ? (
                                             <p className="text-sm text-red-500 drop-shadow-xl">{messageError}</p>
                                         ) : null}
                                     </div>
-                                    <button type="submit" className='text-white p-3 rounded bg-gradient-to-r from-slate-800 to-slate-400'>Send</button>
+                                    <button type="submit" className='w-1/3 text-white p-3 rounded bg-gradient-to-r from-slate-800 to-slate-400'>Send</button>
                                 </form>
                             </div>
                         </div>
-                        <div onClick={openChat} className='flex justify-center items-center bg-gradient-to-r from-slate-600 to-slate-400 text-white rounded-full size-14'>
+                        <div onClick={openChat} className='flex justify-center items-center bg-gradient-to-r from-slate-600 to-slate-400 text-white rounded-full max-sm:size-12 size-14'>
                             {chat ? <FaXmark  size={16} /> : <FaMessage size={16} />}
                         </div>
                     </div>
