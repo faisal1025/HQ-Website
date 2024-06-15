@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Loader } from '@googlemaps/js-api-loader'
 import axios from 'axios'
 
-const Map = ({name, address}: {name: string, address?: string}) => {
+const Map = ({slug, address}: {slug: string, address?: string}) => {
   const [showMap, setShowMap] = useState<boolean>(false)
   const mapRef = useRef<HTMLDivElement>(null)
 
@@ -19,7 +19,7 @@ const Map = ({name, address}: {name: string, address?: string}) => {
       const {AdvancedMarkerElement} = await loader.importLibrary('marker')
 
       try {
-        const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(name)}&key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`;
+        const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(slug)}&key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`;
   
         const response = await axios.get(url);
         const { results } = response.data;
