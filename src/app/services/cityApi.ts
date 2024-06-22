@@ -6,13 +6,13 @@ export const socketUrl = process.env.NODE_ENV === 'production' ? process.env.SOC
 
 export const getAllStates = async () => {
     const url = `${baseUrl}/states`
-    const response = await (await fetch(url, { cache: 'no-cache' })).json();
+    const response = await (await fetch(url, { next: { revalidate: 3600 } })).json();
 
     if(response.error){
       throw new Error('something went wrong')
     }
 
-    const cities:city[] = response?.data.map((city:any): city => {
+    const cities:city[] = response.data.map((city:any): city => {
         const totalNoHotels = city.attributes.hotels.data.length
         const totalPrice = city.attributes.hotels.data.reduce((pre: number, nxt: any) => {
           return pre += nxt.attributes.price;
