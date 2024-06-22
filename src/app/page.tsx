@@ -15,11 +15,11 @@ import { Metadata } from "next";
 export const dynamic='force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Hqrooms offers you best deals on hotel in india, Book room now | Hq Rooms',
-  description: "HQ Rooms provides you best deals on hotels in india, book room online. We guaranty best deals in all over the India on hotel rooms with lowest price guaranty after comparing from the price from every where.",
+  title: 'Hqrooms - Offers you best deals on hotel in india, Book room now',
+  description: "HQ Rooms provides you best deals on hotels in india, book room online. We guaranty the lowest price on hotel in india after comparing the price from every where.",
   openGraph: {
-    title: 'Hqrooms offers you best deals on hotel in india, Book room now | Hq Rooms',
-    description: "HQ Rooms provides you best deals on hotels in india, book room online. We guaranty best deals in all over the India on hotel rooms with lowest price guaranty after comparing from the price from every where.",
+    title: 'Hqrooms - Offers you best deals on hotel in india, Book room now',
+    description: "HQ Rooms provides you best deals on hotels in india, book room online. We guaranty the lowest price on hotel in india after comparing the price from every where.",
   },
 }
 
