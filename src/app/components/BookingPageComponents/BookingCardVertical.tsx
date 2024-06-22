@@ -33,6 +33,8 @@ const BookingCardVertical = ({item} : {item:booking}) => {
 
     const makePayment = async () => {
         const {key} = await getKey()
+        console.log('key, item', key, item);
+        
         const options = {
             key: key, // Enter the Key ID generated from the Dashboard
             amount: (item.amount*100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -70,9 +72,9 @@ const BookingCardVertical = ({item} : {item:booking}) => {
               }
             },
             prefill: {
-                "name": user.username,
-                "email": user.email,
-                "contact": user.phoneNumber
+                "name": user?.username,
+                "email": user?.email,
+                "contact": user?.phoneNumber
             },
             notes: {
                 "address": "Razorpay Corporate Office"

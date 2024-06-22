@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import Card from '../custom-template/Card'
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import Image from 'next/image'
@@ -17,11 +17,13 @@ import { setShowBookModal } from '../redux/globalStateSlice';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 
 const HotelCardVertical = ({item, city}: {item: hotels, city: string}) => {
-    
+    const {showBookNowModal} = useSelector((store: RootState) => store.globalState)
+    const [toggleMemo, setToggleMemo] = useState<boolean>(false)
     const dispatch = useDispatch<AppDispatch>()
     const searchParams = useSearchParams()
     const {push} = useRouter()
     const pathName = usePathname()
+
     const openPaymentModal = () => {
         dispatch(setShowBookModal(true));
         const params = new URLSearchParams(searchParams)
@@ -65,7 +67,10 @@ const HotelCardVertical = ({item, city}: {item: hotels, city: string}) => {
                             <span className='text-green-600'>{getOffPercent(item.originalPrice, item.price)} % off</span>
                         </div>
                        {/* modal space */}
-                       <PaymentModal item={item} />
+                       {
+                           showBookNowModal &&
+                            <PaymentModal item={item} />
+                       }
                         <div className='flex items-end gap-2'>
                             <Link href={`${city}/${item.slug}`} className='text-sm para-text action-button transition active:scale-75 p-2 px-4 border-2 border-solid border-black rounded-full'>View Details</Link>
                             <button className='text-sm para-text action-button transition active:scale-75 bg-slate-950 border-2 border-solid border-black text-white p-2 px-4 rounded-full' onClick={openPaymentModal}>Book Now</button>

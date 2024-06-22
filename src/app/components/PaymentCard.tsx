@@ -22,6 +22,8 @@ import { message } from 'antd';
 type RangeValue = [Dayjs | null, Dayjs | null] | null;
 
 const PaymentCard = ({item}: {item: hotels}) => {
+  // console.log('payment card: ', item);
+  
   const {push} = useRouter()
   const {user, isAuthenticated, token} = useSelector((store: RootState) => store.authState)
   const {dateVal, payableAmount, givenRooms} = useSelector((store: RootState) => store.globalState)
