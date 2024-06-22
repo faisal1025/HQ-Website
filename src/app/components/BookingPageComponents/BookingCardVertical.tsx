@@ -33,7 +33,6 @@ const BookingCardVertical = ({item} : {item:booking}) => {
 
     const makePayment = async () => {
         const {key} = await getKey()
-        console.log('key, item', key, item);
         
         const options = {
             key: key, // Enter the Key ID generated from the Dashboard
