@@ -24,6 +24,7 @@ export function setToken(value : loginResponse) {
         return;
     }
     Cookies.set('jwt', value.jwt)
+    Cookies.set('username', value.user.username)
 }
 
 export function unsetToken() {
@@ -31,6 +32,7 @@ export function unsetToken() {
         return;
     }
     Cookies.remove('jwt')
+    Cookies.remove('username')
 }
 
 export function getToken() {

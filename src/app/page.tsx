@@ -13,11 +13,11 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: 'Hqrooms - Offers you best deals on hotel in india, Book room now',
-  description: "HQ Rooms provides you best deals on hotels in india, book room online. We guaranty the lowest price on hotel in india after comparing the price from every where.",
+  title: 'Hqrooms - Offers best deals on hotel in India, Book rooms online',
+  description: "HQ Rooms provides best deals on hotels in India, book room now. We guarantee the lowest price on hotels in India after comparing the prices from everywhere.",
   openGraph: {
-    title: 'Hqrooms - Offers you best deals on hotel in india, Book room now',
-    description: "HQ Rooms provides you best deals on hotels in india, book room online. We guaranty the lowest price on hotel in india after comparing the price from every where.",
+    title: 'Hqrooms - Offers best deals on hotel in India, Book rooms online',
+    description: "HQ Rooms provides best deals on hotels in India, book room now. We guarantee the lowest price on hotels in India after comparing the prices from everywhere.",
   },
 }
 

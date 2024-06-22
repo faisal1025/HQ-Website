@@ -55,15 +55,9 @@ const mobileMenu: MenuProps['items'] = [
 
 const Navbar = () => {
   const {isAuthenticated, user} = useSelector((store: RootState) => store.authState)
-  const {showSearchBar} = useSelector((store: RootState) => store.globalState)
   const dispatch = useDispatch<AppDispatch>()
   const {refresh} = useRouter()
   const pathname = usePathname()
-
-  // useEffect(() => {
-  //   dispatch(setAuthAsync())
-  // }, [dispatch]) 
-  
   
   const handleLogout = () => {
     unsetToken()
@@ -116,13 +110,15 @@ const Navbar = () => {
                   </Suspense>
                 ):
                 (
-                  <Link
-                    href="/login"
-                    className="flex items-center gap-2 "
-                  >
-                    <i><FaRegUserCircle  size={20} /></i>
-                    <h5 className='lg:mt-0 md:mt-0 max-md:hidden'>{"Login"}</h5>
-                  </Link>
+                  <Suspense>
+                    <Link
+                      href="/login"
+                      className="flex items-center gap-2 "
+                    >
+                      <i><FaRegUserCircle  size={20} /></i>
+                      <h5 className='lg:mt-0 md:mt-0 max-md:hidden'>{"Login"}</h5>
+                    </Link>
+                  </Suspense>
                 )
                 
 

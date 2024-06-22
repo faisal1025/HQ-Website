@@ -8,6 +8,7 @@ import { setShowSearchBar } from '../redux/globalStateSlice'
 
 const SearchBar = () => {
     const {showSearchBar} = useSelector((store: RootState) => store.globalState)
+    
     const dispatch = useDispatch<AppDispatch>()
     useEffect(() => {
         const elem = document.body;
