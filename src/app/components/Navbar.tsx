@@ -8,7 +8,7 @@ import Logo from "../../../public/assets/Logo.png"
 import Link from 'next/link';
 import {Avatar, Dropdown, message} from 'antd'
 import type {MenuProps} from 'antd'
-import { setAuth, setAuthAsync } from '../redux/authStateSlice';
+import { logoutUser, setAuthAsync } from '../redux/authStateSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../redux/store';
 import Cookies from 'js-cookie';
@@ -59,12 +59,16 @@ const Navbar = () => {
   const dispatch = useDispatch<AppDispatch>()
   const {refresh} = useRouter()
   const pathname = usePathname()
+
+  // useEffect(() => {
+  //   dispatch(setAuthAsync())
+  // }, [dispatch]) 
   
   
   const handleLogout = () => {
     unsetToken()
     refresh()
-    dispatch(setAuth())
+    dispatch(logoutUser())
     message.info('logout successfully')
   }
 
@@ -107,7 +111,7 @@ const Navbar = () => {
                 (
                   <Suspense>
                     <Dropdown menu={{items: userMenu}} trigger={['click']}>
-                      <Avatar className='bg-gradient-to-r from-slate-500 to-slate-400 dark:from-orange-400 dark:to-orange-300'>{user.username?.charAt(0).toUpperCase()}</Avatar>
+                      <Avatar className='bg-gradient-to-r from-slate-500 to-slate-400 cursor-pointer dark:from-orange-400 dark:to-orange-300'>{user.username?.charAt(0).toUpperCase()}</Avatar>
                     </Dropdown>
                   </Suspense>
                 ):

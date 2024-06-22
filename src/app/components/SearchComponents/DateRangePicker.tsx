@@ -14,7 +14,7 @@ const dateFormat = 'YYYY/MM/DD';
 
 const DateRangePicker = ({className, onOk}: {className?:string, onOk: (value: RangePickerProps['value']) => void}) => {
   
-  const {dateVal, rooms, totalGuest} = useSelector((store: RootState) => store.globalState)
+  const {dateVal} = useSelector((store: RootState) => store.globalState)
 
   return (
         

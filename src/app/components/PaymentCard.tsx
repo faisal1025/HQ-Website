@@ -10,186 +10,103 @@ import Link from "next/link";
 import GuestSelector from "./SearchComponents/GuestSelector";
 import DateRangePicker from "./SearchComponents/DateRangePicker";
 import { getOffPercent, getSavingAmount } from "../utils/hotelDetailUtility";
-import { hotels } from "../Schema";
-import { checkAvailable, createOrder, createPayAtHotel } from "../services/hotelApi";
-import { baseUrl } from "../services/cityApi";
+import { hotels, room } from "../Schema";
 import { useSelector, useDispatch } from 'react-redux'
 import { AppDispatch, RootState } from "../redux/store";
 import { getMe } from "../services/authApi";
 import { useRouter } from "next/navigation";
-import { setDateVal, setLoading } from "../redux/globalStateSlice";
+import { addRooms, fetchRooms, resetRoom, resetGivenRoom, roomCategory, setDateVal, setLoading, updatePayableAmount } from "../redux/globalStateSlice";
 import moment from 'moment';
-import {Divider, message} from 'antd'
+import { message } from 'antd';
 
 type RangeValue = [Dayjs | null, Dayjs | null] | null;
 
 const PaymentCard = ({item}: {item: hotels}) => {
-  const [loading, setloading] = useState(false)
   const {push} = useRouter()
-  const [resObject, setResObject] = useState({
-    isAvailable: false,
-    givenRooms: [],
-    checkin: new Date(),
-    checkout: new Date(),
-    info: ''
-  })
   const {user, isAuthenticated, token} = useSelector((store: RootState) => store.authState)
-  const {dateVal, rooms, totalGuest} = useSelector((store: RootState) => store.globalState)
+  const {dateVal, payableAmount, givenRooms} = useSelector((store: RootState) => store.globalState)
   const dispatch  = useDispatch<AppDispatch>() 
+
+  const checkIn = dateVal && dateVal[0]?.format('YYYY-MM-DD')
+  const checkOut = dateVal && dateVal[1]?.format('YYYY-MM-DD')
+
+  const getGivenRooms = (): number[] => {
+    const givenArr = [givenRooms.kingSizedRoom, givenRooms.queenSizedRoom, givenRooms.twinSizedRoom, givenRooms.duplexRoom]
+
+    const res = givenArr.flatMap((category: roomCategory, ind: number) => {
+      return category.rooms.map((room: room, i: number) => {
+        return room.id
+      })
+    })
+
+    return res;
+  }
+
+  function roomSelected() {
+    const arr = getGivenRooms()
+    if(arr.length === 0){
+      message.error('Please select a room to book')
+      return false
+    }
+    return true
+  }
   
   const onOk = (value: RangePickerProps["value"]) => {
     dispatch(setDateVal(value));
   };
   
-  const handlePayAtHotel = async  () => {
-    dispatch(setLoading(true))
-    const response = await createPayAtHotel({payableAmount: item.payableAmount, 
-      user,
-      hotel: item.id, 
-      checkin: resObject.checkin,
-      checkout: resObject.checkout,
-      givenRooms: resObject.givenRooms
-    })
-    dispatch(setLoading(false))
-    setResObject({
-      isAvailable: false,
-      givenRooms: [],
-      checkin: new Date(),
-      checkout: new Date(),
-      info: ''
-    })
-    if(response.error && response.error.status === 401){
-      message.error('User neeed to be authenticated')
-    }else if(response.error){
-      message.error('Something went wrong. Please try again')
-    }
-    if(response.status === 200){
-      message.success('Your room is successfully booked. pay at hotel')
-    }else{
-      message.error("something went wrong ! rooms haven't booked try again")
-    }
-  }
   
-  const makeOrder = async () => {
-    dispatch(setLoading(true));
-    const {data, error} = await createOrder({payableAmount: item.payableAmount})
-    const me = await getMe()
-    dispatch(setLoading(false))
-
-    if(error && error.status === 401 || (me.error && me.error === 401)) {
-      message.error('User should be logged in, please login again')
-      return;
-    }else if(error || me.error){
-      message.error('Something went wrong. Please try again')
-      return;
-    }
-      
-    const options = {
-      key: data?.attributes?.key, // Enter the Key ID generated from the Dashboard
-      amount: (data.attributes.amount*100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      currency: "INR",
-      name: "HQ-Events",
-      description: "Test Transaction",
-      image: "https://example.com/your_logo",
-      order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      // callback_url: `${baseUrl}/paymentVerification?id=${me.id}&hotel=${item.id}`,
-      handler: async function(response: any) {
-        const value = {
-          me: me,
-          hotel: item.id,
-          amount: data.attributes.amount,
-          checkin: resObject.checkin,
-          checkout: resObject.checkout,
-          givenRooms: resObject.givenRooms,
-          razorpay_order_id: response.razorpay_order_id,
-          razorpay_payment_id:  response.razorpay_payment_id,
-          razorpay_signature: response.razorpay_signature 
-        }
-        
-        let res = await fetch(`${baseUrl}/paymentVerification`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify(value)
-        })
-        res = await res.json()
-        setResObject({
-          isAvailable: false,
-          givenRooms: [],
-          checkin: new Date(),
-          checkout: new Date(),
-          info: ''
-        })
-        if(res.status === 200){
-          push('/payment-success')
-        }else{
-          push('/payment-faliure')
-        }
-      },
-      prefill: {
-        "name": me.username,
-        "email": me.email,
-        "contact": me.phoneNumber
-      },
-      notes: {
-        "address": "Razorpay Corporate Office"
-      },
-      theme: {
-        "color": "#121212"
-      }
-    };
-    const rzp1 = new (window as any).Razorpay(options)
-    rzp1.open();
-  }
-    
-    useEffect(() => {
-      const updatePayableAmount = () => {
-        const days = dateVal?.[1]?.diff(dateVal[0], 'days') ? dateVal?.[1]?.diff(dateVal[0], 'days')+1 : 1
-        item.payableAmount = (days*Number(item.price)*Number(rooms.length))+Number(item.taxAndFee)
-      }
-      setResObject({
-        isAvailable: false,
-        givenRooms: [],
-        checkin: new Date(),
-        checkout: new Date(),
-        info: ''
-      })
-      updatePayableAmount();
-    }, [dateVal, rooms, item])
-
-    const checkAvailability = async () => {
-      const checkIn = dateVal && dateVal[0]?.format('YYYY-MM-DD')
-      const checkOut = dateVal && dateVal[1]?.format('YYYY-MM-DD')
-      
-      const room = rooms.length;
-      const guest = totalGuest;
-      let room_config = rooms.reduce((pre: string, next: { guest: any; }, ind: any) => {
-          return pre += `${ind}_${next.guest}-`
-      }, "")
-      room_config = room_config.slice(0, -1);
+  useEffect(() => {
+    async function fetchAvailableRooms(){
       const data = {
         hotelId: item.id,
         checkIn,
         checkOut,
-        room_config,
-        room,
-        guest
       }
-      setloading(true)
-      const res = await checkAvailable(data)
-      setloading(false)
-      setResObject({
-        ...resObject,
-        givenRooms: res.givenRooms,
-        isAvailable: res.isAvailable,
-        checkin: res.checkin,
-        checkout: res.checkout,
-        info: res.isAvailable ? 'Rooms are available proceed' : 'Rooms are not available at this date'
-      })
-      
+      dispatch(resetGivenRoom())
+      const response = await dispatch(fetchRooms(data))
+      const rooms = response.payload as any
+
+      if(rooms.kingSizedRoom.noOfRooms !== 0) {
+        item.price = rooms.kingSizedRoom.price  
+        dispatch(addRooms(rooms.kingSizedRoom.category))
+      }else if(rooms.duplexRoom.noOfRooms !== 0){
+        item.price = rooms.duplexRoom.price
+        dispatch(addRooms(rooms.duplexRoom.category))
+      }else if(rooms.queenSizedRoom.noOfRooms !== 0){
+        item.price = rooms.queenSizedRoom.price
+        dispatch(addRooms(rooms.queenSizedRoom.category))
+      }else if(rooms.twinSizedRoom.noOfRooms !== 0){
+        item.price = rooms.twinSizedRoom.price
+        dispatch(addRooms(rooms.twinSizedRoom.category))
+      }
     }
+    
+    fetchAvailableRooms();
+
+  }, [dateVal, item, checkIn, checkOut, dispatch])
+
+  useEffect(() => {
+    const givenRoomsArr = [givenRooms.kingSizedRoom, givenRooms.queenSizedRoom, givenRooms.twinSizedRoom, givenRooms.duplexRoom]
+
+    const oneDayPrice = givenRoomsArr.reduce((pre: number, curr: roomCategory, ind: number): number => {
+      // console.log(curr.category, curr.noOfRooms, curr.rooms[0]?.price);
+      
+      if(curr.rooms.length !== 0){
+        return pre += (curr.rooms.length * curr.rooms[0]?.price)
+      }else{
+        return pre
+      }
+    }, 0)
+
+    // console.log("one day price", oneDayPrice);
+    
+    const days = dateVal?.[1]?.diff(dateVal[0], 'days') ? dateVal?.[1]?.diff(dateVal[0], 'days')+1 : 1
+    // console.log((days*oneDayPrice)+Number(item.taxAndFee));
+    
+    dispatch(updatePayableAmount((days*oneDayPrice)+Number(item.taxAndFee)))
+
+  }, [givenRooms, item, dateVal, dispatch])
 
   return (
     <section className="p-2 max-md:text-sm">
@@ -223,7 +140,7 @@ const PaymentCard = ({item}: {item: hotels}) => {
 
         <div className="flex-1 gap-2 max-md:flex-wrap max-w-full m-3 p-2 bg-white rounded-lg justify-center items-center">
           <DateRangePicker className="w-fit" onOk={onOk} />
-          <GuestSelector className="w-fit" />
+          <GuestSelector searchRoom={false} className="w-fit" />
         </div>
 
         <div className="my-2">
@@ -233,32 +150,14 @@ const PaymentCard = ({item}: {item: hotels}) => {
             </div>
             <div className="flex justify-between font-bold p-2">
                 <h4 className="">Total price</h4>
-                <h4 className="">&#8377;{item.payableAmount}</h4>
+                <h4 className="">&#8377;{payableAmount}</h4>
             </div>
-            {
-              resObject.isAvailable ?
-                <div>
-                  <button className="w-full h-9 rounded bg-green-500 hover:bg-green-600 font-semibold my-2" onClick={() => {isAuthenticated ? makeOrder() : push('/login')}}>Continue to Book</button>
-                  <Divider>or</Divider>
-                  <button className="w-full h-9 text-white rounded-full active:scale-75 transition bg-gradient-to-r from-slate-800 to-slate-600 font-semibold my-2" onClick={() => {isAuthenticated ? handlePayAtHotel() : push('/login')}}>Pay at hotel</button>
-                </div>
-              :
-                <button className="w-full h-9 rounded bg-yellow-500 hover:bg-yellow-600 font-semibold my-2" onClick={() => {checkAvailability()}}>{loading ? <div className='flex gap-2 justify-center items-center'>
-                  <span>Checking</span><Image alt='loader' src={'/assets/SpinnerSm.svg'} width={20} height={20} />
-                </div> :
-                'Check Availability'}</button>
-            }
-            {
-              resObject.isAvailable ? 
-                resObject.info !== '' &&
-                <div className="flex gap-1 items-center font-medium text-green-500">
-                  <AiFillCheckCircle /><span>{resObject.info}</span>
-                </div> :
-                resObject.info !== '' &&
-                <div className="flex gap-1 items-center font-medium text-red-500">
-                  <AiFillCloseCircle /><span>{resObject.info}</span>
-                </div>
-            }
+            <button className="w-full h-9 rounded bg-yellow-500 hover:bg-yellow-600 font-semibold my-2" onClick={() => {
+                if(roomSelected())
+                  push(`/booking-summary/${item.slug}`)
+              }}>
+              {'Continue to Checkout'}
+            </button>
         </div>
       </div>
     </section>

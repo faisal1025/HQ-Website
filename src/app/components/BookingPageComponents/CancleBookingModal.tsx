@@ -19,14 +19,16 @@ const CancleBookingModal = () => {
     const backButton = () => {
         dispatch(setShowCancleBooking(false));
         router.back();
-        const elem = document.body;
-        elem.classList.remove("fixedPosition");
     }
     
     const confirmButton = async () => {
-        
+        const userData = {
+            username: user.username,
+            email: user.email,
+            id: user?.id as any as string | undefined
+        }
         if(otp !== undefined) {
-            const res = await cancleRoomBooking(orderId, user, otp);
+            const res = await cancleRoomBooking(orderId, userData, otp);
             
             if(res.status === true){
                 message.success(res.msg)

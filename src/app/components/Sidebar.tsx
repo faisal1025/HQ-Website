@@ -70,13 +70,13 @@ const Sidebar = () => {
                         <input type='checkbox' className='inline-block' value={"AC"} onChange={(e) => handleFilter(e.target.value, e.target.checked)}/> AC
                     </div>
                     <div className='py-2 flex gap-3 items-center'>
-                        <input type='checkbox' className='inline-block' value={"king_sized_bed"} onChange={(e) => handleFilter(e.target.value, e.target.checked)}/> King Sized Bed
+                        <input type='checkbox' className='inline-block' value={"Restaurant"} onChange={(e) => handleFilter(e.target.value, e.target.checked)}/> Restaurant
                     </div>
                     <div className='py-2 flex gap-3 items-center'>
-                        <input type='checkbox' className='inline-block' value={"queen_sized_bed"} onChange={(e) => handleFilter(e.target.value, e.target.checked)}/> Queen Sized Bed
+                        <input type='checkbox' className='inline-block' value={"Resort"} onChange={(e) => handleFilter(e.target.value, e.target.checked)}/> Resort Landscaping <br/> and Lawns
                     </div>
                     <div className='py-2 flex gap-3 items-center'>
-                        <input type='checkbox' className='inline-block' value={"twin_bed"} onChange={(e) => handleFilter(e.target.value, e.target.checked)}/> Twin Bed
+                        <input type='checkbox' className='inline-block' value={"Celebrations"} onChange={(e) => handleFilter(e.target.value, e.target.checked)}/> Celebrations and <br/> Parties
                     </div>
                 </div>
                 <div className='flex justify-between items-center py-2'>

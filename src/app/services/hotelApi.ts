@@ -4,7 +4,7 @@ import { baseUrl } from "./cityApi";
 import { getToken } from "../utils/authHelper";
 
 export const getAllHotels = async () => {
-    const url = `${baseUrl}/hotels?populate=*`
+    const url = `${baseUrl}/hotels`
     const response = await (await fetch(url, { next: { revalidate: 3600 } })).json();
     if(response.error){
         throw new Error('Something went wrong')
@@ -13,13 +13,9 @@ export const getAllHotels = async () => {
         return {...hotel.attributes, id: hotel.id, 
             state: {...hotel.attributes.state.data.attributes, id: hotel.attributes.state.data.id},
             thumbnail: hotel.attributes.thumbnail.data.attributes.url, 
-            photos:  hotel.attributes.photos.data.map((photo: any) => {
-                return photo.attributes.url
-            }),
             amenities: hotel.attributes.amenities.data.map((aminity: any) => {
                 return {...aminity.attributes, id: aminity.id}
-            }),
-            payableAmount: hotel.attributes.price + hotel.attributes.taxAndFee
+            })
         }
     });
     
@@ -51,7 +47,7 @@ export const getHotelById = async (slug: string) => {
                 ...amenity.attributes
             }
         }),
-        payableAmount: response.data.attributes.price + response.data.attributes.taxAndFee
+        payableAmount: response.data.attributes.price + response.data.attributes.taxAndFee,
     }
     
     return {
@@ -65,6 +61,7 @@ export const getSearchHotels = async (params: string) => {
     
     const url = `${baseUrl}/search?${params}`;
     const response = await (await fetch(url, {cache: "no-cache"})).json();
+    
     if(response.error){
         throw new Error('Something went wrong')
     }

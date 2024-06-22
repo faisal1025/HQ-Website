@@ -21,7 +21,12 @@ const BookingCardVertical = ({item} : {item:booking}) => {
     const {push} = useRouter() 
 
     const cancleBooking = async () => {
-        const res = await sendMailForCancleBooking(item.razorpay_order_id, user)
+        const userData = {
+            username: user.username,
+            email: user.email,
+            id: user?.id as any as string | undefined
+        }
+        const res = await sendMailForCancleBooking(item.razorpay_order_id, userData)
         dispatch(setShowCancleBooking(true));
         dispatch(setOrderNumber(item.id))
     }

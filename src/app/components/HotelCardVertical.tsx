@@ -35,7 +35,7 @@ const HotelCardVertical = ({item, city}: {item: hotels, city: string}) => {
         <Card>
             <div className='vertical-hotel-card flex flex-wrap justify-between p-2 my-3 gap-1 items-center'>
                 <div className='min-w-[41%] hotel-thumbnail'>
-                    <Image src={item.thumbnail} alt='hotel image' width={100} height={100} className='w-full h-auto object-cover' layout='responsive' />
+                    <Image src={item.thumbnail} alt={`thumbnail picture of ${item.name}`} width={100} height={100} className='w-full h-auto object-cover' layout='responsive' />
                 </div>
                 <div className='flex flex-col justify-start min-w-[52%] hotel-container'>
                     <h2 className='text-2xl font-sans font-semibold capitalize tracking-tight'>{ item.name }</h2>
