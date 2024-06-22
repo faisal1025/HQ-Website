@@ -2,7 +2,7 @@
 
 import { updateUserAsync } from '@/app/redux/authStateSlice'
 import { AppDispatch, RootState } from '@/app/redux/store'
-import { getMe, updateUser } from '@/app/services/authApi'
+import { getMe } from '@/app/services/authApi'
 import { makeBookingForm } from '@/schemas'
 import { message } from 'antd'
 import { useFormik } from 'formik'
