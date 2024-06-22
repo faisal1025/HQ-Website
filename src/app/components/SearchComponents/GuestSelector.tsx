@@ -8,17 +8,17 @@ import { RootState } from '../../redux/store'
 import { useSelector } from 'react-redux'
 import DropBox from '../DropBox'
 
-const items: MenuProps['items'] = [
-    {
-        label: <RoomComponent />,
-        key: 1
-    }
-]
 
 
-const GuestSelector = ({className}: {className?:string}) => {
+const GuestSelector = ({className, searchRoom}: {className?:string, searchRoom?: boolean}) => {
     
-    const {rooms, totalGuest} = useSelector((store: RootState) => store.globalState)
+    const items: MenuProps['items'] = [
+        {
+            label: <RoomComponent searchRoom={searchRoom} />,
+            key: 1
+        }
+    ]
+    const {rooms} = useSelector((store: RootState) => store.globalState)
     const [dropDaown, setDropDown] = useState(false);
     const guestH2Ref = useRef(null)
     return (
@@ -26,18 +26,9 @@ const GuestSelector = ({className}: {className?:string}) => {
             <i className="bg-white text-black h-full text-center items-center justify-center flex w-12"><FaBed size={20} /></i>
             <div className="flex flex-col justify-center h-full max-md:w-full px-3 rounded-md bg-white font-sans font-semibold focus:border-0">
                 <label className="text-black text-xs">Guest and Rooms</label>
-              {/* <Dropdown menu={{items}} trigger={['click']}> */}
-                <div ref={guestH2Ref} onClick={(e) => {e.stopPropagation(); setDropDown(!dropDaown)}} className="relative text-slate-400 py-1 px-2 text-sm max-w-fit">
-                    <h3 className='w-max'>{totalGuest} Guest, {rooms.length} Rooms</h3>
-                    {
-                        dropDaown && (
-                            <DropBox setDropDown={setDropDown}>
-                                <RoomComponent />
-                            </DropBox>
-                        )
-                    }
-                </div>
-              {/* </Dropdown> */}
+              <Dropdown menu={{items}} trigger={['click']} placement='bottom'>
+                  <h3 className='w-max dark:text-black'>Select Rooms</h3>
+              </Dropdown>
             </div>
         </div>
     )

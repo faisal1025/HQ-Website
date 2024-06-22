@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get('jwt')?.value
   const username = request.cookies.get('username')?.value
  
-  if (!token && (request.nextUrl.pathname.startsWith('/dashboard') || RestrictForUnAuthenticated.includes(request.url))) {
+  if (!token && ((request.nextUrl.pathname.startsWith('/dashboard')) || (request.nextUrl.pathname.startsWith('/booking-summary')) || RestrictForUnAuthenticated.includes(request.nextUrl.pathname))) {
     return Response.redirect(new URL('/login', request.url))
   }
  

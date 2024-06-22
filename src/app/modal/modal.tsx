@@ -24,6 +24,10 @@ export default function Modal({ children, setModal }: modalProps) {
     } else {
       elem.classList.remove("fixedPosition");
     }
+
+    return () => {
+      elem.classList.remove('fixedPosition')
+    }
   }, [modal]);
   return (
     <>
@@ -32,10 +36,8 @@ export default function Modal({ children, setModal }: modalProps) {
           className="flex z-50 justify-center items-center"
           onClick={(e) => {
             e.stopPropagation();
-            router.back();
             dispatch(setModal(false));
-            const elem = document.body;
-            elem.classList.remove("fixedPosition");
+            router.back();
           }}
         >
           <div
@@ -50,8 +52,6 @@ export default function Modal({ children, setModal }: modalProps) {
               onClick={() => {
                 dispatch(setModal(false));
                 router.back();
-                const elem = document.body;
-                elem.classList.remove("fixedPosition");
               }}
             >
               <Image

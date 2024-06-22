@@ -1,6 +1,7 @@
 
 import { booking } from "../Schema"
 import { getToken } from "../utils/authHelper"
+import Cookies from 'js-cookie';
 import axios from "axios";
 import { baseUrl } from "./cityApi";
 
@@ -94,7 +95,7 @@ export async function getMe() {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${getToken()}`
+            'Authorization': `Bearer ${Cookies.get('jwt')}`
         }
     })
     
@@ -116,6 +117,28 @@ export async function handleForgotForm(value:{
   })
   
   return response.data
+}
+
+export async function  updateUser(id: string, values: {
+  fullName: string, phoneNumber: string, address: string
+}) {
+  try {
+    const response = await fetch(`${baseUrl}/users/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getToken()}`
+      },
+      body: JSON.stringify(values)
+    })
+  
+    const result = await  response.json()
+    return result
+  } catch (error) {
+    if(error instanceof Error){
+      throw error
+    }
+  }
 }
 
 

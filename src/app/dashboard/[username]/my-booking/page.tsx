@@ -8,6 +8,7 @@ import { baseUrl } from '@/app/services/cityApi'
 import { cookies } from 'next/headers'
 import { Metadata, ResolvingMetadata } from 'next'
 
+export const dynamic='force-dynamic';
 
 async function getAllOrders(username: string) {
 
@@ -19,7 +20,7 @@ async function getAllOrders(username: string) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${cookies().get('jwt')?.value}`
         },
-        cache: 'no-store'
+        cache: 'no-cache'
     })
 
     const booking_data = await (response.json())
@@ -56,7 +57,6 @@ async function getAllOrders(username: string) {
     }
 }
 
-export const dynamic='force-dynamic';
 
 type Props = {
     params: { username: string }
@@ -90,7 +90,6 @@ const MyBooking = async ({params}: {params: {username: string}}) => {
                     <div className='p-4'>
                         <h2 className='dark:!text-white text-2xl font-sans font-semibold py-3' >My Bookings</h2>
                         {
-                            // loading === false ?
                             result.allBooking && 
                                 result.allBooking.length === 0 ? (
                                     <div className='min-h-[80vh] flex justify-center items-center'>
@@ -107,10 +106,8 @@ const MyBooking = async ({params}: {params: {username: string}}) => {
                                         }
                                     </div>
                                 )
-                            // :
-                            // <div className='h-screen flex justify-center items-center'>
-                            //     Loading...
-                            // </div>
+                          
+                         
                             
                         }
                     </div>

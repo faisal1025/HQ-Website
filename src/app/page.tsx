@@ -12,12 +12,14 @@ import MainLayout from "./mainLayout/layout";
 import { Metadata } from "next";
 
 
+export const dynamic='force-dynamic';
+
 export const metadata: Metadata = {
-  title: 'Hqrooms india best deals on hotel booking, Book now | Hq Rooms',
-  description: "HQ Rooms is a hotel booking service provide you the best deals in all over the India on hotel rooms booking with the lowest price guaranty after comparing from the price from every where.",
+  title: 'Hqrooms offers you best deals on hotel in india, Book room now | Hq Rooms',
+  description: "HQ Rooms provides you best deals on hotels in india, book room online. We guaranty best deals in all over the India on hotel rooms with lowest price guaranty after comparing from the price from every where.",
   openGraph: {
-    title: 'Hq Rooms best deals on hotel booking, Book now',
-    description: 'HQ Rooms | India is a hotel booking service provide you the best deals on hotel rooms booking with the lowest price guaranty after comparing from the price from every where',
+    title: 'Hqrooms offers you best deals on hotel in india, Book room now | Hq Rooms',
+    description: "HQ Rooms provides you best deals on hotels in india, book room online. We guaranty best deals in all over the India on hotel rooms with lowest price guaranty after comparing from the price from every where.",
   },
 }
 
@@ -39,7 +41,7 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <section className="flex flex-col justify-center items-center home-container">
-        <h1 className="text-center p-2 tracking-tight text-4xl font-bold font-sans text-black max-sm:text-2xl" >We compare hotel prices from 100s of sites</h1>
+        <h1 className="text-center p-2 tracking-tight text-4xl font-bold font-sans text-black max-sm:text-2xl" >We provide best deals on hotels in India</h1>
         <h2 className="text-center p-2 text-lg font-semibold font-sans max-sm:text-base" >We’ll do the searching. You do the saving.</h2>
         <Suspense>
           <SearchComponent />

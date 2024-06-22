@@ -11,9 +11,9 @@ const CustomSlider = ({handlePriceFilter}: {handlePriceFilter: (value: number[])
         <div>
             <Slider 
                 range
-                max={5000}
+                max={10000}
                 min={100}
-                defaultValue={[100, 5000]}
+                defaultValue={[100, 10000]}
                 onChangeComplete={onChangeComplete}
             />
         </div>

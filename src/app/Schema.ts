@@ -35,6 +35,18 @@ export interface hotels{
     publishedAt:string,
 }
 
+export interface room{
+    id: number,
+    room_number: number,
+    room_type: string,
+    capacity: number,
+    createdAt: string,
+    updatedAt: string,
+    publishedAt: string,
+    price: number,
+    originalPrice: number | null
+}
+
 export interface amenities{
     id: number,
     icon: IconNames,

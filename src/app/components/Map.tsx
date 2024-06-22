@@ -56,7 +56,7 @@ const Map = ({slug, address}: {slug: string, address?: string}) => {
     }
 
     if(showMap) initializeMap();
-  }, [showMap, name])
+  }, [showMap, slug])
 
   return (
     <>

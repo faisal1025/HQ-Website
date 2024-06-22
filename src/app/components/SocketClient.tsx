@@ -78,7 +78,7 @@ const SocketClient = () => {
             })
         }
         
-    }, [])
+    }, [fullName, socket])
     
     async function fetchMessages() : Promise<{fetchedMessages: Array<messageObj>, err: Error | null}> {
         try {

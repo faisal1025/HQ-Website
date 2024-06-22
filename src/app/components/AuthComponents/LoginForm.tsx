@@ -5,9 +5,9 @@ import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { signInSchema } from "../../../schemas";
 import { loginUser } from "../../services/authApi";
-import { errorResponse, getUser, loginResponse, setToken } from "../../utils/authHelper";
+import { errorResponse, loginResponse, setToken } from "../../utils/authHelper";
 import Router from "next/router";
-import { setAuth } from "../../redux/authStateSlice";
+import { setAuthAsync } from "../../redux/authStateSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { message } from "antd";
@@ -46,8 +46,8 @@ export const LoginForm = () => {
   useEffect(() => {
     if(login){
       setToken(login)
-      dispatch(setAuth())
-      message.success(`Welcome back !!! ${getUser().username}`)
+      dispatch(setAuthAsync())
+      message.success(`Welcome back !!! ${login.user.username}`)
       back()
     }else if(error){
       message.error(error.message)

@@ -5,8 +5,8 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import {signUpSchema} from '../../../schemas'
 import { registerUser } from "../../services/authApi";
-import { errorResponse, getUser, loginResponse, setToken } from "@/app/utils/authHelper";
-import { setAuth, setAuthAsync } from "@/app/redux/authStateSlice";
+import { errorResponse, loginResponse, setToken } from "@/app/utils/authHelper";
+import { setAuthAsync } from "@/app/redux/authStateSlice";
 import { message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/app/redux/store";
@@ -16,7 +16,6 @@ import { useRouter } from "next/navigation";
 const initialValues = {
   username: "",
   email: "",
-  phoneNumber: "",
   password: "",
   confirm_password:""
 };
@@ -46,8 +45,8 @@ export const SignupForm = () => {
   useEffect(() => {
     if(register){
       setToken(register)
-      dispatch(setAuth())
-      message.success(`Welcome back !!! ${getUser().username}`)
+      dispatch(setAuthAsync())
+      message.success(`Welcome back !!! ${register.user.username}`)
       back()
     }else if(error){
       message.error(error.message)
@@ -67,6 +66,7 @@ export const SignupForm = () => {
         onBlur={handleBlur}
       />
       {errors.username && touched.username ? <p className="text-sm text-red-500 drop-shadow-xl">{errors.username}</p>:null}
+      
       <input
         className="rounded-full my-1 dark:bg-slate-500 dark:text-white mb-1 text-base w-full p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
         autoSave="false"
@@ -78,17 +78,7 @@ export const SignupForm = () => {
         onBlur={handleBlur}
       />
       {errors.email && touched.email ? <p className="text-sm text-red-500 drop-shadow-xl">{errors.email}</p>:null}
-      <input
-        className="rounded-full my-1 dark:bg-slate-500 dark:text-white mb-1 text-base w-full p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
-        autoSave="false"
-        type="tel"
-        placeholder="Phone Number"
-        name="phoneNumber"
-        value={values.phoneNumber}
-        onChange={handleChange}
-        onBlur={handleBlur}
-      />
-      {errors.phoneNumber && touched.phoneNumber ? <p className="text-sm text-red-500 drop-shadow-xl">{errors.phoneNumber}</p>:null}
+      
       <input
         className="rounded-full my-1 dark:bg-slate-500 dark:text-white text-base w-full p-4 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
         type="password"
