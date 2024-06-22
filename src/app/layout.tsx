@@ -10,6 +10,7 @@ import ConfirmBookingModal from "./components/BookingPageComponents/ConfirmBooki
 import LoadingOutlay from "./components/HotelDetailPageComponents/Loading";
 import SearchBar from "./components/SearchBar";
 import { Suspense } from "react";
+import AuthProvider from "./authProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,12 +32,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <StoreProvider>
-          <main className="main-container">
-            <SearchBar />
-            <LoadingOutlay />
-            <ConfirmBookingModal />
-            {children}
-          </main>
+          <AuthProvider>
+            <main className="main-container">
+              <SearchBar />
+              <LoadingOutlay />
+              <ConfirmBookingModal />
+              {children}
+            </main>
+          </AuthProvider>
         </StoreProvider>
         <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
       </body>
