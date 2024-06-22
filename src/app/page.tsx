@@ -12,8 +12,6 @@ import MainLayout from "./mainLayout/layout";
 import { Metadata } from "next";
 
 
-export const dynamic='force-dynamic';
-
 export const metadata: Metadata = {
   title: 'Hqrooms - Offers you best deals on hotel in india, Book room now',
   description: "HQ Rooms provides you best deals on hotels in india, book room online. We guaranty the lowest price on hotel in india after comparing the price from every where.",
