@@ -61,7 +61,7 @@ export const fetchRooms = createAsyncThunk(
     'rooms/fetchByHotels', 
     async (data: {hotelId: number, checkIn: string | null | undefined, checkOut: string | null | undefined}) => {
         const  {availableRooms} = (await axios.post(`${baseUrl}/fetch-rooms`, data)).data
-        console.log("result in thunk: ", availableRooms);
+        // console.log("result in thunk: ", availableRooms);
         let rooms: {
             kingSizedRoom: roomCategory,
             queenSizedRoom: roomCategory,
@@ -117,7 +117,7 @@ export const fetchRooms = createAsyncThunk(
             }
         });
 
-        console.log("rooms from thunk: ", rooms);
+        // console.log("rooms from thunk: ", rooms);
         
         return rooms;
 
