@@ -73,7 +73,7 @@ const HotelCardVertical = ({item, city}: {item: hotels, city: string}) => {
                        }
                         <div className='flex items-end gap-2'>
                             <Link href={`${city}/${item.slug}`} className='text-sm para-text action-button transition active:scale-75 p-2 px-4 border-2 border-solid border-black rounded-full'>View Details</Link>
-                            <button className='text-sm para-text action-button transition active:scale-75 bg-slate-950 border-2 border-solid border-black text-white p-2 px-4 rounded-full' onClick={openPaymentModal}>Book Now</button>
+                            {/* <button className='text-sm para-text action-button transition active:scale-75 bg-slate-950 border-2 border-solid border-black text-white p-2 px-4 rounded-full' onClick={openPaymentModal}>Book Now</button> */}
                         </div>
                     </div>
                 </div>

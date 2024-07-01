@@ -67,7 +67,7 @@ const Footer = () => {
         <div className="social  flex justify-between items-center mt-2">
           <hr className='w-[41%] '/>
             <Link href={'facebook.com'} target='_blank' className='px-2'><FaFacebookF /></Link>
-            <Link href={'https://www.instagram.com/hqevents4?utm_source=qr&igsh=MWJpZ3l2b3JlZmh3OQ%3D%3D'} target='_blank' className='px-2'><FaInstagram /></Link>
+            <Link href={'https://www.instagram.com/hqevents.in?utm_source=qr&igsh=MWJpZ3l2b3JlZmh3OQ%3D%3D'} target='_blank' className='px-2'><FaInstagram /></Link>
             <Link href={'https://www.linkedin.com/company/happiness-quotient-events/'} target='_blank' className='px-2'><FaLinkedinIn /></Link>
           <hr className='w-[41%]'/>
         </div>
