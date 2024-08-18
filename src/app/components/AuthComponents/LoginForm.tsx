@@ -35,7 +35,7 @@ export const LoginForm = () => {
       if (login.error === undefined) {
         setLogin(login);
       } else {
-        console.log("login", login);
+        // console.log("login", login);
         
         setError(login.error);
       }
