@@ -19,10 +19,10 @@ export async function generateMetadata(
   ): Promise<Metadata> {
 
     return {
-        title: `hotels in ${searchParams.query}`,
+        title:  `${searchParams.query ? `hotels in ${searchParams.query}` : 'Best hotels deals on your searched results'}`,
         description: `Search page for hqrooms provide all the hotels of ${searchParams.query}`,
         openGraph: {
-            title: `hotels in ${searchParams.query}`,
+            title: `${searchParams.query ? `hotels in ${searchParams.query}` : 'Your of search hotels'}`,
             description: `Search page for hqrooms provide all the hotels in ${searchParams.query} state at our cheaper and best rate.`
         }
     }
