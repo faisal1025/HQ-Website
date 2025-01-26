@@ -68,6 +68,25 @@ export default async function Home() {
         </div>
       </section>
 
+      <section className="flex justify-around flex-col flex-wrap gap-4 p-5 m-5 items-center border-solid shadow-xl bg-transparent rounded-lg border-[1px] border-slate-800">
+          <h3 className="dark:!text-white text-3xl font-sans font-semibold">Meet Our Expert Team</h3>
+          <div className="dark:!text-white text-base font-sans font-medium">Dedicated professionals committed to guiding your business towards global standards and success</div>
+          <div className="flex flex-wrap gap-4 my-5 justify-around items-center w-full dark:!text-white">
+            <div className="flex flex-col rounded">
+              <h3 className="text-2xl font-semibold">Mr. Jyoti Raditya</h3>
+              <div>CEO, Hqrooms</div>
+            </div>
+            <div className="flex flex-col rounded">
+              <h3 className="text-2xl font-semibold">Faisal Azmi</h3>
+              <div>Software Engineer, Hqrooms</div>
+            </div>
+            <div className="flex flex-col rounded">
+              <h3 className="text-2xl font-semibold">Modassir Azam</h3>
+              <div>Software Engineer, Hqrooms</div>
+            </div>
+          </div>
+      </section>
+
       <section className="flex justify-around flex-wrap gap-4 p-5 m-5 items-center border-solid shadow-xl bg-transparent rounded-lg border-[1px] border-slate-800">
           <div className="flex gap-4 justify-around items-center">
             <Image src={'/assets/hot-sale.png'} content="image/gif" alt="mail" width={100} height={100} />
